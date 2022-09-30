@@ -1,4 +1,4 @@
-package dto;
+package nlt.dto;
 
 public class UserDTO {
 

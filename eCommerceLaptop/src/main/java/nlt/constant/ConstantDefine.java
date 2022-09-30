@@ -1,4 +1,4 @@
-package constant;
+package nlt.constant;
 
 public class ConstantDefine {
 
