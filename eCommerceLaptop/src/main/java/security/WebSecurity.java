@@ -1,4 +1,4 @@
-package nlt.security;
+package security;
 
 public class WebSecurity {
 

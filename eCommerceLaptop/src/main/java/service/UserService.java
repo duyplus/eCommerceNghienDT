@@ -1,4 +1,4 @@
-package nlt.service;
+package service;
 
 public interface UserService {
 

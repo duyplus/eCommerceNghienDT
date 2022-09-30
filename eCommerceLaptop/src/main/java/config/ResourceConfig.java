@@ -1,4 +1,4 @@
-package nlt.config;
+package config;
 
 public class ResourceConfig {
 

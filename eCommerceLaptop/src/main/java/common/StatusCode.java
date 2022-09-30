@@ -1,4 +1,4 @@
-package nlt.common;
+package common;
 
 public enum StatusCode {
 

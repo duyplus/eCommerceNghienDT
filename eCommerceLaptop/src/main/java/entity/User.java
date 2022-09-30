@@ -1,4 +1,4 @@
-package nlt.entity;
+package entity;
 
 public class User {
 

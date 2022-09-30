@@ -1,6 +1,6 @@
-package nlt.service.impl;
+package service.impl;
 
-import nlt.service.UserService;
+import service.UserService;
 
 public class UserServiceImpl implements UserService {
 

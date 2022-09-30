@@ -1,4 +1,4 @@
-package nlt.controller;
+package controller;
 
 public class HomeController {
 
