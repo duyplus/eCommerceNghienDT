@@ -1,8 +1,8 @@
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Latest Stable Version](http://poser.pugx.org/duyplus/eCommerceLaptop/v)
 ![](https://img.shields.io/packagist/dt/duyplus/eCommerceLaptop.svg)
-### Dự án tốt nghiệp
-- Các chức năng chính:
+### Dự án tốt nghiệp - Sàn thương mại điện tử
+Các chức năng chính:
   + Đăng nhập bằng mạng xã hội, xác thực danh tính
   + Quản lý sản phẩm, người dùng, đáng giá, danh mục, hãng
   + Xem danh sách sản phẩm, tìm kiếm, lọc sản phẩm
