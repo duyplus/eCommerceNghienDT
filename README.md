@@ -1,6 +1,7 @@
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![](https://img.shields.io/packagist/dt/duyplus/eCommerceLaptop.svg)
-### Dự án tốt nghiệp - Sàn thương mại điện tử
+# Dự án tốt nghiệp - eCommerceLaptop
+### Sàn thương mại điện tử
 - Các chức năng chính:
   + Đăng nhập bằng mạng xã hội, xác thực danh tính
   + Quản lý sản phẩm, người dùng, đáng giá, danh mục, hãng
