@@ -1,6 +1,7 @@
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![](https://img.shields.io/packagist/dt/duyplus/eCommerceLaptop.svg)
 # Dự án tốt nghiệp - eCommerceLaptop
+Xây dựng ứng dụng web nhằm mục đích bán hàng online
 ### Sàn thương mại điện tử
 - Các chức năng chính:
   + Đăng nhập bằng mạng xã hội, xác thực danh tính
@@ -10,17 +11,18 @@
   + Thống kê sản phẩm, doanh thu, đơn hàng...
 - Công nghệ sử dụng:
   + Java Core, Spring Boot, Spring Security
-  + Thymeleaf, AngularJs, JQuery, Bootstrap, HTML, CSS, Javascript,...
+  + Thymeleaf, AngularJs, JQuery, Bootstrap, HTML, CSS, Javascript, SQL,...
 - Môi trường phát triển:
   + IntelliJ IDEA
   + Visual Studio Code
   + Microsoft SQL Server
-
+- Công cụ hỗ trợ:
+  + Postman
+  + Lombok
 ### Git clone
 ```
   git init
   git clone https://github.com/duyplus/eCommerceLaptop.git
 ```
-
 ### License
 The language pack is released under the MIT license. Please see [the license terms](https://github.com/duyplus/eCommerceLaptop/blob/master/LICENSE).
