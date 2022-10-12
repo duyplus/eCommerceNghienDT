@@ -1,5 +1,4 @@
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![](https://img.shields.io/packagist/dt/duyplus/eCommerceLaptop.svg)
 # Dự án tốt nghiệp - eCommerceLaptop
 Xây dựng ứng dụng web nhằm mục đích bán hàng online
 ### Sàn thương mại điện tử
