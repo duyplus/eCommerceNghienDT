@@ -5,7 +5,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -21,7 +21,7 @@ public class Review implements Serializable {
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "CreatedAt")
-    private Date createdAt = new Date();
+    private LocalDateTime createdAt = LocalDateTime.now();
 
     @JsonIgnore
     @OneToMany(mappedBy = "review")

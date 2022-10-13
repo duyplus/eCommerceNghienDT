@@ -5,7 +5,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -24,19 +24,23 @@ public class Product implements Serializable {
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "CreatedAt")
-    private Date createdAt = new Date();
+    private LocalDateTime createdAt = LocalDateTime.now();
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "UpdatedAt")
-    private Date updatedAt;
+    private LocalDateTime updatedAt;
 
     @ManyToOne
-    @JoinColumn(name = "Username")
+    @JoinColumn(name = "UserId")
     User user;
 
     @ManyToOne
     @JoinColumn(name = "CateId")
     Category category;
+
+    @ManyToOne
+    @JoinColumn(name = "CompanyId")
+    Company company;
 
     @JsonIgnore
     @OneToMany(mappedBy = "product")

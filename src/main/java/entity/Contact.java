@@ -13,6 +13,7 @@ public class Contact implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String unit;
+    private String address;
     private String fax;
     private String hotline;
     private String email;

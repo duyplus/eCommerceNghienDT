@@ -7,14 +7,14 @@ import java.io.Serializable;
 
 @Data
 @Entity
-@Table(name = "Authorities", uniqueConstraints = {@UniqueConstraint(columnNames = {"Username", "Roleid"})})
+@Table(name = "Authorities", uniqueConstraints = {@UniqueConstraint(columnNames = {"UserId", "Roleid"})})
 public class Authority implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @ManyToOne
-    @JoinColumn(name = "Username")
+    @JoinColumn(name = "UserId")
     private User user;
 
     @ManyToOne

@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -18,8 +19,8 @@ import java.util.List;
 public class User implements Serializable {
     @Id
     private String username;
-    private String phone;
     private String password;
+    private String phone;
     private String fullName;
 
     @Temporal(TemporalType.DATE)
@@ -32,11 +33,11 @@ public class User implements Serializable {
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "CreatedAt")
-    private Date createdAt = new Date();
+    private LocalDateTime createdAt = LocalDateTime.now();
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "UpdatedAt")
-    private Date updatedAt;
+    private LocalDateTime updatedAt;
 
     private String token;
 
