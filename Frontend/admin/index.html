@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>NghienDT - Trang thương mại điện tử hàng đầu Việt Nam</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta content="NghienDT là trang thương mại điện tử chuyên mua bán máy tính, laptop, điện thoại."
+        name="description" />
+    <meta content="Nghien Team" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+    <div class="left-sidenav">
+        <div class="brand">
+            <a href="/" class="logo">
+                <span>
+                    <img src="assets/images/logo-sm.png" alt="logo-small" class="logo-sm">
+                </span>
+                <span>
+                    <img src="assets/images/logo.png" alt="logo-large" class="logo-lg logo-light">
+                    <img src="assets/images/logo-dark.png" alt="logo-large" class="logo-lg logo-dark">
+                </span>
+            </a>
+        </div>
+        <div class="menu-content h-100" data-simplebar>
+            <ul class="metismenu left-sidenav-menu">
+                <li>
+                    <a href="/">
+                        <i data-feather="home" class="menu-icon"></i><span>Tổng quan</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript: void(0);">
+                        <i data-feather="box" class="menu-icon"></i><span>Sản phẩm</span>
+                        <span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li class="nav-item p-0"><a class="nav-link" href="product-form.html">Chi tiết sản phẩm</a></li>
+                        <li class="nav-item p-0"><a class="nav-link" href="product-list.html">Tất cả sản phẩm</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);">
+                        <i data-feather="list" class="menu-icon"></i><span>Danh mục</span>
+                        <span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li class="nav-item p-0"><a class="nav-link" href="category-form.html">Chi tiết danh mục</a>
+                        </li>
+                        <li class="nav-item p-0"><a class="nav-link" href="category-list.html">Tất cả danh mục</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);">
+                        <i data-feather="compass" class="menu-icon"></i><span>Hãng sản phẩm</span>
+                        <span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li class="nav-item p-0"><a class="nav-link" href="company-form.html">Chi tiết hãng</a></li>
+                        <li class="nav-item p-0"><a class="nav-link" href="company-list.html">Tất cả hãng</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);">
+                        <i data-feather="shopping-bag" class="menu-icon"></i><span>Đơn hàng</span>
+                        <span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li class="nav-item p-0"><a class="nav-link" href="order-cancel.html">Huỷ đơn hàng</a></li>
+                        <li class="nav-item p-0"><a class="nav-link" href="order-approval.html">Xét duyệt đơn hàng</a>
+                        </li>
+                        <li class="nav-item p-0"><a class="nav-link" href="orderdetail-list.html">Chi tiết đơn hàng</a>
+                        </li>
+                        <li class="nav-item p-0"><a class="nav-link" href="order-list.html">Tất cả đơn hàng</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);">
+                        <i data-feather="message-square" class="menu-icon"></i><span>Đánh giá</span>
+                        <span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li class="nav-item p-0"><a class="nav-link" href="review-form.html">Chi tiết đánh giá</a></li>
+                        <li class="nav-item p-0"><a class="nav-link" href="review-list.html">Tất cả đánh giá</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);">
+                        <i data-feather="user" class="menu-icon"></i><span>Người dùng</span>
+                        <span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li class="nav-item p-0"><a class="nav-link" href="account-form.html">Chi tiết người dùng</a>
+                        </li>
+                        <li class="nav-item p-0"><a class="nav-link" href="account-list.html">Tất cả người dùng</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="statistic.html">
+                        <i data-feather="activity" class="menu-icon"></i><span>Thống kê</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="page-wrapper">
+        <div class="topbar">
+            <nav class="navbar-custom">
+                <ul class="list-unstyled topbar-nav float-right mb-0">
+                    <li class="dropdown hide-phone">
+                        <a class="nav-link dropdown-toggle arrow-none waves-light waves-effect" data-toggle="dropdown"
+                            href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                            <i data-feather="search" class="topbar-icon"></i>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-right dropdown-lg p-0">
+                            <div class="app-search-topbar">
+                                <form action="#" method="get">
+                                    <input type="search" name="search" class="from-control top-search mb-0"
+                                        placeholder="Type text...">
+                                    <button type="submit"><i class="ti-search"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="dropdown notification-list">
+                        <a class="nav-link dropdown-toggle arrow-none waves-light waves-effect" data-toggle="dropdown"
+                            href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                            <i data-feather="bell" class="align-self-center topbar-icon"></i>
+                            <span class="badge badge-danger badge-pill noti-icon-badge">1</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-lg pt-0">
+
+                            <h6
+                                class="dropdown-item-text font-15 m-0 py-3 border-bottom d-flex justify-content-between align-items-center">
+                                Thông báo <span class="badge badge-primary badge-pill">1</span>
+                            </h6>
+                            <div class="notification-menu" data-simplebar>
+                                <a href="#" class="dropdown-item py-3">
+                                    <small class="float-right text-muted pl-2">2 min ago</small>
+                                    <div class="media">
+                                        <div class="avatar-md bg-soft-primary">
+                                            <i data-feather="shopping-cart" class="align-self-center icon-xs"></i>
+                                        </div>
+                                        <div class="media-body align-self-center ml-2 text-truncate">
+                                            <h6 class="my-0 font-weight-normal text-dark">Your order is placed</h6>
+                                            <small class="text-muted mb-0">Dummy text of the printing and
+                                                industry.</small>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <a href="javascript:void(0);" class="dropdown-item text-center text-primary">
+                                Xem tất cả <i class="fi-arrow-right"></i>
+                            </a>
+                        </div>
+                    </li>
+
+                    <li class="dropdown">
+                        <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown"
+                            href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                            <span class="ml-1 nav-user-name hidden-sm">Nick</span>
+                            <img src="assets/images/users/user-1.jpg" alt="profile-user" class="rounded-circle" />
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="login.html"><i data-feather="log-in"
+                                    class="align-self-center icon-xs icon-dual mr-1"></i> Đăng nhập</a>
+                            <a class="dropdown-item" href="#"><i data-feather="user"
+                                    class="align-self-center icon-xs icon-dual mr-1"></i> Cá nhân</a>
+                            <a class="dropdown-item" href="#"><i data-feather="settings"
+                                    class="align-self-center icon-xs icon-dual mr-1"></i> Cái đặt</a>
+                            <div class="dropdown-divider mb-0"></div>
+                            <a class="dropdown-item" href="#"><i data-feather="power"
+                                    class="align-self-center icon-xs icon-dual mr-1"></i> Đăng xuất</a>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="list-unstyled topbar-nav mb-0">
+                    <li>
+                        <button class="nav-link button-menu-mobile">
+                            <i data-feather="menu" class="align-self-center topbar-icon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="page-content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="page-title-box">
+                            <div class="row">
+                                <div class="col">
+                                    <h4 class="page-title">NghienDT</h4>
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="javascript:void(0);">Trang chủ</a></li>
+                                        <li class="breadcrumb-item active">Bảng điều khiển</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <h4 class="card-title">Sản phẩm bán chạy nhất</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table mb-0">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th class="border-top-0">Product</th>
+                                                <th class="border-top-0">Price</th>
+                                                <th class="border-top-0">Sell</th>
+                                                <th class="border-top-0">Status</th>
+                                                <th class="border-top-0">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="media">
+                                                        <img src="assets/images/products/img-1.png" height="40"
+                                                            class="mr-3 align-self-center rounded" alt="...">
+                                                        <div class="media-body align-self-center">
+                                                            <h6 class="m-0">Camera EDM 5D(White)</h6>
+                                                            <a href="#" class="font-12 text-primary">ID: A3652</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>$50 <del class="text-muted font-10">$70</del></td>
+                                                <td>450 <small class="text-muted">(550)</small></td>
+                                                <td><span class="badge badge-soft-warning px-2">Stock</span></td>
+                                                <td>
+                                                    <a href="#" class="mr-2"><i
+                                                            class="las la-pen text-info font-18"></i></a>
+                                                    <a href="#"><i class="las la-trash-alt text-danger font-18"></i></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="media">
+                                                        <img src="assets/images/products/img-1.png" height="40"
+                                                            class="mr-3 align-self-center rounded" alt="...">
+                                                        <div class="media-body align-self-center">
+                                                            <h6 class="m-0">Shoes Max-Zon</h6>
+                                                            <a href="#" class="font-12 text-primary">ID: A5002</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>$99 <del class="text-muted font-10">$150</del></td>
+                                                <td>750 <small class="text-muted">(00)</small></td>
+                                                <td><span class="badge badge-soft-primary px-2">Out of Stock</span></td>
+                                                <td>
+                                                    <a href="#" class="mr-2"><i
+                                                            class="las la-pen text-info font-18"></i></a>
+                                                    <a href="#"><i class="las la-trash-alt text-danger font-18"></i></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="media">
+                                                        <img src="assets/images/products/img-1.png" height="40"
+                                                            class="mr-3 align-self-center rounded" alt="...">
+                                                        <div class="media-body align-self-center">
+                                                            <h6 class="m-0">Mask N99 [ISI]</h6>
+                                                            <a href="#" class="font-12 text-primary">ID: A6598</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>$199 <del class="text-muted font-10">$250</del></td>
+                                                <td>280 <small class="text-muted">(220)</small></td>
+                                                <td><span class="badge badge-soft-warning px-2">Stock</span></td>
+                                                <td>
+                                                    <a href="#" class="mr-2"><i
+                                                            class="las la-pen text-info font-18"></i></a>
+                                                    <a href="#"><i class="las la-trash-alt text-danger font-18"></i></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="media">
+                                                        <img src="assets/images/products/img-1.png" height="40"
+                                                            class="mr-3 align-self-center rounded" alt="...">
+                                                        <div class="media-body align-self-center">
+                                                            <h6 class="m-0">Bag (Blue)</h6>
+                                                            <a href="#" class="font-12 text-primary">ID: A9547</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>$40 <del class="text-muted font-10">$49</del></td>
+                                                <td>500 <small class="text-muted">(1000)</small></td>
+                                                <td><span class="badge badge-soft-primary px-2">Out of Stock</span></td>
+                                                <td>
+                                                    <a href="#" class="mr-2"><i
+                                                            class="las la-pen text-info font-18"></i></a>
+                                                    <a href="#"><i class="las la-trash-alt text-danger font-18"></i></a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <h4 class="card-title">Báo cáo thu nhập</h4>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="dropdown">
+                                            <a href="#" class="btn btn-sm btn-outline-light dropdown-toggle"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Hôm nay<i class="las la-angle-down ml-1"></i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a class="dropdown-item" href="#">Hôm nay</a>
+                                                <a class="dropdown-item" href="#">Tuần trước</a>
+                                                <a class="dropdown-item" href="#">Tháng trước</a>
+                                                <a class="dropdown-item" href="#">Năm trước</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body border-bottom-dashed">
+                                <div class="earning-data text-center">
+                                    <img src="assets/images/money-beg.png" alt="" class="money-bag my-3" height="60">
+                                    <h5 class="earn-money mb-1">$51,255</h5>
+                                    <p class="text-muted font-15 mb-4">Tổng doanh thu</p>
+                                    <div class="text-center my-2">
+                                        <h6 class="text-primary bg-soft-primary p-3 mb-0 font-11 rounded">
+                                            <i data-feather="target" class="align-self-center icon-xs mr-1"></i>
+                                            Mục tiêu $90,000
+                                            <span class="mx-2">/</span>
+                                            <i data-feather="dollar-sign" class="align-self-center icon-xs mr-1"></i>
+                                            Tháng trước $68,550
+                                        </h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body my-1">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="media">
+                                            <i data-feather="shopping-cart"
+                                                class="align-self-center icon-md text-secondary mr-2"></i>
+                                            <div class="media-body align-self-center">
+                                                <h6 class="m-0 font-24">128</h6>
+                                                <p class="text-muted mb-0">Đơn hàng mới hôm nay</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="media">
+                                            <i data-feather="dollar-sign"
+                                                class="align-self-center icon-md text-secondary mr-2"></i>
+                                            <div class="media-body align-self-center">
+                                                <h6 class="m-0 font-24">$5,335</h6>
+                                                <p class="text-muted mb-0">Doanh thu hôm nay</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <h4 class="card-title">Đơn hàng theo hãng</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="border-bottom-dashed mb-4">
+                                    <div class="media mb-3">
+                                        <img src="assets/images/brand-logo/amazon.svg" height="40"
+                                            class="mr-3 align-self-center rounded" alt="...">
+                                        <div class="media-body align-self-center">
+                                            <h6 class="mt-0 mb-1">Amazon</h6>
+                                            <p class="text-muted mb-1"><span class="text-success">+4.8%</span> Từ hôm
+                                                qua</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="border-bottom-dashed mb-4">
+                                    <div class="media mb-3">
+                                        <img src="assets/images/brand-logo/shopify.svg" height="40"
+                                            class="mr-3 align-self-center rounded" alt="...">
+                                        <div class="media-body align-self-center">
+                                            <h6 class="mt-0 mb-1">Shopify</h6>
+                                            <p class="text-muted mb-1"><span class="text-danger">-0.8%</span> Từ hôm qua
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="border-bottom-dashed mb-4">
+                                    <div class="media mb-3">
+                                        <img src="assets/images/brand-logo/paypal.svg" height="40"
+                                            class="mr-3 align-self-center rounded" alt="...">
+                                        <div class="media-body align-self-center">
+                                            <h6 class="mt-0 mb-1">Paypal</h6>
+                                            <p class="text-muted mb-1"><span class="text-success">+2.1%</span> Từ hôm
+                                                qua</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <h4 class="card-title">5 Khách hàng thân thiết</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body" style="padding: .95rem;">
+                                <div class="table-responsive">
+                                    <table class="table mb-0">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th class="border-top-0">Họ và tên</th>
+                                                <th class="border-top-0">Số điện thoại</th>
+                                                <th class="border-top-0">Địa chỉ</th>
+                                                <th class="border-top-0">Tổng số đơn hàng</th>
+                                                <th class="border-top-0">Tổng số tiền</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Nguyen Van A</td>
+                                                <td>0123456789</td>
+                                                <td>Ho Chi Minh, VN</td>
+                                                <td class="text-danger">15</td>
+                                                <td>$15,000</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Nguyen Van B</td>
+                                                <td>0123456789</td>
+                                                <td>Ho Chi Minh, VN</td>
+                                                <td class="text-danger">15</td>
+                                                <td>$15,000</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Nguyen Van C</td>
+                                                <td>0123456789</td>
+                                                <td>Ho Chi Minh, VN</td>
+                                                <td class="text-danger">15</td>
+                                                <td>$15,000</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Nguyen Van D</td>
+                                                <td>0123456789</td>
+                                                <td>Ho Chi Minh, VN</td>
+                                                <td class="text-danger">15</td>
+                                                <td>$15,000</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Nguyen Van E</td>
+                                                <td>0123456789</td>
+                                                <td>Ho Chi Minh, VN</td>
+                                                <td class="text-danger">15</td>
+                                                <td>$15,000</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="footer text-center text-sm-left">
+                &copy; 2022-2023 NghienDT
+                <span class="d-none d-sm-inline-block float-right">
+                    <a href="#">Terms of Service</a> - <a href="#">Privacy Policy</a>
+                </span>
+            </footer>
+        </div>
+    </div>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/plugins.min.js"></script>
+    <script src="assets/js/datatables.min.js"></script>
+    <script src="assets/js/app.min.js"></script>
+
+</body>
+
+</html>
