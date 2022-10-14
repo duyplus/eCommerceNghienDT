@@ -7,7 +7,7 @@
         toolbar: [
             ['style', ['bold', 'italic', 'underline', 'clear']],
             ['para', ['ul', 'ol', 'paragraph']],
-            ['view', ['fullscreen', 'codeview']],
+            ['view', ['codeview']],
         ]
     });
 

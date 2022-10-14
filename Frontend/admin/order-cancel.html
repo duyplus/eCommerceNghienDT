@@ -10,7 +10,7 @@
     <meta content="Nghien Team" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="shortcut icon" href="assets/images/favicon.ico">
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" >
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
 
 </head>
@@ -18,7 +18,7 @@
 <body>
     <div class="left-sidenav">
         <div class="brand">
-            <a href="/" class="logo">
+            <a href="index.html" class="logo">
                 <span>
                     <img src="assets/images/logo-sm.png" alt="logo-small" class="logo-sm">
                 </span>
@@ -31,7 +31,7 @@
         <div class="menu-content h-100" data-simplebar>
             <ul class="metismenu left-sidenav-menu">
                 <li>
-                    <a href="/">
+                    <a href="index.html">
                         <i data-feather="home" class="menu-icon"></i><span>Tổng quan</span>
                     </a>
                 </li>
@@ -51,7 +51,8 @@
                         <span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
-                        <li class="nav-item p-0"><a class="nav-link" href="category-form.html">Chi tiết danh mục</a></li>
+                        <li class="nav-item p-0"><a class="nav-link" href="category-form.html">Chi tiết danh mục</a>
+                        </li>
                         <li class="nav-item p-0"><a class="nav-link" href="category-list.html">Tất cả danh mục</a></li>
                     </ul>
                 </li>
@@ -71,9 +72,10 @@
                         <span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
+                        <li class="nav-item p-0"><a class="nav-link" href="order-form.html">Thêm đơn hàng</a></li>
                         <li class="nav-item p-0"><a class="nav-link" href="order-cancel.html">Huỷ đơn hàng</a></li>
-                        <li class="nav-item p-0"><a class="nav-link" href="order-approval.html">Xét duyệt đơn hàng</a></li>
-                        <li class="nav-item p-0"><a class="nav-link" href="orderdetail-list.html">Chi tiết đơn hàng</a></li>
+                        <li class="nav-item p-0"><a class="nav-link" href="order-approval.html">Duyệt đơn hàng</a></li>
+                        <li class="nav-item p-0"><a class="nav-link" href="orderdetail.html">Chi tiết đơn hàng</a></li>
                         <li class="nav-item p-0"><a class="nav-link" href="order-list.html">Tất cả đơn hàng</a></li>
                     </ul>
                 </li>
@@ -93,8 +95,8 @@
                         <span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
-                        <li class="nav-item p-0"><a class="nav-link" href="account-form.html">Chi tiết người dùng</a></li>
-                        <li class="nav-item p-0"><a class="nav-link" href="account-list.html">Tất cả người dùng</a></li>
+                        <li class="nav-item p-0"><a class="nav-link" href="user-form.html">Chi tiết người dùng</a></li>
+                        <li class="nav-item p-0"><a class="nav-link" href="user-list.html">Tất cả người dùng</a></li>
                     </ul>
                 </li>
                 <li>
@@ -114,12 +116,11 @@
                             href="#" role="button" aria-haspopup="false" aria-expanded="false">
                             <i data-feather="search" class="topbar-icon"></i>
                         </a>
-
                         <div class="dropdown-menu dropdown-menu-right dropdown-lg p-0">
                             <div class="app-search-topbar">
                                 <form action="#" method="get">
                                     <input type="search" name="search" class="from-control top-search mb-0"
-                                        placeholder="Type text...">
+                                        placeholder="Nhập tìm kiếm...">
                                     <button type="submit"><i class="ti-search"></i></button>
                                 </form>
                             </div>
@@ -133,27 +134,23 @@
                             <span class="badge badge-danger badge-pill noti-icon-badge">1</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-lg pt-0">
-                            <h6
-                                class="dropdown-item-text font-15 m-0 py-3 border-bottom d-flex justify-content-between align-items-center">
-                                Notifications <span class="badge badge-primary badge-pill">1</span>
-                            </h6>
+                            <h6 class="dropdown-item-text font-15 m-0 py-3 border-bottom">Thông báo</h6>
                             <div class="notification-menu" data-simplebar>
                                 <a href="#" class="dropdown-item py-3">
-                                    <small class="float-right text-muted pl-2">2 min ago</small>
+                                    <small class="float-right text-muted pl-2">5 phút trức</small>
                                     <div class="media">
                                         <div class="avatar-md bg-soft-primary">
                                             <i data-feather="shopping-cart" class="align-self-center icon-xs"></i>
                                         </div>
                                         <div class="media-body align-self-center ml-2 text-truncate">
-                                            <h6 class="my-0 font-weight-normal text-dark">Your order is placed</h6>
-                                            <small class="text-muted mb-0">Dummy text of the printing and
-                                                industry.</small>
+                                            <h6 class="my-0 font-weight-normal text-dark">Có <b>1</b> đơn hàng mới</h6>
+                                            <small class="text-muted mb-0">Yêu cầu xét duyệt!</small>
                                         </div>
                                     </div>
                                 </a>
                             </div>
                             <a href="javascript:void(0);" class="dropdown-item text-center text-primary">
-                                View all <i class="fi-arrow-right"></i>
+                                Xem tất cả <i class="fi-arrow-right"></i>
                             </a>
                         </div>
                     </li>
@@ -166,17 +163,17 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" href="login.html">
-                                <i data-feather="user" class="icon-xs icon-dual mr-1"></i> Login
+                                <i data-feather="log-in" class="icon-xs icon-dual mr-1"></i> Đăng nhập
                             </a>
                             <a class="dropdown-item" href="#">
-                                <i data-feather="user" class="icon-xs icon-dual mr-1"></i> Profile
+                                <i data-feather="user" class="icon-xs icon-dual mr-1"></i> Cá nhân
                             </a>
                             <a class="dropdown-item" href="setting.html">
-                                <i data-feather="settings" class="icon-xs icon-dual mr-1"></i> Settings
+                                <i data-feather="settings" class="icon-xs icon-dual mr-1"></i> Cài đặt
                             </a>
                             <div class="dropdown-divider mb-0"></div>
                             <a class="dropdown-item" href="#">
-                                <i data-feather="power" class="icon-xs icon-dual mr-1"></i> Logout
+                                <i data-feather="power" class="icon-xs icon-dual mr-1"></i> Đăng xuất
                             </a>
                         </div>
                     </li>
@@ -197,11 +194,10 @@
                         <div class="page-title-box">
                             <div class="row">
                                 <div class="col">
-                                    <h4 class="page-title">Danh sách sản phẩm</h4>
+                                    <h4 class="page-title">Huỷ đơn hàng</h4>
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="javascript:void(0);">Trang chủ</a></li>
-                                        <li class="breadcrumb-item"><a href="javascript:void(0);">Product</a></li>
-                                        <li class="breadcrumb-item active">List</li>
+                                        <li class="breadcrumb-item">Trang chủ</li>
+                                        <li class="breadcrumb-item">Đơn hàng</li>
                                     </ol>
                                 </div>
                             </div>
@@ -335,8 +331,10 @@
                 </div>
             </div>
             <footer class="footer text-center text-sm-left">
-                &copy; 2022-2023 NghienDT <span class="d-none d-sm-inline-block float-right"><a href="#">Terms of
-                        Service</a> - <a href="#">Privacy Policy</a></span>
+                &copy; 2022-2023 NghienDT
+                <span class="d-none d-sm-inline-block float-right">
+                    <a href="#">Điều khoản dịch vụ</a> - <a href="#">Chính sách bảo mật</a>
+                </span>
             </footer>
         </div>
     </div>
