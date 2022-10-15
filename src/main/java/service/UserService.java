@@ -7,6 +7,8 @@ import java.util.List;
 public interface UserService {
     User findbyId(String username);
 
+    List<User> getAdministrators();
+
     List<User> findAll();
 
     User create(User user);
