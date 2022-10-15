@@ -3,24 +3,30 @@ package rest;
 import entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import repository.UserRepository;
 import service.UserService;
 
 import java.util.List;
-import java.util.Optional;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping(value = "/api/users")
+@RequestMapping("/api/v1/users")
 public class UserRestController {
     @Autowired
     UserService userService;
+    @Autowired
+    UserRepository userRepository;
 
+    //    @GetMapping
+//    public List<User> getUsers(@RequestParam("admin") Optional<Boolean> admin) {
+//        if (admin.orElse(false)) {
+//            return userService.getAdministrators();
+//        }
+//        return userService.findAll();
+//    }
     @GetMapping
-    public List<User> getAccounts(@RequestParam("admin") Optional<Boolean> admin) {
-        if (admin.orElse(false)) {
-            return userService.getAdministrators();
-        }
-        return userService.findAll();
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
     }
 
     @GetMapping("{id}")
