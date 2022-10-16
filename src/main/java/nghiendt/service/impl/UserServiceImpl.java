@@ -1,10 +1,10 @@
 package nghiendt.service.impl;
 
 import nghiendt.entity.User;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import nghiendt.repository.UserRepository;
 import nghiendt.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -13,11 +13,6 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     UserRepository userRepository;
-
-    @Override
-    public List<User> getAdministrators() {
-        return userRepository.getAdministrators();
-    }
 
     @Override
     public User findbyId(String username) {
