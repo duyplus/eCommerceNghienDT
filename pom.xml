@@ -8,11 +8,11 @@
         <version>2.7.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>ecommerce</groupId>
-    <artifactId>eCommerceLaptop</artifactId>
+    <groupId>nghiendt</groupId>
+    <artifactId>eCommerceNghienDT</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>eCommerceLaptop</name>
-    <description>eCommerceLaptop</description>
+    <name>eCommerceNghienDT</name>
+    <description>DATN-eCommerceNghienDT</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
