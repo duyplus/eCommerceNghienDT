@@ -1,22 +1,18 @@
 package nghiendt.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.*;
-import org.hibernate.Hibernate;
+import lombok.Data;
+import lombok.ToString;
 import org.hibernate.annotations.Nationalized;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
-import java.util.Objects;
 
-@Getter
-@Setter
-@ToString
-@RequiredArgsConstructor
+@Data
 @Entity
 @Table(name = "Users")
 public class User implements Serializable {
@@ -41,10 +37,9 @@ public class User implements Serializable {
     @Column(name = "Fullname", nullable = false)
     private String fullname;
 
-    @Temporal(TemporalType.DATE)
     @NotNull
     @Column(name = "Birthday", nullable = false)
-    private Date birthday;
+    private LocalDate birthday;
 
     @Size(max = 255)
     @NotNull
@@ -62,15 +57,13 @@ public class User implements Serializable {
     @Column(name = "Image")
     private String image;
 
-    @Temporal(TemporalType.DATE)
     @NotNull
     @Column(name = "CreatedAt", nullable = false)
-    private Date createdAt = new Date();
+    private LocalDate createdAt;
 
-    @Temporal(TemporalType.DATE)
     @NotNull
     @Column(name = "UpdatedAt", nullable = false)
-    private Date updatedAt;
+    private LocalDate updatedAt;
 
     @Size(max = 50)
     @Column(name = "Token", length = 50)
@@ -78,23 +71,10 @@ public class User implements Serializable {
 
     @JsonIgnore
     @OneToMany(mappedBy = "user")
-    @ToString.Exclude
     List<Order> orders;
 
     @JsonIgnore
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     List<Authority> authorities;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        User user = (User) o;
-        return id != null && Objects.equals(id, user.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
-    }
 }
