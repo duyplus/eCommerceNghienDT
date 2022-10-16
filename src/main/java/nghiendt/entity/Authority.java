@@ -1,23 +1,31 @@
 package nghiendt.entity;
 
 import lombok.Data;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Data
 @Entity
-@Table(name = "Authorities", uniqueConstraints = {@UniqueConstraint(columnNames = {"UserId", "Roleid"})})
+@Table(name = "Authorities")
 public class Authority implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @Column(name = "Id", nullable = false)
+    private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "UserId")
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "UserId", nullable = false)
     private User user;
 
-    @ManyToOne
-    @JoinColumn(name = "RoleId")
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "RoleId", nullable = false)
     private Role role;
+
 }
