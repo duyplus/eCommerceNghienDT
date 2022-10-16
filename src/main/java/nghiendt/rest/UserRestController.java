@@ -10,12 +10,10 @@ import java.util.List;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping(value = "/api/user")
 public class UserRestController {
     @Autowired
     UserService userService;
-    @Autowired
-    UserRepository userRepository;
 
     @GetMapping
     public List<User> getAllUsers() {
@@ -24,7 +22,7 @@ public class UserRestController {
 
 //    @GetMapping
 //    public ResponseEntity<List<User>> getAllUsers() {
-//        List<User> listUser = userRepository.findAll();
+//        List<User> listUser = userService.findAll();
 //        if (listUser.isEmpty()) {
 //            return new ResponseEntity(HttpStatus.NO_CONTENT);
 //        }
