@@ -2,18 +2,18 @@ package nghiendt.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import lombok.ToString;
 import org.hibernate.annotations.Nationalized;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.io.Serializable;
 import java.util.List;
 
 @Data
 @Entity
 @Table(name = "Roles")
-public class Role implements Serializable {
+public class Role {
     @Id
     @Size(max = 4)
     @Nationalized
@@ -28,5 +28,7 @@ public class Role implements Serializable {
 
     @JsonIgnore
     @OneToMany(mappedBy = "role")
+    @ToString.Exclude
     List<Authority> authorities;
+
 }
