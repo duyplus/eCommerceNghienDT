@@ -1,5 +1,4 @@
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-# Dự án tốt nghiệp - eCommerceLaptop
+## Dự án tốt nghiệp - eCommerceNghienDT
 Xây dựng ứng dụng web nhằm mục đích bán hàng online
 ### Sàn thương mại điện tử
 - Các chức năng chính:
