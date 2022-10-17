@@ -15,14 +15,15 @@ public class UserServiceImpl implements UserService {
     UserRepository userRepository;
 
     @Override
-    public User findbyId(String username) {
-        return userRepository.findById(username).get();
-    }
-
-    @Override
     public List<User> findAll() {
         return userRepository.findAll();
     }
+
+    @Override
+    public User findById(String username) {
+        return userRepository.findById(username).get();
+    }
+
 
     @Override
     public User create(User user) {

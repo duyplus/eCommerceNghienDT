@@ -5,9 +5,10 @@ import nghiendt.entity.User;
 import java.util.List;
 
 public interface UserService {
-    User findbyId(String username);
 
     List<User> findAll();
+
+    User findById(String username);
 
     User create(User user);
 
