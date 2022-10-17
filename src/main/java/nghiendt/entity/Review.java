@@ -6,39 +6,38 @@ import org.hibernate.annotations.Nationalized;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.io.Serializable;
 import java.util.Date;
 
 @Data
 @Entity
 @Table(name = "Reviews")
-public class Review implements Serializable {
+public class Review {
     @Id
-    @Column(name = "Id", nullable = false)
+    @Column(name = "id", nullable = false)
     private Integer id;
 
     @Nationalized
     @Lob
-    @Column(name = "Content")
+    @Column(name = "content")
     private String content;
 
     @NotNull
-    @Column(name = "Mark", nullable = false)
+    @Column(name = "mark", nullable = false)
     private Integer mark;
 
     @Size(max = 255)
     @Nationalized
-    @Column(name = "Image")
+    @Column(name = "image")
     private String image;
 
     @Temporal(TemporalType.DATE)
     @NotNull
-    @Column(name = "CreatedAt", nullable = false)
+    @Column(name = "created_at", nullable = false)
     private Date createdAt = new Date();
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "OrderDetailId", nullable = false)
+    @JoinColumn(name = "orderdetail_id", nullable = false)
     private OrderDetail orderDetail;
 
 }

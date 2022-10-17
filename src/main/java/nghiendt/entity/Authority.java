@@ -14,18 +14,18 @@ import java.io.Serializable;
 public class Authority implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id", nullable = false)
+    @Column(name = "id", nullable = false)
     private Integer id;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "UserId", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "RoleId", nullable = false)
+    @JoinColumn(name = "role_id", nullable = false)
     private Role role;
 
 }

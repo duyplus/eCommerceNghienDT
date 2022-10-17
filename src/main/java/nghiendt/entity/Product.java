@@ -9,75 +9,73 @@ import org.hibernate.annotations.OnDeleteAction;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
 @Data
 @Entity
 @Table(name = "Products")
-public class Product implements Serializable {
+public class Product {
     @Id
-    @Column(name = "Id", nullable = false)
+    @Column(name = "id", nullable = false)
     private Integer id;
 
     @Size(max = 255)
     @NotNull
     @Nationalized
-    @Column(name = "Name", nullable = false)
+    @Column(name = "name", nullable = false)
     private String name;
 
     @NotNull
-    @Column(name = "Price", nullable = false)
+    @Column(name = "price", nullable = false)
     private Double price;
 
     @NotNull
-    @Column(name = "Discount", nullable = false)
+    @Column(name = "discount", nullable = false)
     private Integer discount;
 
     @NotNull
-    @Column(name = "Available", nullable = false)
+    @Column(name = "available", nullable = false)
     private Boolean available = false;
 
     @NotNull
     @Nationalized
     @Lob
-    @Column(name = "Description", nullable = false)
+    @Column(name = "description", nullable = false)
     private String description;
 
     @Size(max = 255)
     @NotNull
     @Nationalized
-    @Column(name = "Image", nullable = false)
+    @Column(name = "image", nullable = false)
     private String image;
 
     @Temporal(TemporalType.DATE)
     @NotNull
-    @Column(name = "CreatedAt", nullable = false)
+    @Column(name = "created_at", nullable = false)
     private Date createdAt = new Date();
 
     @Temporal(TemporalType.DATE)
     @NotNull
-    @Column(name = "UpdatedAt", nullable = false)
+    @Column(name = "updated_at", nullable = false)
     private Date updatedAt;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "UserId", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "CategoryId", nullable = false)
+    @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "CompanyId", nullable = false)
+    @JoinColumn(name = "company_id", nullable = false)
     private Company company;
 
     @JsonIgnore

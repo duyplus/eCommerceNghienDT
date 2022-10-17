@@ -9,59 +9,58 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.io.Serializable;
 
 @Data
 @Entity
 @Table(name = "Contact")
-public class Contact implements Serializable {
+public class Contact {
     @Id
-    @Column(name = "Id", nullable = false)
+    @Column(name = "id", nullable = false)
     private Integer id;
 
     @Size(max = 255)
     @NotNull
     @Nationalized
-    @Column(name = "Unit", nullable = false)
+    @Column(name = "unit", nullable = false)
     private String unit;
 
     @Size(max = 255)
     @NotNull
     @Nationalized
-    @Column(name = "Address", nullable = false)
+    @Column(name = "address", nullable = false)
     private String address;
 
     @Size(max = 20)
     @NotNull
-    @Column(name = "Fax", nullable = false, length = 20)
+    @Column(name = "fax", nullable = false, length = 20)
     private String fax;
 
     @Size(max = 20)
     @NotNull
-    @Column(name = "Hotline", nullable = false, length = 20)
+    @Column(name = "hotline", nullable = false, length = 20)
     private String hotline;
 
     @Size(max = 55)
     @NotNull
-    @Column(name = "Email", nullable = false, length = 55)
+    @Column(name = "email", nullable = false, length = 55)
     private String email;
 
     @Size(max = 255)
     @NotNull
     @Nationalized
-    @Column(name = "Facebook", nullable = false)
+    @Column(name = "facebook", nullable = false)
     private String facebook;
 
     @Size(max = 255)
     @NotNull
     @Nationalized
-    @Column(name = "Instagram", nullable = false)
+    @Column(name = "instagram", nullable = false)
     private String instagram;
 
     @Size(max = 255)
     @NotNull
     @Nationalized
-    @Column(name = "Zalo", nullable = false)
+    @Column(name = "zalo", nullable = false)
     private String zalo;
 
 }

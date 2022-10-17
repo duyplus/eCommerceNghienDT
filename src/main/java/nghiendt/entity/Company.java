@@ -9,26 +9,25 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.io.Serializable;
 
 @Data
 @Entity
 @Table(name = "Companies")
-public class Company implements Serializable {
+public class Company {
     @Id
-    @Column(name = "Id", nullable = false)
+    @Column(name = "id", nullable = false)
     private Integer id;
 
     @Size(max = 100)
     @NotNull
     @Nationalized
-    @Column(name = "Name", nullable = false, length = 100)
+    @Column(name = "name", nullable = false, length = 100)
     private String name;
 
     @Size(max = 255)
     @NotNull
     @Nationalized
-    @Column(name = "Logo", nullable = false)
+    @Column(name = "logo", nullable = false)
     private String logo;
 
 }

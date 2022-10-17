@@ -17,13 +17,13 @@ public class Role {
     @Id
     @Size(max = 4)
     @Nationalized
-    @Column(name = "Id", nullable = false, length = 4)
+    @Column(name = "id", nullable = false, length = 4)
     private String id;
 
     @Size(max = 50)
     @NotNull
     @Nationalized
-    @Column(name = "Name", nullable = false, length = 50)
+    @Column(name = "name", nullable = false, length = 50)
     private String name;
 
     @JsonIgnore

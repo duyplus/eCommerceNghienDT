@@ -7,37 +7,36 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 @Data
 @Entity
 @Table(name = "Orders")
-public class Order implements Serializable {
+public class Order {
     @Id
-    @Column(name = "Id", nullable = false)
+    @Column(name = "id", nullable = false)
     private Integer id;
 
     @NotNull
-    @Column(name = "Status", nullable = false)
+    @Column(name = "status", nullable = false)
     private Boolean status = false;
 
 
     @Temporal(TemporalType.DATE)
     @NotNull
-    @Column(name = "CreatedAt", nullable = false)
-    private Date createdAt = new Date();
+    @Column(name = "created_at", nullable = false)
+    private Date createdat = new Date();
 
     @Temporal(TemporalType.DATE)
     @NotNull
-    @Column(name = "UpdatedAt", nullable = false)
-    private Date updatedAt;
+    @Column(name = "updated_at", nullable = false)
+    private Date updatedat;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "UserId", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @JsonIgnore

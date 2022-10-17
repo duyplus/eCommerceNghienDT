@@ -2,71 +2,71 @@ package nghiendt.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
-import lombok.ToString;
 import org.hibernate.annotations.Nationalized;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.io.Serializable;
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Data
 @Entity
 @Table(name = "Users")
-public class User implements Serializable {
+public class User {
     @Id
     @Size(max = 50)
-    @Column(name = "Username", nullable = false, length = 50)
-    private String id;
+    @Column(name = "username", nullable = false, length = 50)
+    private String username;
 
     @Size(max = 255)
     @NotNull
-    @Column(name = "Password", nullable = false)
+    @Column(name = "password", nullable = false)
     private String password;
 
     @Size(max = 15)
     @NotNull
-    @Column(name = "Phone", nullable = false, length = 15)
+    @Column(name = "phone", nullable = false, length = 15)
     private String phone;
 
     @Size(max = 255)
     @NotNull
     @Nationalized
-    @Column(name = "Fullname", nullable = false)
+    @Column(name = "fullname", nullable = false)
     private String fullname;
 
     @NotNull
-    @Column(name = "Birthday", nullable = false)
-    private LocalDate birthday;
+    @Column(name = "birthday", nullable = false)
+    private Date birthday;
 
     @Size(max = 255)
     @NotNull
-    @Column(name = "Email", nullable = false)
+    @Column(name = "email", nullable = false)
     private String email;
 
     @NotNull
     @Nationalized
     @Lob
-    @Column(name = "Address", nullable = false)
+    @Column(name = "address", nullable = false)
     private String address;
 
     @Size(max = 255)
     @Nationalized
-    @Column(name = "Image")
+    @Column(name = "image")
     private String image;
 
+    @Temporal(TemporalType.DATE)
     @NotNull
-    @Column(name = "CreatedAt", nullable = false)
-    private LocalDate createdAt;
+    @Column(name = "created_at", nullable = false)
+    private Date createdat = new Date();
 
+    @Temporal(TemporalType.DATE)
     @NotNull
-    @Column(name = "UpdatedAt", nullable = false)
-    private LocalDate updatedAt;
+    @Column(name = "updated_at", nullable = false)
+    private Date updatedat;
 
     @Size(max = 50)
-    @Column(name = "Token", length = 50)
+    @Column(name = "token", length = 50)
     private String token;
 
     @JsonIgnore
