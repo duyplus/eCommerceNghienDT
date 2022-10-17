@@ -8,117 +8,117 @@ USE eCommerceNghienDT
 GO
 
 CREATE TABLE Authorities (
-    id INT idENTITY(1,1) NOT NULL,
-    user_id VARCHAR(50) NOT NULL,
-    role_id NVARCHAR(4) NOT NULL,
+    id int identity(1,1) not null,
+    user_id varchar(50) not null,
+    role_id nvarchar(4) not null,
     CONSTRAINT PK_Authorities PRIMARY KEY CLUSTERED (id)
 );
 GO
 
 CREATE TABLE Users (
-	username VARCHAR(50) NOT NULL,
-	password VARCHAR(255) NOT NULL,
-	phone VARCHAR(15) NOT NULL,
-	fullname NVARCHAR(255) NOT NULL,
-	birthday DATE NOT NULL,
-	email VARCHAR(255) NOT NULL,
-	address NVARCHAR(MAX) NOT NULL,
-	image NVARCHAR(255) NULL,
-	created_at DATE NOT NULL,
-	updated_at DATE NOT NULL,
-	token VARCHAR(50) NULL,
+	username varchar(50) not null,
+	password varchar(255) not null,
+	phone varchar(15) not null,
+	fullname nvarchar(255) not null,
+	birthday date not null,
+	email varchar(255) not null,
+	address nvarchar(max) not null,
+	image nvarchar(255) null,
+	created_at date not null,
+	updated_at date not null,
+	token varchar(50) null,
 	CONSTRAINT PK_Users PRIMARY KEY CLUSTERED (username)
 );
 GO
 
 CREATE TABLE Roles (
-	id NVARCHAR(4) NOT NULL,
-	name NVARCHAR(50) NOT NULL,
+	id nvarchar(4) not null,
+	name nvarchar(50) not null,
 	CONSTRAINT PK_Roles PRIMARY KEY CLUSTERED (id)
 );
 GO
 
 CREATE TABLE Products (
-	id INT idENTITY(1,1) NOT NULL,
-	name NVARCHAR(255) NOT NULL,
-	price FLOAT NOT NULL,
-	discount INT NOT NULL,
-	available BIT NOT NULL,
-	description NVARCHAR(MAX) NOT NULL,
-	image NVARCHAR(255) NOT NULL,
-	created_at DATE NOT NULL,
-	updated_at DATE NOT NULL,
-	user_id VARCHAR(50) NOT NULL,
-	category_id INT NOT NULL,
-	company_id INT NOT NULL,
+	id int identity(1,1) not null,
+	name nvarchar(255) not null,
+	price float not null,
+	discount int not null,
+	available bit not null,
+	description nvarchar(max) not null,
+	image nvarchar(255) not null,
+	created_at date not null,
+	updated_at date not null,
+	user_id varchar(50) not null,
+	category_id int not null,
+	company_id int not null,
 	CONSTRAINT PK_Products PRIMARY KEY CLUSTERED (id)
 );
 GO
 
 CREATE TABLE Categories (
-    id INT idENTITY(1,1) NOT NULL,
-    name NVARCHAR(255) NOT NULL,
-    image NVARCHAR(255) NOT NULL,
+    id int identity(1,1) not null,
+    name nvarchar(255) not null,
+    image nvarchar(255) not null,
     CONSTRAINT PK_Categories PRIMARY KEY CLUSTERED (id)
 );
 
 CREATE TABLE Companies (
-    id INT idENTITY(1,1) NOT NULL,
-    name NVARCHAR(255) NOT NULL,
-    logo NVARCHAR(255) NOT NULL,
+    id int identity(1,1) not null,
+    name nvarchar(255) not null,
+    logo nvarchar(255) not null,
     CONSTRAINT PK_Companies PRIMARY KEY CLUSTERED (id)
 );
 GO
 GO
 
 CREATE TABLE Orders (
-	id INT idENTITY(1,1) NOT NULL,
-	status BIT NOT NULL,
-	created_at DATE NOT NULL,
-	updated_at DATE NOT NULL,
-	user_id VARCHAR(50) NOT NULL,
+	id int identity(1,1) not null,
+	status bit not null,
+	created_at date not null,
+	updated_at date not null,
+	user_id varchar(50) not null,
 	CONSTRAINT PK_Orders PRIMARY KEY CLUSTERED (id)
 );
 GO
 
 CREATE TABLE OrderDetails (
-	id INT idENTITY(1,1) NOT NULL,
-	price FLOAT NOT NULL,
-	quantity INT NOT NULL,
-	order_id INT NOT NULL,
-	product_id INT NOT NULL,
-	CONSTRAINT PK_OrderDetail PRIMARY KEY CLUSTERED (id)
+	id int identity(1,1) not null,
+	price float not null,
+	quantity int not null,
+	order_id int not null,
+	product_id int not null,
+	CONSTRAINT PK_OrderDetails PRIMARY KEY CLUSTERED (id)
 );
 GO
 
 CREATE TABLE Reviews (
-	id INT idENTITY(1,1) NOT NULL,
-	content NVARCHAR(MAX) NULL,
-	mark INT NOT NULL,
-	image NVARCHAR(255),
-	created_at DATE NOT NULL,
-	orderdetail_id INT NOT NULL,
+	id int identity(1,1) not null,
+	content nvarchar(max) null,
+	mark int not null,
+	image nvarchar(255),
+	created_at date not null,
+	orderdetail_id int not null,
 	CONSTRAINT PK_Reviews PRIMARY KEY CLUSTERED (id)
 );
 GO
 
-CREATE TABLE Contact (
-    id INT idENTITY(1,1) NOT NULL,
-    unit NVARCHAR(255) NOT NULL,
-    address NVARCHAR(255) NOT NULL,
-    fax VARCHAR(20) NOT NULL,
-    hotline VARCHAR(20) NOT NULL,
-    email VARCHAR(55) NOT NULL,
-    facebook NVARCHAR(255) NOT NULL,
-    instagram NVARCHAR(255) NOT NULL,
-    zalo NVARCHAR(255) NOT NULL,
-    CONSTRAINT PK_Contact PRIMARY KEY CLUSTERED (id)
+CREATE TABLE Setting (
+    id int identity(1,1) not null,
+    unit nvarchar(255) not null,
+    address nvarchar(255) not null,
+    fax varchar(20) not null,
+    hotline varchar(20) not null,
+    email varchar(55) not null,
+    facebook nvarchar(255) not null,
+    instagram nvarchar(255) not null,
+    zalo nvarchar(255) not null,
+    CONSTRAINT PK_Setting PRIMARY KEY CLUSTERED (id)
 );
 GO
 
-SET idENTITY_INSERT Contact ON
-INSERT INTO Contact (id, Unit, Address, Fax, Hotline, Email, Facebook, Instagram, Zalo) VALUES (1, 'Skyndu', '123 Hihi', '014 725 8369', '360 217 9493', 'skyndu@dev.vn', 'Skyndu', 'Skyndu', '1079650095');
-SET idENTITY_INSERT Contact OFF
+SET idENTITY_INSERT Setting ON
+INSERT INTO Setting (id, unit, address, fax, hotline, email, facebook, instagram, zalo) VALUES (1, 'Skyndu', '123 Hihi', '014 725 8369', '360 217 9493', 'skyndu@dev.vn', 'Skyndu', 'Skyndu', '1079650095');
+SET idENTITY_INSERT Setting OFF
 
 INSERT INTO Users (username, phone, password, fullname, birthday, email, address, image, created_at, updated_at, token) VALUES ('admin', '5263942068', '123', 'Dori Dwine', '1955-10-14', 'ddwine0@npr.org', '443 Glacier Hill Road', 'avt.png', '2022-01-06', '2021-10-18', null);
 INSERT INTO Users (username, phone, password, fullname, birthday, email, address, image, created_at, updated_at, token) VALUES ('staff', '2568668500', '123', 'Steve Kittiman', '2022-08-24', 'skittiman1@army.mil', '84536 Lyons Parkway', 'avt.png', '2021-11-03', '2022-04-08', null);
