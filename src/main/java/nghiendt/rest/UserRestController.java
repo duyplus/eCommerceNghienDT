@@ -1,7 +1,6 @@
 package nghiendt.rest;
 
 import nghiendt.entity.User;
-import nghiendt.repository.UserRepository;
 import nghiendt.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
