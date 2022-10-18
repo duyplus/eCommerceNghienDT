@@ -18,8 +18,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap"
-                        style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                    <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap">
                         <thead>
                             <tr>
                                 <th>Tên người dùng</th>
@@ -45,12 +44,9 @@
                                 <td>{{item.address}}</td>
                                 <td>{{item.createdat | date: 'dd/MM/yyyy - HH:mm'}}</td>
                                 <td>{{item.updatedat | date: 'dd/MM/yyyy - HH:mm'}}</td>
-                                <td>
-                                    <a href="#" class="mr-2">
+                                <td class="text-center">
+                                    <a href="javascript:void(0);" ng-href="#!user-form" ng-click="edit(item)" class="mr-2">
                                         <i class="las la-pen text-info font-18"></i>
-                                    </a>
-                                    <a href="#">
-                                        <i class="las la-trash-alt text-danger font-18"></i>
                                     </a>
                                 </td>
                             </tr>

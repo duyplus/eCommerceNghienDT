@@ -24,8 +24,8 @@ CREATE TABLE Users (
 	email varchar(255) not null,
 	address nvarchar(max) not null,
 	image nvarchar(255) null,
-	created_at date not null,
-	updated_at date not null,
+	created_at datetime not null,
+	updated_at datetime not null,
 	token varchar(50) null,
 	CONSTRAINT PK_Users PRIMARY KEY CLUSTERED (username)
 );
@@ -46,8 +46,8 @@ CREATE TABLE Products (
 	available bit not null,
 	description nvarchar(max) not null,
 	image nvarchar(255) not null,
-	created_at date not null,
-	updated_at date not null,
+	created_at datetime not null,
+	updated_at datetime not null,
 	user_id varchar(50) not null,
 	category_id int not null,
 	company_id int not null,
@@ -74,8 +74,8 @@ GO
 CREATE TABLE Orders (
 	id int identity(1,1) not null,
 	status bit not null,
-	created_at date not null,
-	updated_at date not null,
+	created_at datetime not null,
+	updated_at datetime not null,
 	user_id varchar(50) not null,
 	CONSTRAINT PK_Orders PRIMARY KEY CLUSTERED (id)
 );
@@ -96,7 +96,7 @@ CREATE TABLE Reviews (
 	content nvarchar(max) null,
 	mark int not null,
 	image nvarchar(255),
-	created_at date not null,
+	created_at datetime not null,
 	orderdetail_id int not null,
 	CONSTRAINT PK_Reviews PRIMARY KEY CLUSTERED (id)
 );
