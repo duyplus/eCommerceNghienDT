@@ -64,29 +64,28 @@ app.controller("user-ctrl", function ($scope, $http) {
     }
     $scope.initialize = function () {
         //load user data
-        angular.element(document).ready(function () {
-            $('#datatable').DataTable();
-            var table = $('#datatable-buttons').DataTable({
-                "pagingType": 'full_numbers',
-                "paging": true,
-                "pageLength": 10,
-                "responsive": true,
-                "lengthChange": false,
-                "buttons": ['excel', 'pdf', 'csv', 'print']
-            });
-            table.page.len(10).draw();
-            table.buttons().container().appendTo('#datatable-buttons_wrapper .col-md-6:eq(0)');
-            $('#row_callback').DataTable({
-                "createdRow": function (row, data, index) {
-                    if (data[5].replace(/[\$,]/g, '') * 1 > 150000) {
-                        $('td', row).eq(5).addClass('highlight');
-                    }
-                }
-            });
-        });
         $http.get(url).then(resp => {
             $scope.items = resp.data;
         });
+        // angular.element(document).ready(function () {
+        //     $('#datatable').DataTable();
+        //     var table = $('#datatable-buttons').DataTable({
+        //         "pagingType": 'full_numbers',
+        //         "paging": true,
+        //         "pageLength": 10,
+        //         "responsive": true,
+        //         "lengthChange": false,
+        //         "buttons": ['excel', 'pdf', 'csv', 'print']
+        //     });
+        //     table.buttons().container().appendTo('#datatable-buttons_wrapper .col-md-6:eq(0)');
+        //     $('#row_callback').DataTable({
+        //         "createdRow": function (row, data, index) {
+        //             if (data[5].replace(/[\$,]/g, '') * 1 > 150000) {
+        //                 $('td', row).eq(5).addClass('highlight');
+        //             }
+        //         }
+        //     });
+        // });
     }
 
     //khoi dau
@@ -145,6 +144,37 @@ app.controller("user-ctrl", function ($scope, $http) {
             sweetalert("Lỗi xóa tài khoản!");
             console.log("Error", error);
         });
+    }
+
+    //phan trang
+    $scope.pager = {
+        page: 0,
+        size: 10,
+        get items() {
+            var start = this.page * this.size;
+            return $scope.items.slice(start, start + this.size);
+        },
+        get count() {
+            return Math.ceil(1.0 * $scope.items.length / this.size)
+        },
+        first() {
+            this.page = 0;
+        },
+        prev() {
+            this.page--;
+            if (this.page < 0) {
+                this.last();
+            }
+        },
+        next() {
+            this.page++;
+            if (this.page >= this.count) {
+                this.first();
+            }
+        },
+        last() {
+            this.page = this.count - 1;
+        }
     }
 
 });
