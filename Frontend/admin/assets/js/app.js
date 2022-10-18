@@ -1,162 +1,150 @@
-(function ($) {
-    'use strict';
+const app = angular.module("myApp", ['ngRoute']);
+app.config(function ($routeProvider, $locationProvider) {
+    // route
+    $routeProvider
+        .when('/', {
+            templateUrl: 'home.html',
+        })
+        .when("/user-list", {
+            templateUrl: "user-list.html",
+            controller: "user-ctrl"
+        })
+        .when("/user-form", {
+            templateUrl: "user-form.html",
+            controller: "user-ctrl"
+        })
+        .otherwise({ redirectTo: '/' });
+});
+app.controller("user-ctrl", function ($scope, $http) {
+    var url = "http://localhost:8080/api/user";
+    $scope.items = [];
+    $scope.form = {};
 
-    $('#summernote').summernote({
-        height: 200,
-        placeholder: 'Nhập thông tin sản phẩm..',
-        toolbar: [
-            ['style', ['bold', 'italic', 'underline', 'clear']],
-            ['para', ['ul', 'ol', 'paragraph']],
-            ['view', ['codeview']],
-        ]
-    });
-
-    $('#datatable').DataTable();
-    var table = $('#datatable-buttons').DataTable({
-        responsive: true,
-        lengthChange: false,
-        buttons: ['excel', 'pdf', 'csv', 'print']
-    });
-    table.buttons().container().appendTo('#datatable-buttons_wrapper .col-md-6:eq(0)');
-
-    $('#row_callback').DataTable({
-        "createdRow": function (row, data, index) {
-            if (data[5].replace(/[\$,]/g, '') * 1 > 150000) {
-                $('td', row).eq(5).addClass('highlight');
-            }
-        }
-    });
-
-    function initMetisMenu() {
-        //metis menu
-        $(".metismenu").metisMenu();
-        $(window).resize(function () {
-            initEnlarge();
+    var sweetalert = function (text) {
+        Swal.fire({
+            icon: "success",
+            title: text,
+            showConfirmButton: false,
+            timer: 2000,
+        });
+    }
+    var sweetalert_error = function (text) {
+        Swal.fire({
+            icon: "error",
+            title: text,
+            showConfirmButton: false,
+            timer: 2000,
         });
     }
 
-    function initLeftMenuCollapse() {
-        // Left menu collapse
-        $('.button-menu-mobile').on('click', function (event) {
-            event.preventDefault();
-            $("body").toggleClass("enlarge-menu");
-            $("body").toggleStyle("enlarge-menu");
+    $scope.initUtils = function () {
+        // Summernote
+        $('#summernote').summernote({
+            height: 200,
+            placeholder: 'Nhập thông tin sản phẩm..',
+            toolbar: [
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['view', ['codeview']],
+            ]
         });
-    }
 
-    function initEnlarge() {
-        if ($(window).width() < 1025) {
-            $('body').addClass('enlarge-menu');
-        } else {
-            // if ($('body').data('keep-enlarged') != true)
-            $('body').removeClass('enlarge-menu');
-        }
-    }
-
-    function initTooltipPlugin() {
-        $('[data-toggle="tooltip"]').tooltip()
-    }
-
-    function initMainIconTabMenu() {
-        $('.main-icon-menu .nav-link').on('click', function (e) {
-            $("body").removeClass("enlarge-menu");
-            e.preventDefault();
-            $(this).addClass('active');
-            $(this).siblings().removeClass('active');
-            $('.main-menu-inner').addClass('active');
-            var targ = $(this).attr('href');
-            $(targ).addClass('active');
-            $(targ).siblings().removeClass('active');
-        });
-    }
-
-    function initActiveMenu() {
-        // === following js will activate the menu in left side bar based on url ====
-        $(".leftbar-tab-menu a, .left-sidenav a").each(function () {
-            var pageUrl = window.location.href.split(/[?#]/)[0];
-            if (this.href == pageUrl) {
-                $(this).addClass("active");
-                $(this).parent().addClass("active"); // add active to li of the current link                 
-                $(this).parent().parent().addClass("in");
-                $(this).parent().parent().addClass("mm-show");
-                $(this).parent().parent().parent().addClass("mm-active");
-                $(this).parent().parent().prev().addClass("active"); // add active class to an anchor
-                $(this).parent().parent().parent().addClass("active");
-                $(this).parent().parent().parent().parent().addClass("mm-show"); // add active to li of the current link                
-                $(this).parent().parent().parent().parent().parent().addClass("mm-active");
-                var menu = $(this).closest('.main-icon-menu-pane').attr('id');
-                $("a[href='#" + menu + "']").addClass('active');
-
-            }
-        });
-    }
-
-    function initFeatherIcon() {
-        feather.replace()
-    }
-
-    function initMainIconMenu() {
-        $(".navigation-menu a").each(function () {
-            var pageUrl = window.location.href.split(/[?#]/)[0];
-            if (this.href == pageUrl) {
-                $(this).parent().addClass("active"); // add active to li of the current link
-                $(this).parent().parent().parent().addClass("active"); // add active class to an anchor
-                $(this).parent().parent().parent().parent().parent().addClass("active"); // add active class to an anchor
-            }
-        });
-    }
-
-    function initTopbarMenu() {
-        $('.navbar-toggle').on('click', function (event) {
-            $(this).toggleClass('open');
-            $('#navigation').slideToggle(400);
-        });
-        $('.navigation-menu>li').slice(-2).addClass('last-elements');
-        $('.navigation-menu li.has-submenu a[href="#"]').on('click', function (e) {
-            if ($(window).width() < 992) {
-                e.preventDefault();
-                $(this).parent('li').toggleClass('open').find('.submenu:first').toggleClass('open');
-            }
-        });
-    }
-
-    function initDropify() {
+        // Dropify
         $('.dropify').dropify();
-        var drEvent = $('#input-file-events').dropify();
+        var drEvent = $('.dropify-event').dropify();
         drEvent.on('dropify.beforeClear', function (event, element) {
             return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
         });
         drEvent.on('dropify.afterClear', function (event, element) {
-            alert('File deleted');
+            sweetalert("File deleted!");
         });
         drEvent.on('dropify.errors', function (event, element) {
-            console.log('Has Errors');
+            sweetalert_error("Has Errors!");
         });
-        var drDestroy = $('#input-file-to-destroy').dropify();
-        drDestroy = drDestroy.data('dropify')
-        $('#toggleDropify').on('click', function (e) {
-            e.preventDefault();
-            if (drDestroy.isDropified()) {
-                drDestroy.destroy();
-            } else {
-                drDestroy.init();
-            }
-        })
+    }
+    $scope.initialize = function () {
+        //load user data
+        angular.element(document).ready(function () {
+            $('#datatable').DataTable();
+            var table = $('#datatable-buttons').DataTable({
+                "pagingType": 'full_numbers',
+                "paging": true,
+                "pageLength": 10,
+                "responsive": true,
+                "lengthChange": false,
+                "buttons": ['excel', 'pdf', 'csv', 'print']
+            });
+            table.page.len(10).draw();
+            table.buttons().container().appendTo('#datatable-buttons_wrapper .col-md-6:eq(0)');
+            $('#row_callback').DataTable({
+                "createdRow": function (row, data, index) {
+                    if (data[5].replace(/[\$,]/g, '') * 1 > 150000) {
+                        $('td', row).eq(5).addClass('highlight');
+                    }
+                }
+            });
+        });
+        $http.get(url).then(resp => {
+            $scope.items = resp.data;
+        });
     }
 
-    function init() {
-        initMetisMenu();
-        initLeftMenuCollapse();
-        initEnlarge();
-        initTooltipPlugin();
-        initMainIconTabMenu();
-        initActiveMenu();
-        initFeatherIcon();
-        initMainIconMenu();
-        initTopbarMenu();
-        initDropify();
-        Waves.init();
-    }
-    init();
+    //khoi dau
+    $scope.initialize();
+    $scope.initUtils();
 
-})(jQuery)
+    //xoa form
+    $scope.reset = function () {
+        $scope.form = {
+            image: 'cloud-upload.jpg',
+        };
+    }
+
+    //hien thi len form
+    $scope.edit = function (item) {
+        $scope.form = angular.copy(item);
+        $(".nav-tabs a:eq(0)").tab('show');
+    }
+
+    //them sp moi
+    $scope.create = function () {
+        var item = angular.copy($scope.form);
+        $http.post(`${url} `, item).then(resp => {
+            resp.data.token = "null";
+            $scope.items.push(resp.data);
+            $scope.reset();
+            sweetalert("Thêm mới thành công!");
+        }).catch(error => {
+            sweetalert("Lỗi thêm mới tài khoản!");
+            console.log("Error", error);
+        });
+    }
+
+    //cap nhat sp
+    $scope.update = function () {
+        var item = angular.copy($scope.form);
+        $http.put(`${url} /${item.id}`, item).then(resp => {
+            var index = $scope.items.findIndex(p => p.id == item.id);
+            $scope.items[index] = item;
+            $scope.reset();
+            sweetalert("Cập nhật tài khoản thành công!");
+        }).catch(error => {
+            sweetalert("Lỗi cập nhật tài khoản!");
+            console.log("Error", error);
+        });
+    }
+
+    //xoa sp
+    $scope.delete = function (item) {
+        $http.delete(`${url}/${item.id}`).then(resp => {
+            var index = $scope.items.findIndex(p => p.id == item.id);
+            $scope.items.splice(index, 1);
+            $scope.reset();
+            sweetalert("Xóa tài khoản thành công!");
+        }).catch(error => {
+            sweetalert("Lỗi xóa tài khoản!");
+            console.log("Error", error);
+        });
+    }
+
+});
