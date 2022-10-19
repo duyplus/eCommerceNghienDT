@@ -18,7 +18,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap">
+                    <table id="datatable" class="table table-bordered dt-responsive nowrap">
                         <thead>
                             <tr>
                                 <th>Tên người dùng</th>
@@ -34,7 +34,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="item in pager.items">
+                            <!-- <tr ng-repeat="item in pager.items">
                                 <td>{{item.username}}</td>
                                 <td>{{item.password}}</td>
                                 <td>{{item.fullname}}</td>
@@ -45,14 +45,20 @@
                                 <td>{{item.createdat | date: 'dd/MM/yyyy - HH:mm'}}</td>
                                 <td>{{item.updatedat | date: 'dd/MM/yyyy - HH:mm'}}</td>
                                 <td class="text-center">
-                                    <a href="javascript:void(0);" ng-href="#!user-form" ng-click="edit(item)" class="mr-2">
+                                    <a href="#!user-form" ng-click="edit(item)"
+                                        class="mr-2">
                                         <i class="las la-pen text-info font-18"></i>
                                     </a>
                                 </td>
                             </tr>
+                            <td class="text-center">
+                                <a href="#!user-form" ng-click="edit(item)" class="mr-2">
+                                    <i class="las la-pen text-info font-18"></i>
+                                </a>
+                            </td> -->
                         </tbody>
                     </table>
-                    <div class="text-center">
+                    <!-- <div class="text-center">
                         <button ng-click="pager.first()" class="btn btn-danger">
                             <i class="fas fa-arrow-to-left"></i>
                         </button>
@@ -66,7 +72,7 @@
                         <button ng-click="pager.last()" class="btn btn-danger">
                             <i class="fas fa-arrow-to-right"></i>
                         </button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

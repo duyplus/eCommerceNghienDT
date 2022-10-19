@@ -15,7 +15,7 @@ app.config(function ($routeProvider, $locationProvider) {
         })
         .otherwise({ redirectTo: '/' });
 });
-app.controller("user-ctrl", function ($scope, $http) {
+app.controller("user-ctrl", function ($scope, $http, $compile) {
     var url = "http://localhost:8080/api/user";
     $scope.items = [];
     $scope.form = {};
@@ -62,30 +62,48 @@ app.controller("user-ctrl", function ($scope, $http) {
             sweetalert_error("Has Errors!");
         });
     }
+
     $scope.initialize = function () {
         //load user data
         $http.get(url).then(resp => {
-            $scope.items = resp.data;
+            var table = $('#datatable').DataTable({
+                data: resp.data,
+                columns: [
+                    { data: 'username' },
+                    { data: 'password' },
+                    { data: 'fullname' },
+                    { data: 'phone' },
+                    { data: 'birthday' },
+                    { data: 'email' },
+                    { data: 'address' },
+                    { data: 'createdat' },
+                    { data: 'updatedat' },
+                    { data: null },
+                ],
+                columnDefs: [
+                    {
+                        targets: -1,
+                        data: null,
+                        defaultContent: '<div class="text-center"><a href="#!user-form" ng-click="edit(item)"><i class="las la-pen text-info font-18"></i></a></div>',
+                    }
+                ],
+                responsive: true,
+                lengthChange: false,
+                buttons: ['excel', 'pdf', 'csv', 'print']
+            });
+            table.buttons().container().appendTo('#datatable_wrapper .col-md-6:eq(0)');
+            $('#row_callback').DataTable({
+                "createdRow": function (row, data, index) {
+                    if (data[5].replace(/[\$,]/g, '') * 1 > 150000) {
+                        $('td', row).eq(5).addClass('highlight');
+                    }
+                    if (!row.compiled) {
+                        $compile(angular.element(row))($scope);
+                        row.compiled = true;
+                    }
+                }
+            });
         });
-        // angular.element(document).ready(function () {
-        //     $('#datatable').DataTable();
-        //     var table = $('#datatable-buttons').DataTable({
-        //         "pagingType": 'full_numbers',
-        //         "paging": true,
-        //         "pageLength": 10,
-        //         "responsive": true,
-        //         "lengthChange": false,
-        //         "buttons": ['excel', 'pdf', 'csv', 'print']
-        //     });
-        //     table.buttons().container().appendTo('#datatable-buttons_wrapper .col-md-6:eq(0)');
-        //     $('#row_callback').DataTable({
-        //         "createdRow": function (row, data, index) {
-        //             if (data[5].replace(/[\$,]/g, '') * 1 > 150000) {
-        //                 $('td', row).eq(5).addClass('highlight');
-        //             }
-        //         }
-        //     });
-        // });
     }
 
     //khoi dau
@@ -107,7 +125,7 @@ app.controller("user-ctrl", function ($scope, $http) {
     //them sp moi
     $scope.create = function () {
         var item = angular.copy($scope.form);
-        $http.post(`${url} `, item).then(resp => {
+        $http.post(`${url}`, item).then(resp => {
             resp.data.token = "null";
             $scope.items.push(resp.data);
             $scope.reset();
@@ -121,7 +139,7 @@ app.controller("user-ctrl", function ($scope, $http) {
     //cap nhat sp
     $scope.update = function () {
         var item = angular.copy($scope.form);
-        $http.put(`${url} /${item.id}`, item).then(resp => {
+        $http.put(`${url}/${item.id}`, item).then(resp => {
             var index = $scope.items.findIndex(p => p.id == item.id);
             $scope.items[index] = item;
             $scope.reset();
