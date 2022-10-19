@@ -20,49 +20,6 @@ app.controller("user-ctrl", function ($scope, $http, $compile) {
         });
     }
 
-    var dataTable = {
-        vi: {
-            "sProcessing": "Đang xử lý...",
-            "sLengthMenu": "Xem _MENU_ mục",
-            "sZeroRecords": "Không tìm thấy dòng nào phù hợp",
-            "sInfo": "Đang xem <b>_START_</b> đến <b>_END_</b> trong tổng số <b>_TOTAL_</b> mục",
-            "sInfoEmpty": "Đang xem <b>0</b> đến <b>0</b> trong tổng số <b>0</b> mục",
-            "sInfoFiltered": "(được lọc từ <b>_MAX_</b> mục)",
-            "sInfoPostFix": "",
-            "sSearch": "Tìm kiếm:",
-            "searchPlaceholder": "Nhập tìm kiếm...",
-            "sUrl": "",
-            "oPaginate": {
-                "sFirst": "Đầu",
-                "sPrevious": "Trước",
-                "sNext": "Sau",
-                "sLast": "Cuối"
-            }
-        },
-        en: {
-            records: {
-                processing: 'Please wait...',
-                noRecords: 'No records found'
-            },
-            toolbar: {
-                pagination: {
-                    items: {
-                        default: {
-                            first: 'First',
-                            prev: 'Previous',
-                            next: 'Next',
-                            last: 'Last',
-                            more: 'More pages',
-                            input: 'Page number',
-                            select: 'Select page size'
-                        },
-                        info: 'Displaying {{start}} - {{end}} of {{total}} records'
-                    }
-                }
-            }
-        }
-    };
-
     $scope.initialize = function () {
         //load data
         $http.get(url).then(resp => {
@@ -108,30 +65,30 @@ app.controller("user-ctrl", function ($scope, $http, $compile) {
                     }
                 }
             });
+        });
 
-            // Summernote
-            $('#summernote').summernote({
-                height: 200,
-                placeholder: 'Nhập thông tin sản phẩm..',
-                toolbar: [
-                    ['style', ['bold', 'italic', 'underline', 'clear']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    ['view', ['codeview']],
-                ]
-            });
+        // Summernote
+        $('#summernote').summernote({
+            height: 200,
+            placeholder: 'Nhập thông tin sản phẩm..',
+            toolbar: [
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['view', ['codeview']],
+            ]
+        });
 
-            // Dropify
-            $('.dropify').dropify();
-            var drEvent = $('.dropify-event').dropify();
-            drEvent.on('dropify.beforeClear', function (event, element) {
-                return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
-            });
-            drEvent.on('dropify.afterClear', function (event, element) {
-                sweetalert("File deleted!");
-            });
-            drEvent.on('dropify.errors', function (event, element) {
-                sweetalert_error("Has Errors!");
-            });
+        // Dropify
+        $('.dropify').dropify();
+        var drEvent = $('.dropify-event').dropify();
+        drEvent.on('dropify.beforeClear', function (event, element) {
+            return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
+        });
+        drEvent.on('dropify.afterClear', function (event, element) {
+            sweetalert("File deleted!");
+        });
+        drEvent.on('dropify.errors', function (event, element) {
+            sweetalert_error("Has Errors!");
         });
     }
 
