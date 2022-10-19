@@ -5,13 +5,14 @@
     <base href="/">
     <meta charset="utf-8" />
     <title>NghienDT - Trang thương mại điện tử hàng đầu Việt Nam</title>
+    <meta name="author" content="Nghien Team" />
+    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta content="NghienDT là trang thương mại điện tử chuyên mua bán máy tính, laptop, điện thoại."
-        name="description" />
-    <meta content="Nghien Team" name="author" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <meta name="description"
+        content="NghienDT là trang thương mại điện tử chuyên mua bán máy tính, laptop, điện thoại." />
+    <link href="assets/images/favicon.ico" rel="shortcut icon">
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/datatables.min.css" rel="stylesheet">
     <link href="assets/css/main.min.css" rel="stylesheet" type="text/css" />
 
 </head>
@@ -42,8 +43,8 @@
                         <span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
-                        <li class="nav-item p-0"><a class="nav-link" href="product-form.html">Chi tiết sản phẩm</a></li>
-                        <li class="nav-item p-0"><a class="nav-link" href="product-list.html">Tất cả sản phẩm</a></li>
+                        <li class="nav-item p-0"><a class="nav-link" href="#!product-form">Chi tiết sản phẩm</a></li>
+                        <li class="nav-item p-0"><a class="nav-link" href="#!product-list">Tất cả sản phẩm</a></li>
                     </ul>
                 </li>
                 <li>
@@ -52,9 +53,9 @@
                         <span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
-                        <li class="nav-item p-0"><a class="nav-link" href="category-form.html">Chi tiết danh mục</a>
+                        <li class="nav-item p-0"><a class="nav-link" href="#!category-form">Chi tiết danh mục</a>
                         </li>
-                        <li class="nav-item p-0"><a class="nav-link" href="category-list.html">Tất cả danh mục</a></li>
+                        <li class="nav-item p-0"><a class="nav-link" href="#!category-list">Tất cả danh mục</a></li>
                     </ul>
                 </li>
                 <li>
@@ -63,8 +64,8 @@
                         <span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
-                        <li class="nav-item p-0"><a class="nav-link" href="company-form.html">Chi tiết hãng</a></li>
-                        <li class="nav-item p-0"><a class="nav-link" href="company-list.html">Tất cả hãng</a></li>
+                        <li class="nav-item p-0"><a class="nav-link" href="#!company-form">Chi tiết hãng</a></li>
+                        <li class="nav-item p-0"><a class="nav-link" href="#!company-list">Tất cả hãng</a></li>
                     </ul>
                 </li>
                 <li>
@@ -73,11 +74,11 @@
                         <span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
-                        <li class="nav-item p-0"><a class="nav-link" href="order-form.html">Thêm đơn hàng</a></li>
-                        <li class="nav-item p-0"><a class="nav-link" href="order-cancel.html">Huỷ đơn hàng</a></li>
-                        <li class="nav-item p-0"><a class="nav-link" href="order-approval.html">Duyệt đơn hàng</a></li>
-                        <li class="nav-item p-0"><a class="nav-link" href="orderdetail.html">Chi tiết đơn hàng</a></li>
-                        <li class="nav-item p-0"><a class="nav-link" href="order-list.html">Tất cả đơn hàng</a></li>
+                        <li class="nav-item p-0"><a class="nav-link" href="#!order-form">Thêm đơn hàng</a></li>
+                        <li class="nav-item p-0"><a class="nav-link" href="#!order-cancel">Huỷ đơn hàng</a></li>
+                        <li class="nav-item p-0"><a class="nav-link" href="#!order-approval">Duyệt đơn hàng</a></li>
+                        <li class="nav-item p-0"><a class="nav-link" href="#!orderdetail">Chi tiết đơn hàng</a></li>
+                        <li class="nav-item p-0"><a class="nav-link" href="#!order-list">Tất cả đơn hàng</a></li>
                     </ul>
                 </li>
                 <li>
@@ -86,8 +87,8 @@
                         <span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
-                        <li class="nav-item p-0"><a class="nav-link" href="review-form.html">Chi tiết đánh giá</a></li>
-                        <li class="nav-item p-0"><a class="nav-link" href="review-list.html">Tất cả đánh giá</a></li>
+                        <li class="nav-item p-0"><a class="nav-link" href="#!review-form">Chi tiết đánh giá</a></li>
+                        <li class="nav-item p-0"><a class="nav-link" href="#!review-list">Tất cả đánh giá</a></li>
                     </ul>
                 </li>
                 <li>
@@ -101,7 +102,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="statistic.html">
+                    <a href="#!statistic">
                         <i data-feather="activity" class="menu-icon"></i><span>Thống kê</span>
                     </a>
                 </li>
@@ -158,17 +159,17 @@
 
                     <li class="dropdown">
                         <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown"
-                            href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                            href="javascript:void(0);" role="button" aria-haspopup="false" aria-expanded="false">
                             <span class="ml-1 nav-user-name hidden-sm">Xin chào, <b>Duy</b></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="login.html">
+                            <a class="dropdown-item" href="#!login">
                                 <i data-feather="log-in" class="icon-xs icon-dual mr-1"></i> Đăng nhập
                             </a>
                             <a class="dropdown-item" href="#">
                                 <i data-feather="user" class="icon-xs icon-dual mr-1"></i> Cá nhân
                             </a>
-                            <a class="dropdown-item" href="setting.html">
+                            <a class="dropdown-item" href="#!setting">
                                 <i data-feather="settings" class="icon-xs icon-dual mr-1"></i> Cài đặt
                             </a>
                             <div class="dropdown-divider mb-0"></div>
@@ -192,7 +193,8 @@
             <footer class="footer text-center text-sm-left">
                 &copy; 2022-2023 NghienDT
                 <span class="d-none d-sm-inline-block float-right">
-                    <a href="#">Điều khoản dịch vụ</a> - <a href="#">Chính sách bảo mật</a>
+                    <a href="javascript:void(0);">Điều khoản dịch vụ</a> -
+                    <a href="javascript:void(0);">Chính sách bảo mật</a>
                 </span>
             </footer>
         </div>
@@ -201,10 +203,13 @@
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/plugins.min.js"></script>
     <script src="assets/js/datatables.min.js"></script>
-    <script src="assets/js/angular.min.js"></script>
-    <script src="assets/js/angular-route.min.js"></script>
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/app.js"></script>
+    <script src="assets/js/main.min.js"></script>
+    <script src="assets/ctrl/app.js"></script>
+    <script src="assets/ctrl/category-ctrl.js"></script>
+    <script src="assets/ctrl/company-ctrl.js"></script>
+    <script src="assets/ctrl/product-ctrl.js"></script>
+    <script src="assets/ctrl/review-ctrl.js"></script>
+    <script src="assets/ctrl/user-ctrl.js"></script>
 
 </body>
 

@@ -1,20 +1,3 @@
-const app = angular.module("myApp", ['ngRoute']);
-app.config(function ($routeProvider, $locationProvider) {
-    // route
-    $routeProvider
-        .when('/', {
-            templateUrl: 'home.html',
-        })
-        .when("/user-list", {
-            templateUrl: "user-list.html",
-            controller: "user-ctrl"
-        })
-        .when("/user-form", {
-            templateUrl: "user-form.html",
-            controller: "user-ctrl"
-        })
-        .otherwise({ redirectTo: '/' });
-});
 app.controller("user-ctrl", function ($scope, $http, $compile) {
     var url = "http://localhost:8080/api/user";
     $scope.items = [];
@@ -37,59 +20,81 @@ app.controller("user-ctrl", function ($scope, $http, $compile) {
         });
     }
 
-    $scope.initUtils = function () {
-        // Summernote
-        $('#summernote').summernote({
-            height: 200,
-            placeholder: 'Nhập thông tin sản phẩm..',
-            toolbar: [
-                ['style', ['bold', 'italic', 'underline', 'clear']],
-                ['para', ['ul', 'ol', 'paragraph']],
-                ['view', ['codeview']],
-            ]
-        });
-
-        // Dropify
-        $('.dropify').dropify();
-        var drEvent = $('.dropify-event').dropify();
-        drEvent.on('dropify.beforeClear', function (event, element) {
-            return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
-        });
-        drEvent.on('dropify.afterClear', function (event, element) {
-            sweetalert("File deleted!");
-        });
-        drEvent.on('dropify.errors', function (event, element) {
-            sweetalert_error("Has Errors!");
-        });
-    }
+    var dataTable = {
+        vi: {
+            "sProcessing": "Đang xử lý...",
+            "sLengthMenu": "Xem _MENU_ mục",
+            "sZeroRecords": "Không tìm thấy dòng nào phù hợp",
+            "sInfo": "Đang xem <b>_START_</b> đến <b>_END_</b> trong tổng số <b>_TOTAL_</b> mục",
+            "sInfoEmpty": "Đang xem <b>0</b> đến <b>0</b> trong tổng số <b>0</b> mục",
+            "sInfoFiltered": "(được lọc từ <b>_MAX_</b> mục)",
+            "sInfoPostFix": "",
+            "sSearch": "Tìm kiếm:",
+            "searchPlaceholder": "Nhập tìm kiếm...",
+            "sUrl": "",
+            "oPaginate": {
+                "sFirst": "Đầu",
+                "sPrevious": "Trước",
+                "sNext": "Sau",
+                "sLast": "Cuối"
+            }
+        },
+        en: {
+            records: {
+                processing: 'Please wait...',
+                noRecords: 'No records found'
+            },
+            toolbar: {
+                pagination: {
+                    items: {
+                        default: {
+                            first: 'First',
+                            prev: 'Previous',
+                            next: 'Next',
+                            last: 'Last',
+                            more: 'More pages',
+                            input: 'Page number',
+                            select: 'Select page size'
+                        },
+                        info: 'Displaying {{start}} - {{end}} of {{total}} records'
+                    }
+                }
+            }
+        }
+    };
 
     $scope.initialize = function () {
-        //load user data
+        //load data
         $http.get(url).then(resp => {
             var table = $('#datatable').DataTable({
                 data: resp.data,
+                dom: `<'row'<'col-sm-2 text-left'f><'col-sm-10 text-right'B>>
+                      <'row'<'col-sm-12'tr>>
+                      <'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7 dataTables_pager'lp>>`,
                 columns: [
                     { data: 'username' },
                     { data: 'password' },
                     { data: 'fullname' },
                     { data: 'phone' },
-                    { data: 'birthday' },
+                    { data: 'birthday', render: DataTable.render.datetime('DD/MM/yyyy') },
                     { data: 'email' },
                     { data: 'address' },
-                    { data: 'createdat' },
-                    { data: 'updatedat' },
+                    { data: 'createdat', render: DataTable.render.datetime('HH:mm - DD/MM/yyyy') },
+                    { data: 'updatedat', render: DataTable.render.datetime('HH:mm - DD/MM/yyyy') },
                     { data: null },
                 ],
                 columnDefs: [
                     {
                         targets: -1,
                         data: null,
-                        defaultContent: '<div class="text-center"><a href="#!user-form" ng-click="edit(item)"><i class="las la-pen text-info font-18"></i></a></div>',
+                        defaultContent: '<a href="#!user-form" ng-click="edit(item)"><i class="las la-pen text-info"></i></a>',
                     }
                 ],
                 responsive: true,
                 lengthChange: false,
+                language: dataTable.vi,
                 buttons: ['excel', 'pdf', 'csv', 'print']
+
             });
             table.buttons().container().appendTo('#datatable_wrapper .col-md-6:eq(0)');
             $('#row_callback').DataTable({
@@ -103,12 +108,35 @@ app.controller("user-ctrl", function ($scope, $http, $compile) {
                     }
                 }
             });
+
+            // Summernote
+            $('#summernote').summernote({
+                height: 200,
+                placeholder: 'Nhập thông tin sản phẩm..',
+                toolbar: [
+                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['view', ['codeview']],
+                ]
+            });
+
+            // Dropify
+            $('.dropify').dropify();
+            var drEvent = $('.dropify-event').dropify();
+            drEvent.on('dropify.beforeClear', function (event, element) {
+                return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
+            });
+            drEvent.on('dropify.afterClear', function (event, element) {
+                sweetalert("File deleted!");
+            });
+            drEvent.on('dropify.errors', function (event, element) {
+                sweetalert_error("Has Errors!");
+            });
         });
     }
 
     //khoi dau
     $scope.initialize();
-    $scope.initUtils();
 
     //xoa form
     $scope.reset = function () {
@@ -162,36 +190,4 @@ app.controller("user-ctrl", function ($scope, $http, $compile) {
             console.log("Error", error);
         });
     }
-
-    //phan trang
-    $scope.pager = {
-        page: 0,
-        size: 10,
-        get items() {
-            var start = this.page * this.size;
-            return $scope.items.slice(start, start + this.size);
-        },
-        get count() {
-            return Math.ceil(1.0 * $scope.items.length / this.size)
-        },
-        first() {
-            this.page = 0;
-        },
-        prev() {
-            this.page--;
-            if (this.page < 0) {
-                this.last();
-            }
-        },
-        next() {
-            this.page++;
-            if (this.page >= this.count) {
-                this.first();
-            }
-        },
-        last() {
-            this.page = this.count - 1;
-        }
-    }
-
 });
