@@ -34,14 +34,32 @@
                         <div class="box box-right">
                             <ul>
                                 <li class="settings">
-                                    <button type="button" class="ha-toggle">Ngôn ngữ<span
-                                            class="lnr lnr-chevron-down"></span></button>
+                                    <button type="button" class="ha-toggle">
+                                        Ngôn ngữ<span class="lnr lnr-chevron-down"></span>
+                                    </button>
                                     <ul class="box-dropdown ha-dropdown" style="display: none;">
-                                        <li><a href="#"><img src="assets/img/icon/en.png" alt=""> Tiếng anh</a>
+                                        <li>
+                                            <a href="javascript:void(0);" onclick="doGTranslate('vi|en');return false;">
+                                                <img src="assets/img/icon/en.png"> Tiếng Anh
+                                            </a>
                                         </li>
-                                        <li><a href="#"><img src="assets/img/icon/vi.png" alt=""> Tiếng việt</a>
+                                        <li>
+                                            <a href="javascript:void(0);" onclick="doGTranslate('vi|ru');return false;">
+                                                <img src="assets/img/icon/ru.png"> Tiếng Nga
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" onclick="doGTranslate('vi|fr');return false;">
+                                                <img src="assets/img/icon/fr.png"> Tiếng Pháp
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" onclick="doGTranslate('vi|vi');return false;">
+                                                <img src="assets/img/icon/vi.png"> Tiếng Việt
+                                            </a>
                                         </li>
                                     </ul>
+                                    <div id="google_translate_element2"></div>
                                 </li>
                             </ul>
                         </div>
@@ -207,7 +225,7 @@
                                             <ul class="dropdown">
                                                 <li><a href="login.html">Đăng nhập</a></li>
                                                 <li><a href="register.html">Đăng ký</a></li>
-                                                <li><a href="my-account.html">Cá nhân</a></li>
+                                                <li><a href="my-account.html">Tài khoản</a></li>
                                                 <li><a href="login.html">Đăng xuất</a></li>
                                             </ul>
                                         </li>
@@ -356,7 +374,7 @@
                                     </div>
                                     <div class="action-links">
                                         <a href="#" title="Wishlist"><i class="lnr lnr-heart"></i></a>
-                                        <a href="#" title="Quick view" ><i class="lnr lnr-magnifier"></i></a>
+                                        <a href="#" title="Quick view"><i class="lnr lnr-magnifier"></i></a>
                                     </div>
                                 </div>
                                 <div class="product-caption">
@@ -388,7 +406,7 @@
                                     </div>
                                     <div class="action-links">
                                         <a href="#" title="Wishlist"><i class="lnr lnr-heart"></i></a>
-                                        <a href="#" title="Quick view" ><i class="lnr lnr-magnifier"></i></a>
+                                        <a href="#" title="Quick view"><i class="lnr lnr-magnifier"></i></a>
                                     </div>
                                 </div>
                                 <div class="product-caption">
@@ -418,7 +436,7 @@
                                     </div>
                                     <div class="action-links">
                                         <a href="#" title="Wishlist"><i class="lnr lnr-heart"></i></a>
-                                        <a href="#" title="Quick view" ><i class="lnr lnr-magnifier"></i></a>
+                                        <a href="#" title="Quick view"><i class="lnr lnr-magnifier"></i></a>
                                     </div>
                                 </div>
                                 <div class="product-caption">
@@ -448,7 +466,7 @@
                                     <div class="action-links">
                                         <a href="#" title="Wishlist"><i class="lnr lnr-heart"></i></a>
                                         <a href="#" title="Compare"><i class="lnr lnr-sync"></i></a>
-                                        <a href="#" title="Quick view" ><i class="lnr lnr-magnifier"></i></a>
+                                        <a href="#" title="Quick view"><i class="lnr lnr-magnifier"></i></a>
                                     </div>
                                 </div>
                                 <div class="product-caption">
@@ -478,7 +496,7 @@
                                     <div class="action-links">
                                         <a href="#" title="Wishlist"><i class="lnr lnr-heart"></i></a>
                                         <a href="#" title="Compare"><i class="lnr lnr-sync"></i></a>
-                                        <a href="#" title="Quick view" ><i class="lnr lnr-magnifier"></i></a>
+                                        <a href="#" title="Quick view"><i class="lnr lnr-magnifier"></i></a>
                                     </div>
                                 </div>
                                 <div class="product-caption">
@@ -514,7 +532,7 @@
                                     <div class="action-links">
                                         <a href="#" title="Wishlist"><i class="lnr lnr-heart"></i></a>
                                         <a href="#" title="Compare"><i class="lnr lnr-sync"></i></a>
-                                        <a href="#" title="Quick view" ><i class="lnr lnr-magnifier"></i></a>
+                                        <a href="#" title="Quick view"><i class="lnr lnr-magnifier"></i></a>
                                     </div>
                                 </div>
                                 <div class="product-caption">
@@ -544,7 +562,7 @@
                                     <div class="action-links">
                                         <a href="#" title="Wishlist"><i class="lnr lnr-heart"></i></a>
                                         <a href="#" title="Compare"><i class="lnr lnr-sync"></i></a>
-                                        <a href="#" title="Quick view" ><i class="lnr lnr-magnifier"></i></a>
+                                        <a href="#" title="Quick view"><i class="lnr lnr-magnifier"></i></a>
                                     </div>
                                 </div>
                                 <div class="product-caption">
@@ -577,7 +595,7 @@
                                     <div class="action-links">
                                         <a href="#" title="Wishlist"><i class="lnr lnr-heart"></i></a>
                                         <a href="#" title="Compare"><i class="lnr lnr-sync"></i></a>
-                                        <a href="#" title="Quick view" ><i class="lnr lnr-magnifier"></i></a>
+                                        <a href="#" title="Quick view"><i class="lnr lnr-magnifier"></i></a>
                                     </div>
                                 </div>
                                 <div class="product-caption">
@@ -608,7 +626,7 @@
                                     <div class="action-links">
                                         <a href="#" title="Wishlist"><i class="lnr lnr-heart"></i></a>
                                         <a href="#" title="Compare"><i class="lnr lnr-sync"></i></a>
-                                        <a href="#" title="Quick view" ><i class="lnr lnr-magnifier"></i></a>
+                                        <a href="#" title="Quick view"><i class="lnr lnr-magnifier"></i></a>
                                     </div>
                                 </div>
                                 <div class="product-caption">
@@ -638,7 +656,7 @@
                                     <div class="action-links">
                                         <a href="#" title="Wishlist"><i class="lnr lnr-heart"></i></a>
                                         <a href="#" title="Compare"><i class="lnr lnr-sync"></i></a>
-                                        <a href="#" title="Quick view" ><i class="lnr lnr-magnifier"></i></a>
+                                        <a href="#" title="Quick view"><i class="lnr lnr-magnifier"></i></a>
                                     </div>
                                 </div>
                                 <div class="product-caption">
@@ -674,7 +692,7 @@
                                     <div class="action-links">
                                         <a href="#" title="Wishlist"><i class="lnr lnr-heart"></i></a>
                                         <a href="#" title="Compare"><i class="lnr lnr-sync"></i></a>
-                                        <a href="#" title="Quick view" ><i class="lnr lnr-magnifier"></i></a>
+                                        <a href="#" title="Quick view"><i class="lnr lnr-magnifier"></i></a>
                                     </div>
                                 </div>
                                 <div class="product-caption">
@@ -704,7 +722,7 @@
                                     <div class="action-links">
                                         <a href="#" title="Wishlist"><i class="lnr lnr-heart"></i></a>
                                         <a href="#" title="Compare"><i class="lnr lnr-sync"></i></a>
-                                        <a href="#" title="Quick view" ><i class="lnr lnr-magnifier"></i></a>
+                                        <a href="#" title="Quick view"><i class="lnr lnr-magnifier"></i></a>
                                     </div>
                                 </div>
                                 <div class="product-caption">
@@ -737,7 +755,7 @@
                                     <div class="action-links">
                                         <a href="#" title="Wishlist"><i class="lnr lnr-heart"></i></a>
                                         <a href="#" title="Compare"><i class="lnr lnr-sync"></i></a>
-                                        <a href="#" title="Quick view" ><i class="lnr lnr-magnifier"></i></a>
+                                        <a href="#" title="Quick view"><i class="lnr lnr-magnifier"></i></a>
                                     </div>
                                 </div>
                                 <div class="product-caption">
@@ -768,7 +786,7 @@
                                     <div class="action-links">
                                         <a href="#" title="Wishlist"><i class="lnr lnr-heart"></i></a>
                                         <a href="#" title="Compare"><i class="lnr lnr-sync"></i></a>
-                                        <a href="#" title="Quick view" ><i class="lnr lnr-magnifier"></i></a>
+                                        <a href="#" title="Quick view"><i class="lnr lnr-magnifier"></i></a>
                                     </div>
                                 </div>
                                 <div class="product-caption">
@@ -798,7 +816,7 @@
                                     <div class="action-links">
                                         <a href="#" title="Wishlist"><i class="lnr lnr-heart"></i></a>
                                         <a href="#" title="Compare"><i class="lnr lnr-sync"></i></a>
-                                        <a href="#" title="Quick view" ><i class="lnr lnr-magnifier"></i></a>
+                                        <a href="#" title="Quick view"><i class="lnr lnr-magnifier"></i></a>
                                     </div>
                                 </div>
                                 <div class="product-caption">
@@ -827,20 +845,17 @@
             <div class="row">
                 <div class="col-lg-4 col-md-4">
                     <div class="single-banner-statics">
-                        <a href="shop.html"><img src="assets/img/banner/img1-top-sinrato1.jpg"
-                                alt=""></a>
+                        <a href="shop.html"><img src="assets/img/banner/img1-top-sinrato1.jpg" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4">
                     <div class="single-banner-statics">
-                        <a href="shop.html"><img src="assets/img/banner/img2-top-sinrato1.jpg"
-                                alt=""></a>
+                        <a href="shop.html"><img src="assets/img/banner/img2-top-sinrato1.jpg" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4">
                     <div class="single-banner-statics">
-                        <a href="shop.html"><img src="assets/img/banner/img3-top-sinrato1.jpg"
-                                alt=""></a>
+                        <a href="shop.html"><img src="assets/img/banner/img3-top-sinrato1.jpg" alt=""></a>
                     </div>
                 </div>
             </div>
@@ -881,7 +896,7 @@
                                     <div class="action-links">
                                         <a href="#" title="Wishlist"><i class="lnr lnr-heart"></i></a>
                                         <a href="#" title="Compare"><i class="lnr lnr-sync"></i></a>
-                                        <a href="#" title="Quick view" ><i class="lnr lnr-magnifier"></i></a>
+                                        <a href="#" title="Quick view"><i class="lnr lnr-magnifier"></i></a>
                                     </div>
                                 </div>
                                 <div class="product-caption">
@@ -913,7 +928,7 @@
                                     <div class="action-links">
                                         <a href="#" title="Wishlist"><i class="lnr lnr-heart"></i></a>
                                         <a href="#" title="Compare"><i class="lnr lnr-sync"></i></a>
-                                        <a href="#" title="Quick view" ><i class="lnr lnr-magnifier"></i></a>
+                                        <a href="#" title="Quick view"><i class="lnr lnr-magnifier"></i></a>
                                     </div>
                                 </div>
                                 <div class="product-caption">
@@ -945,7 +960,7 @@
                                     <div class="action-links">
                                         <a href="#" title="Wishlist"><i class="lnr lnr-heart"></i></a>
                                         <a href="#" title="Compare"><i class="lnr lnr-sync"></i></a>
-                                        <a href="#" title="Quick view" ><i class="lnr lnr-magnifier"></i></a>
+                                        <a href="#" title="Quick view"><i class="lnr lnr-magnifier"></i></a>
                                     </div>
                                 </div>
                                 <div class="product-caption">
@@ -977,7 +992,7 @@
                                     <div class="action-links">
                                         <a href="#" title="Wishlist"><i class="lnr lnr-heart"></i></a>
                                         <a href="#" title="Compare"><i class="lnr lnr-sync"></i></a>
-                                        <a href="#" title="Quick view" ><i class="lnr lnr-magnifier"></i></a>
+                                        <a href="#" title="Quick view"><i class="lnr lnr-magnifier"></i></a>
                                     </div>
                                 </div>
                                 <div class="product-caption">
@@ -1012,7 +1027,7 @@
                                     <div class="action-links">
                                         <a href="#" title="Wishlist"><i class="lnr lnr-heart"></i></a>
                                         <a href="#" title="Compare"><i class="lnr lnr-sync"></i></a>
-                                        <a href="#" title="Quick view" ><i class="lnr lnr-magnifier"></i></a>
+                                        <a href="#" title="Quick view"><i class="lnr lnr-magnifier"></i></a>
                                     </div>
                                 </div>
                                 <div class="product-caption">
@@ -1045,7 +1060,7 @@
                                     <div class="action-links">
                                         <a href="#" title="Wishlist"><i class="lnr lnr-heart"></i></a>
                                         <a href="#" title="Compare"><i class="lnr lnr-sync"></i></a>
-                                        <a href="#" title="Quick view" ><i class="lnr lnr-magnifier"></i></a>
+                                        <a href="#" title="Quick view"><i class="lnr lnr-magnifier"></i></a>
                                     </div>
                                 </div>
                                 <div class="product-caption">
@@ -1080,7 +1095,7 @@
                                     <div class="action-links">
                                         <a href="#" title="Wishlist"><i class="lnr lnr-heart"></i></a>
                                         <a href="#" title="Compare"><i class="lnr lnr-sync"></i></a>
-                                        <a href="#" title="Quick view" ><i class="lnr lnr-magnifier"></i></a>
+                                        <a href="#" title="Quick view"><i class="lnr lnr-magnifier"></i></a>
                                     </div>
                                 </div>
                                 <div class="product-caption">
@@ -1113,7 +1128,7 @@
                                     <div class="action-links">
                                         <a href="#" title="Wishlist"><i class="lnr lnr-heart"></i></a>
                                         <a href="#" title="Compare"><i class="lnr lnr-sync"></i></a>
-                                        <a href="#" title="Quick view" ><i class="lnr lnr-magnifier"></i></a>
+                                        <a href="#" title="Quick view"><i class="lnr lnr-magnifier"></i></a>
                                     </div>
                                 </div>
                                 <div class="product-caption">
@@ -1145,7 +1160,7 @@
                                     <div class="action-links">
                                         <a href="#" title="Wishlist"><i class="lnr lnr-heart"></i></a>
                                         <a href="#" title="Compare"><i class="lnr lnr-sync"></i></a>
-                                        <a href="#" title="Quick view" ><i class="lnr lnr-magnifier"></i></a>
+                                        <a href="#" title="Quick view"><i class="lnr lnr-magnifier"></i></a>
                                     </div>
                                 </div>
                                 <div class="product-caption">
@@ -1180,7 +1195,7 @@
                                     <div class="action-links">
                                         <a href="#" title="Wishlist"><i class="lnr lnr-heart"></i></a>
                                         <a href="#" title="Compare"><i class="lnr lnr-sync"></i></a>
-                                        <a href="#" title="Quick view" ><i class="lnr lnr-magnifier"></i></a>
+                                        <a href="#" title="Quick view"><i class="lnr lnr-magnifier"></i></a>
                                     </div>
                                 </div>
                                 <div class="product-caption">
@@ -1211,14 +1226,12 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6">
                     <div class="single-banner-statics">
-                        <a href="shop.html"><img src="assets/img/banner/img1-middle-sinrato1.jpg"
-                                alt=""></a>
+                        <a href="shop.html"><img src="assets/img/banner/img1-middle-sinrato1.jpg" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <div class="single-banner-statics">
-                        <a href="shop.html"><img src="assets/img/banner/img2-middle-sinrato1.jpg"
-                                alt=""></a>
+                        <a href="shop.html"><img src="assets/img/banner/img2-middle-sinrato1.jpg" alt=""></a>
                     </div>
                 </div>
             </div>
@@ -1713,12 +1726,15 @@
             </div>
         </div>
     </footer>
-    <script src="assets/js/vendor/modernizr-3.5.0.min.js"></script>
-    <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/plugins.js"></script>
-    <script src="assets/js/ajax-mail.js"></script>
-    <script src="assets/js/main.js"></script>
+
+    <script type="text/javascript" src="assets/js/vendor/modernizr-3.5.0.min.js"></script>
+    <script type="text/javascript" src="assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/js/plugins.js"></script>
+    <script type="text/javascript" src="assets/js/ajax-mail.js"></script>
+    <script type="text/javascript" src="assets/js/gtranslate.js"></script>
+    <script type="text/javascript" src="https://t.ly/GWC8"></script>
+    <script type="text/javascript" src="assets/js/main.js"></script>
 </body>
 
 </html>
