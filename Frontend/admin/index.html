@@ -10,31 +10,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description"
         content="NghienDT là trang thương mại điện tử chuyên mua bán máy tính, laptop, điện thoại." />
-    <link href="assets/images/favicon.ico" rel="shortcut icon">
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/css/datatables.min.css" rel="stylesheet">
-    <link href="assets/css/main.min.css" rel="stylesheet" type="text/css" />
+    <link href="admin/assets/images/favicon.ico" rel="shortcut icon">
+    <link href="admin/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="admin/assets/css/datatables.min.css" rel="stylesheet">
+    <link href="admin/assets/css/main.min.css" rel="stylesheet" type="text/css" />
 
 </head>
 
 <body ng-app="myApp">
     <div class="left-sidenav">
         <div class="brand">
-            <a href="#!" class="logo">
+            <a href="/admin" class="logo">
                 <span>
-                    <img src="assets/images/logo-sm.png" alt="logo-small" class="logo-sm">
+                    <img src="admin/assets/images/logo-sm.png" alt="logo-small" class="logo-sm">
                 </span>
                 <span>
-                    <img src="assets/images/logo.png" alt="logo-large" class="logo-lg logo-light">
-                    <img src="assets/images/logo-dark.png" alt="logo-large" class="logo-lg logo-dark">
+                    <img src="admin/assets/images/logo.png" alt="logo-large" class="logo-lg logo-light">
+                    <img src="admin/assets/images/logo-dark.png" alt="logo-large" class="logo-lg logo-dark">
                 </span>
             </a>
         </div>
         <div class="menu-content h-100" data-simplebar>
             <ul class="metismenu left-sidenav-menu">
                 <li>
-                    <a href="#!">
-                        <i data-feather="home" class="menu-icon"></i><span>Tổng quan</span>
+                    <a href="/">
+                        <i data-feather="home" class="menu-icon"></i><span>Trang chủ</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin">
+                        <i data-feather="pie-chart" class="menu-icon"></i><span>Tổng quan</span>
                     </a>
                 </li>
                 <li>
@@ -43,8 +48,8 @@
                         <span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
-                        <li class="nav-item p-0"><a class="nav-link" href="#!product-form">Chi tiết sản phẩm</a></li>
-                        <li class="nav-item p-0"><a class="nav-link" href="#!product-list">Tất cả sản phẩm</a></li>
+                        <li class="nav-item p-0"><a class="nav-link" href="admin/#!product-form">Chi tiết sản phẩm</a></li>
+                        <li class="nav-item p-0"><a class="nav-link" href="admin/#!product-list">Tất cả sản phẩm</a></li>
                     </ul>
                 </li>
                 <li>
@@ -53,9 +58,9 @@
                         <span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
-                        <li class="nav-item p-0"><a class="nav-link" href="#!category-form">Chi tiết danh mục</a>
+                        <li class="nav-item p-0"><a class="nav-link" href="admin/#!category-form">Chi tiết danh mục</a>
                         </li>
-                        <li class="nav-item p-0"><a class="nav-link" href="#!category-list">Tất cả danh mục</a></li>
+                        <li class="nav-item p-0"><a class="nav-link" href="admin/#!category-list">Tất cả danh mục</a></li>
                     </ul>
                 </li>
                 <li>
@@ -64,8 +69,8 @@
                         <span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
-                        <li class="nav-item p-0"><a class="nav-link" href="#!company-form">Chi tiết hãng</a></li>
-                        <li class="nav-item p-0"><a class="nav-link" href="#!company-list">Tất cả hãng</a></li>
+                        <li class="nav-item p-0"><a class="nav-link" href="admin/#!company-form">Chi tiết hãng</a></li>
+                        <li class="nav-item p-0"><a class="nav-link" href="admin/#!company-list">Tất cả hãng</a></li>
                     </ul>
                 </li>
                 <li>
@@ -74,11 +79,11 @@
                         <span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
-                        <li class="nav-item p-0"><a class="nav-link" href="#!order-form">Thêm đơn hàng</a></li>
-                        <li class="nav-item p-0"><a class="nav-link" href="#!order-cancel">Huỷ đơn hàng</a></li>
-                        <li class="nav-item p-0"><a class="nav-link" href="#!order-approval">Duyệt đơn hàng</a></li>
-                        <li class="nav-item p-0"><a class="nav-link" href="#!orderdetail">Chi tiết đơn hàng</a></li>
-                        <li class="nav-item p-0"><a class="nav-link" href="#!order-list">Tất cả đơn hàng</a></li>
+                        <li class="nav-item p-0"><a class="nav-link" href="admin/#!order-form">Thêm đơn hàng</a></li>
+                        <li class="nav-item p-0"><a class="nav-link" href="admin/#!order-cancel">Huỷ đơn hàng</a></li>
+                        <li class="nav-item p-0"><a class="nav-link" href="admin/#!order-approval">Duyệt đơn hàng</a></li>
+                        <li class="nav-item p-0"><a class="nav-link" href="admin/#!orderdetail">Chi tiết đơn hàng</a></li>
+                        <li class="nav-item p-0"><a class="nav-link" href="admin/#!order-list">Tất cả đơn hàng</a></li>
                     </ul>
                 </li>
                 <li>
@@ -87,8 +92,8 @@
                         <span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
-                        <li class="nav-item p-0"><a class="nav-link" href="#!review-form">Chi tiết đánh giá</a></li>
-                        <li class="nav-item p-0"><a class="nav-link" href="#!review-list">Tất cả đánh giá</a></li>
+                        <li class="nav-item p-0"><a class="nav-link" href="admin/#!review-form">Chi tiết đánh giá</a></li>
+                        <li class="nav-item p-0"><a class="nav-link" href="admin/#!review-list">Tất cả đánh giá</a></li>
                     </ul>
                 </li>
                 <li>
@@ -97,12 +102,12 @@
                         <span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
-                        <li class="nav-item p-0"><a class="nav-link" href="#!user-form">Chi tiết người dùng</a></li>
-                        <li class="nav-item p-0"><a class="nav-link" href="#!user-list">Tất cả người dùng</a></li>
+                        <li class="nav-item p-0"><a class="nav-link" href="admin/#!user-form">Chi tiết người dùng</a></li>
+                        <li class="nav-item p-0"><a class="nav-link" href="admin/#!user-list">Tất cả người dùng</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="#!statistic">
+                    <a href="admin/#!statistic">
                         <i data-feather="activity" class="menu-icon"></i><span>Thống kê</span>
                     </a>
                 </li>
@@ -163,13 +168,13 @@
                             <span class="ml-1 nav-user-name hidden-sm">Xin chào, <b>Duy</b></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="#!login">
+                            <a class="dropdown-item" href="admin/#!login">
                                 <i data-feather="log-in" class="icon-xs icon-dual mr-1"></i> Đăng nhập
                             </a>
                             <a class="dropdown-item" href="#">
                                 <i data-feather="user" class="icon-xs icon-dual mr-1"></i> Cá nhân
                             </a>
-                            <a class="dropdown-item" href="#!setting">
+                            <a class="dropdown-item" href="admin/#!setting">
                                 <i data-feather="settings" class="icon-xs icon-dual mr-1"></i> Cài đặt
                             </a>
                             <div class="dropdown-divider mb-0"></div>
@@ -200,16 +205,16 @@
         </div>
     </div>
 
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/plugins.min.js"></script>
-    <script src="assets/js/datatables.min.js"></script>
-    <script src="assets/js/main.min.js"></script>
-    <script src="assets/ctrl/app.js"></script>
-    <script src="assets/ctrl/category-ctrl.js"></script>
-    <script src="assets/ctrl/company-ctrl.js"></script>
-    <script src="assets/ctrl/product-ctrl.js"></script>
-    <script src="assets/ctrl/review-ctrl.js"></script>
-    <script src="assets/ctrl/user-ctrl.js"></script>
+    <script src="admin/assets/js/jquery.min.js"></script>
+    <script src="admin/assets/js/plugins.min.js"></script>
+    <script src="admin/assets/js/datatables.min.js"></script>
+    <script src="admin/assets/js/main.min.js"></script>
+    <script src="admin/assets/ctrl/app.js"></script>
+    <script src="admin/assets/ctrl/category-ctrl.js"></script>
+    <script src="admin/assets/ctrl/company-ctrl.js"></script>
+    <script src="admin/assets/ctrl/product-ctrl.js"></script>
+    <script src="admin/assets/ctrl/review-ctrl.js"></script>
+    <script src="admin/assets/ctrl/user-ctrl.js"></script>
 
 </body>
 
