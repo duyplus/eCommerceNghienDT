@@ -20,12 +20,13 @@ Xây dựng ứng dụng web nhằm mục đích bán hàng online
 ### Swagger
 Link: http://localhost:8080/swagger-ui/index.html
 ##### USER
-| Methods | Urls | Actions |
-| ------------ | ------------ | ------------ |
-| GET | /api/user | retrieve all |
-| POST | /api/user/:id | create new |
-| PUT | /api/user/:id | update a user by :id |
-| DELETE | /api/user/:id | delete a user by :id ||
+| Methods | Urls | Status Code | Actions |
+| ------------ | ------------ | ------------ | ------------ |
+| GET | /api/user | 200 (OK) | retrieve all |
+| POST | /api/user/:id | 201 (Created) | create new |
+| GET | /api/user/:id | 200 (OK) | retrieve one |
+| PUT | /api/user/:id | 200 (OK) | update a user by :id |
+| DELETE | /api/user/:id | 204 (No Content) | delete a user by :id ||
 ### Git clone
 ```
   git init
