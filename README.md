@@ -16,9 +16,10 @@ Xây dựng ứng dụng web nhằm mục đích bán hàng online
   + Microsoft SQL Server
 - Công cụ hỗ trợ:
   + Postman
+  + Swagger - http://localhost:8080/swagger-ui/index.html
   + Lombok
-### Swagger
-Link: http://localhost:8080/swagger-ui/index.html
+  + JPA Buddy
+## CRUD Rest APIs
 ##### USER
 | Methods | Urls | Status Code | Actions |
 | ------------ | ------------ | ------------ | ------------ |
