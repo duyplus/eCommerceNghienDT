@@ -35,6 +35,7 @@ public class User {
     @Column(name = "fullname", nullable = false)
     private String fullname;
 
+    @Temporal(TemporalType.DATE)
     @NotNull
     @Column(name = "birthday", nullable = false)
     private Date birthday;
