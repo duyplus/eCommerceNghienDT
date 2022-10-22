@@ -17,6 +17,7 @@ import java.util.List;
 @Table(name = "Products")
 public class Product {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
@@ -31,7 +32,10 @@ public class Product {
     private Double price;
 
     @NotNull
-    @Column(name = "discount", nullable = false)
+    @Column(name = "quantity", nullable = false)
+    private Integer quantity;
+
+    @Column(name = "discount")
     private Integer discount;
 
     @NotNull
@@ -53,9 +57,8 @@ public class Product {
     @Temporal(TemporalType.DATE)
     @NotNull
     @Column(name = "created_at", nullable = false)
-    private Date createdAt = new Date();
+    private Date createdAt;
 
-    @Temporal(TemporalType.DATE)
     @NotNull
     @Column(name = "updated_at", nullable = false)
     private Date updatedAt;

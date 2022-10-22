@@ -9,7 +9,7 @@ import nghiendt.entity.User;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -24,6 +24,7 @@ public class ProductDTO implements Serializable {
     @NotNull
     private final Double price;
     @NotNull
+    private final Integer quantity;
     private final Integer discount;
     @NotNull
     private final Boolean available;
@@ -33,9 +34,9 @@ public class ProductDTO implements Serializable {
     @NotNull
     private final String image;
     @NotNull
-    private final LocalDateTime createdAt;
+    private final Date createdAt;
     @NotNull
-    private final LocalDateTime updatedAt;
+    private final Date updatedAt;
     @NotNull
     private final User user;
     @NotNull
