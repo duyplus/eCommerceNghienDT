@@ -18,6 +18,16 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body table-responsive">
+                    <div class="row my-3">
+                        <div class="col-sm-6 form-inline justify-content-start">
+                            <label class="pr-2">Tìm kiếm:</label>
+                            <input type="text" class="form-control" ng-model="search" placeholder="Nhập tìm kiếm..." />
+                        </div>
+                        <div class="col-sm-6 form-inline justify-content-end">
+                            <label class="pr-2">Tìm kiếm:</label>
+                            <input type="text" class="form-control" ng-model="search" placeholder="Nhập tìm kiếm..." />
+                        </div>
+                    </div>
                     <table class="table table-bordered" data-paging="true" data-filtering="true">
                         <thead>
                             <tr>
@@ -35,7 +45,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="item in filteredItems">
+                            <tr ng-repeat="item in filteredItems | filter:search">
                                 <td class="d-none">{{item.id}}</td>
                                 <td>{{item.username}}</td>
                                 <td>{{item.password}}</td>

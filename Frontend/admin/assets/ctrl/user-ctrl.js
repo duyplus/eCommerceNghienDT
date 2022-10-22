@@ -1,4 +1,4 @@
-app.controller("user-ctrl", function ($scope, $rootScope, $location, $http, myService) {
+app.controller("user-ctrl", function ($scope, $rootScope, $location, $http, $filter, myService) {
     var url = "http://localhost:8080/api/user";
     $scope.items = [];
     $scope.form = {};
