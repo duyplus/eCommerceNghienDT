@@ -7,7 +7,6 @@ import nghiendt.entity.Order;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -16,8 +15,10 @@ import java.util.List;
  */
 @Data
 public class UserDTO implements Serializable {
+    private final Integer id;
     @Size(max = 50)
-    private final String id;
+    @NotNull
+    private final String username;
     @Size(max = 255)
     @NotNull
     private final String password;
@@ -37,9 +38,9 @@ public class UserDTO implements Serializable {
     @Size(max = 255)
     private final String image;
     @NotNull
-    private final LocalDateTime createdAt;
+    private final Date createdAt;
     @NotNull
-    private final LocalDateTime updatedAt;
+    private final Date updatedAt;
     @Size(max = 50)
     private final String token;
     private final List<Order> orders;

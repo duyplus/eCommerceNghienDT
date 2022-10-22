@@ -15,6 +15,11 @@ import java.util.List;
 @Table(name = "Users")
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private Integer id;
+
+    @NotNull
     @Size(max = 50)
     @Column(name = "username", nullable = false, length = 50)
     private String username;
@@ -59,7 +64,7 @@ public class User {
     @Temporal(TemporalType.DATE)
     @NotNull
     @Column(name = "created_at", nullable = false)
-    private Date createdat = new Date();
+    private Date createdat;
 
     @Temporal(TemporalType.DATE)
     @NotNull
