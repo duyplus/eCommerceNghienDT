@@ -1,8 +1,7 @@
 app.controller("user-ctrl", function ($scope, $rootScope, $http, $compile) {
     var url = "http://localhost:8080/api/user";
-    $scope.items = [];
+    $rootScope.items = [];
     $scope.form = {};
-
     var sweetalert = function (text) {
         Swal.fire({
             icon: "success",
@@ -23,19 +22,20 @@ app.controller("user-ctrl", function ($scope, $rootScope, $http, $compile) {
     $scope.initialize = function () {
         //load data
         $http.get(url).then(resp => {
-            $scope.items = resp.data;
+            $rootScope.items = resp.data;
 
+            // paginate
             $scope.curPage = 1;
-            $scope.itemsPerPage = 10;
+            $rootScope.itemsPerPage = 10;
             $scope.maxSize = 5;
-            this.items = $scope.items;
+            this.items = $rootScope.items;
             $scope.numOfPages = function () {
-                return Math.ceil($scope.items.length / $scope.itemsPerPage);
+                return Math.ceil($rootScope.items.length / $rootScope.itemsPerPage);
             };
             $scope.$watch('curPage + numPerPage', function () {
-                var begin = (($scope.curPage - 1) * $scope.itemsPerPage);
-                var end = begin + $scope.itemsPerPage;
-                $scope.filteredItems = $scope.items.slice(begin, end);
+                var begin = (($scope.curPage - 1) * $rootScope.itemsPerPage);
+                var end = begin + $rootScope.itemsPerPage;
+                $scope.filteredItems = $rootScope.items.slice(begin, end);
             });
         });
 
@@ -75,7 +75,6 @@ app.controller("user-ctrl", function ($scope, $rootScope, $http, $compile) {
     //hien thi len form
     $scope.edit = function (item) {
         $scope.form = angular.copy(item);
-        $scope.form.birthday = new Date($scope.form.birthday);
         $("#edit").modal('show');
     }
 
@@ -85,7 +84,7 @@ app.controller("user-ctrl", function ($scope, $rootScope, $http, $compile) {
         $http.post(`${url}`, item).then(resp => {
             resp.data.birthday = new Date(resp.data.birthday);
             resp.data.token = "null";
-            $scope.items.push(resp.data);
+            $rootScope.items.push(resp.data);
             $scope.reset();
             sweetalert("Thêm mới thành công!");
             $("#edit").modal('hide');
@@ -99,8 +98,8 @@ app.controller("user-ctrl", function ($scope, $rootScope, $http, $compile) {
     $scope.update = function () {
         var item = angular.copy($scope.form);
         $http.put(`${url}/${item.username}`, item).then(resp => {
-            var index = $scope.items.findIndex(p => p.username == item.username);
-            $scope.items[index] = item;
+            var index = $rootScope.items.findIndex(p => p.username == item.username);
+            $rootScope.items[index] = item;
             $scope.reset();
             sweetalert("Cập nhật tài khoản thành công!");
             $("#edit").modal('hide');
@@ -113,8 +112,8 @@ app.controller("user-ctrl", function ($scope, $rootScope, $http, $compile) {
     //xoa sp
     $scope.delete = function (item) {
         $http.delete(`${url}/${item.username}`).then(resp => {
-            var index = $scope.items.findIndex(p => p.username == item.username);
-            $scope.items.splice(index, 1);
+            var index = $rootScope.items.findIndex(p => p.username == item.username);
+            $rootScope.items.splice(index, 1);
             $scope.reset();
             sweetalert("Xóa tài khoản thành công!");
             $("#edit").modal('hide');
@@ -125,35 +124,35 @@ app.controller("user-ctrl", function ($scope, $rootScope, $http, $compile) {
     }
 
     //phan trang
-    $scope.pager = {
-        page: 0,
-        size: 10,
-        get items() {
-            var start = this.page * this.size;
-            return $scope.items.slice(start, start + this.size);
-        },
-        get count() {
-            return Math.ceil(1.0 * $scope.items.length / this.size)
-        },
-        first() {
-            this.page = 0;
-        },
-        prev() {
-            this.page--;
-            if (this.page < 0) {
-                this.last();
-            }
-        },
-        next() {
-            this.page++;
-            if (this.page >= this.count) {
-                this.first();
-            }
-        },
-        last() {
-            this.page = this.count - 1;
-        }
-    }
+    // $scope.pager = {
+    //     page: 0,
+    //     size: 10,
+    //     get items() {
+    //         var start = this.page * this.size;
+    //         return $rootScope.items.slice(start, start + this.size);
+    //     },
+    //     get count() {
+    //         return Math.ceil(1.0 * $rootScope.items.length / this.size)
+    //     },
+    //     first() {
+    //         this.page = 0;
+    //     },
+    //     prev() {
+    //         this.page--;
+    //         if (this.page < 0) {
+    //             this.last();
+    //         }
+    //     },
+    //     next() {
+    //         this.page++;
+    //         if (this.page >= this.count) {
+    //             this.first();
+    //         }
+    //     },
+    //     last() {
+    //         this.page = this.count - 1;
+    //     }
+    // }
 });
 app.directive('firebaseDate', function () {
     return {

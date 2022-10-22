@@ -33,7 +33,7 @@ public class UserRestController {
     @GetMapping("{id}")
     public ResponseEntity<User> getUserById(@PathVariable int id) {
         User user = userRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("User not exist with id:" + id));
+                .orElseThrow(() -> new ResourceNotFoundException("User not exist with id: " + id));
         return ResponseEntity.ok(user);
     }
 
@@ -45,7 +45,7 @@ public class UserRestController {
     @PutMapping("{id}")
     public ResponseEntity<User> update(@PathVariable("id") int id, @RequestBody User user) {
         User updateUser = userRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("User not exist with id:" + id));
+                .orElseThrow(() -> new ResourceNotFoundException("User not exist with id: " + id));
         userRepository.save(user);
         return ResponseEntity.ok(updateUser);
     }
