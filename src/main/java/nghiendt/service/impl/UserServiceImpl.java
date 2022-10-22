@@ -20,8 +20,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findById(String username) {
-        return userRepository.findById(username).get();
+    public User findById(int userid) {
+        return userRepository.findById(userid).get();
     }
 
 
@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void delete(String user) {
-        userRepository.deleteById(user);
+    public void delete(int userid) {
+        userRepository.deleteById(userid);
     }
 }

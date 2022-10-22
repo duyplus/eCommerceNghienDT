@@ -21,6 +21,7 @@
                     <table class="table table-bordered" data-paging="true" data-filtering="true">
                         <thead>
                             <tr>
+                                <th class="d-none">ID người dùng</th>
                                 <th>Tên người dùng</th>
                                 <th>Mật khẩu</th>
                                 <th>Họ và tên</th>
@@ -35,6 +36,7 @@
                         </thead>
                         <tbody>
                             <tr ng-repeat="item in filteredItems">
+                                <td class="d-none">{{item.id}}</td>
                                 <td>{{item.username}}</td>
                                 <td>{{item.password}}</td>
                                 <td>{{item.fullname}}</td>
