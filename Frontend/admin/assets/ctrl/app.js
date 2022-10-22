@@ -31,3 +31,33 @@ app.config(function ($routeProvider, $locationProvider) {
         .when('/', { templateUrl: 'admin/pages/home.html', })
         .otherwise({ redirectTo: '/' });
 });
+
+app.directive('convertDate', function () {
+    return {
+        require: 'ngModel',
+        link: function (scope, element, attrs, ngModel) {
+            ngModel.$formatters.push(function (fromModel) {
+                fromModel = new Date(fromModel);
+                return fromModel;
+            });
+            ngModel.$parsers.push(function (fromField) {
+                fromField = fromField.getTime();
+                return fromField;
+            });
+        }
+    }
+});
+
+app.factory('myService', function () {
+    var savedData = {}
+    function set(data) {
+        savedData = data;
+    }
+    function get() {
+        return savedData;
+    }
+    return {
+        set: set,
+        get: get
+    }
+});
