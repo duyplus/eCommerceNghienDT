@@ -400,32 +400,47 @@
                                                 </div>
                                             </div> <!-- end of tab-pane -->
                                             <div id="account-details" class="tab-pane fade" role="tabpanel"
-                                                aria-labelledby="account-details-tab">
+                                                aria-labelledby="account-details-tab" ng-app="myApp" ng-controller="myCtrl">
                                                 <h3>Thông tin tài khoản </h3>
                                                 <div class="login-form">
                                                     <form action="#">
-                                                        <div class="form-group row mb-3">
+                                                        <div class="form-group row mb-3 d-none">
                                                             <label for="f-name"
-                                                                class="col-12 col-sm-12 col-md-4 col-lg-3 col-form-label">Tên</label>
+                                                                class="col-12 col-sm-12 col-md-4 col-lg-3 col-form-label">ID</label>
                                                             <div class="col-12 col-sm-12 col-md-8 col-lg-6">
-                                                                <input type="text" class="form-control" id="f-name"
+                                                                <input type="text" class="form-control" id="f-name" ng-model="userdata.id"
                                                                     required>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row mb-3">
                                                             <label for="l-name"
-                                                                class="col-12 col-sm-12 col-md-4 col-lg-3 col-form-label">Họ</label>
+                                                                class="col-12 col-sm-12 col-md-4 col-lg-3 col-form-label">Tài khoản</label>
                                                             <div class="col-12 col-sm-12 col-md-8 col-lg-6">
-                                                                <input type="text" class="form-control" id="l-name"
+                                                                <input type="text" class="form-control" id="l-name" ng-model="userdata.username"
                                                                     required>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row mb-3">
                                                             <label for="u-name"
-                                                                class="col-12 col-sm-12 col-md-4 col-lg-3 col-form-label">Tài
-                                                                khoản</label>
+                                                                class="col-12 col-sm-12 col-md-4 col-lg-3 col-form-label">Họ và tên</label>
                                                             <div class="col-12 col-sm-12 col-md-8 col-lg-6">
-                                                                <input type="text" class="form-control" id="u-name"
+                                                                <input type="text" class="form-control" id="u-name" ng-model="userdata.fullname"
+                                                                    required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row mb-3">
+                                                            <label for="a-name"
+                                                                class="col-12 col-sm-12 col-md-4 col-lg-3 col-form-label">Số điện thoại</label>
+                                                            <div class="col-12 col-sm-12 col-md-8 col-lg-6">
+                                                                <input type="text" class="form-control" id="a-name" ng-model="userdata.phone"
+                                                                    required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row mb-3">
+                                                            <label for="b-name"
+                                                                class="col-12 col-sm-12 col-md-4 col-lg-3 col-form-label">Địa chỉ</label>
+                                                            <div class="col-12 col-sm-12 col-md-8 col-lg-6">
+                                                                <input type="text" class="form-control" id="b-name" ng-model="userdata.address"
                                                                     required>
                                                             </div>
                                                         </div>
@@ -434,7 +449,7 @@
                                                                 class="col-12 col-sm-12 col-md-4 col-lg-3 col-form-label">Mật
                                                                 khẩu hiện tại</label>
                                                             <div class="col-12 col-sm-12 col-md-8 col-lg-6">
-                                                                <input type="password" class="form-control"
+                                                                <input type="password" class="form-control" ng-model="userdata.password"
                                                                     id="inputpassword" required>
                                                             </div>
                                                         </div>
@@ -444,7 +459,7 @@
                                                                 khẩu mới</label>
                                                             <div class="col-12 col-sm-12 col-md-8 col-lg-6">
                                                                 <input type="password" class="form-control"
-                                                                    id="newpassword" required>
+                                                                    id="newpassword" >
                                                             </div>
                                                         </div>
                                                         <div class="form-group row mb-3">
@@ -453,14 +468,14 @@
                                                                 nhận mật khẩu mới</label>
                                                             <div class="col-12 col-sm-12 col-md-8 col-lg-6">
                                                                 <input type="password" class="form-control"
-                                                                    id="c-password" required>
+                                                                    id="c-password" >
                                                             </div>
                                                         </div>
                                                         <div class="form-group row mb-3">
                                                             <label for="email"
                                                                 class="col-12 col-sm-12 col-md-4 col-lg-3 col-form-label">Email</label>
                                                             <div class="col-12 col-sm-12 col-md-8 col-lg-6">
-                                                                <input type="text" class="form-control" id="email"
+                                                                <input type="text" class="form-control" id="email" ng-model="userdata.email"
                                                                     required>
                                                             </div>
                                                         </div>
@@ -470,8 +485,8 @@
                                                                 sinh
                                                                 (Không bắt buộc)</label>
                                                             <div class="col-12 col-sm-12 col-md-8 col-lg-6">
-                                                                <input type="text" class="form-control" id="birth"
-                                                                    placeholder="MM / DD / YYYY" required>
+                                                                <input type="text" class="form-control" id="birth" ng-model="userdata.birthday | date: 'dd/MM/yyyy'"
+                                                                    placeholder="DD / MM / YYYY" required>
                                                             </div>
                                                         </div>
                                                         <div class="form-check row p-0 mt-5">
@@ -491,7 +506,7 @@
                                                                 class="col-12 col-sm-12 col-md-8 offset-md-4 col-lg-6 offset-lg-3">
                                                                 <div class="custom-checkbox">
                                                                     <input class="form-check-input" type="checkbox"
-                                                                        id="subscribe" required>
+                                                                        id="subscribe" >
                                                                     <span class="checkmark"></span>
                                                                     <label class="form-check-label" for="subscribe">Đăng
                                                                         Ký Nhận Bản Tin Của Chúng Tôi<br>Đăng Ký Bản Tin
@@ -501,7 +516,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="register-box d-flex justify-content-end mt-half">
-                                                            <button type="submit" class="btn btn-secondary">Cập
+                                                            <button type="submit" class="btn btn-secondary" ng-click="update()">Cập
                                                                 nhật</button>
                                                         </div>
                                                     </form>
@@ -737,6 +752,7 @@
     <script type="text/javascript" src="assets/js/gtranslate.js"></script>
     <script type="text/javascript" src="https://t.ly/GWC8"></script>
     <script type="text/javascript" src="assets/js/main.js"></script>
+    <script type="text/javascript" src="assets/ctrl/user-information.js"></script>
 
 </body>
 
