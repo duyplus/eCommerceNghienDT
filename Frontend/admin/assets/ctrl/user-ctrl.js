@@ -1,5 +1,6 @@
 app.controller("user-ctrl", function ($scope, $rootScope, $location, $http, $filter, myService) {
     var url = "http://localhost:8080/api/user";
+    var url2 = "http://localhost:8080/api/upload/images";
     $scope.items = [];
     $scope.form = {};
     $scope.userdata = myService.get();
@@ -117,5 +118,20 @@ app.controller("user-ctrl", function ($scope, $rootScope, $location, $http, $fil
             sweetalert_error("Lỗi xóa tài khoản!");
             console.log("Error", error);
         });
+    }
+
+    //upload hinh
+    $scope.imageChanged = function (files) {
+        var data = new FormData();
+        data.append('file', files[0]);
+        $http.post(url2, data, {
+            transformRequest: angular.identity,
+            headers: { 'Content-Type': undefined }
+        }).then(resp => {
+            $scope.userdata.image = resp.data.image;
+        }).catch(error => {
+            sweetalert("Lỗi tải lên hình ảnh!");
+            console.log("Error", error);
+        })
     }
 });

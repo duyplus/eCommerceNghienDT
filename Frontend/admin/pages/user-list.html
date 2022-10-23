@@ -41,6 +41,7 @@
                                 <th>Địa chỉ</th>
                                 <th>Tham gia ngày</th>
                                 <th>Cập nhật ngày</th>
+                                <th>Hình ảnh</th>
                                 <th>Tuỳ chọn</th>
                             </tr>
                         </thead>
@@ -56,6 +57,7 @@
                                 <td>{{item.address}}</td>
                                 <td>{{item.createdat | date: 'HH:mm - dd/MM/yyyy'}}</td>
                                 <td>{{item.updatedat | date: 'HH:mm - dd/MM/yyyy'}}</td>
+                                <td>{{item.image}}</td>
                                 <td>
                                     <a href="admin/#!/user-form" ng-click="edit(item)">
                                         <i class="las la-pen text-info"></i>
