@@ -14,23 +14,21 @@ app.factory('myService', function () {
     }
 });
 
-app.controller('myCtrl', function($scope, $location, $http, myService) {
-    var url = "http://localhost:8080/api/user";
-    $scope.items = [];
+app.controller('myCtrl', function($scope, $location, $http) {
+    $scope.id = 5;
+    var url = "http://localhost:8080/api/user/"+$scope.id;
+    $scope.items = {};
     $scope.userdata = {};
-    $scope.id = 4;
 
     $http.get(url).then(resp => {
         $scope.items = resp.data;
-        $scope.userdata = $scope.items[$scope.id];
+        $scope.userdata = $scope.items;
     });
 
     $scope.update = function () {
         var item = angular.copy($scope.userdata);
         $http.put(`${url}/${item.id}`, item).then(resp => {
-            var index = $scope.items.findIndex(p => p.id == item.id);
-            $scope.items[index] = item;
-            $scope.reset();
+            $scope.items = item;
             $location.path('my-account.html');
         }).catch(error => {
             console.log("Error", error);
