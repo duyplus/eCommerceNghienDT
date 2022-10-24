@@ -2,7 +2,6 @@ app.controller("user-ctrl", function ($scope, $rootScope, $location, $http, $fil
     var url = "http://localhost:8080/api/user";
     var url2 = "http://localhost:8080/api/upload/images";
     $scope.items = [];
-    $scope.form = {};
     $scope.userdata = myService.get();
 
     var sweetalert_success = function (text) {
@@ -73,7 +72,6 @@ app.controller("user-ctrl", function ($scope, $rootScope, $location, $http, $fil
     //hien thi len form
     $scope.edit = function (item) {
         myService.set(item);
-        $scope.form = angular.copy(item);
     }
 
     //them sp moi

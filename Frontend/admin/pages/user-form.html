@@ -21,14 +21,7 @@
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">
-                                    <span ng-if="form.image == null">
-                                        <img ng-src="{{'/assets/images/cloud-upload.jpg'}}" style="width: 80%; margin-top: 5rem">
-                                    </span>
-                                    <span ng-if="form.image != null">
-                                        <img ng-src="{{'/assets/images/'+form.image}}" style="width: 80%; margin-top: 5rem">
-                                    </span>
-                                </label>
+                                <label class="col-sm-2 col-form-label"></label>
                                 <div class="col-sm-10">
                                     <input class="dropify dropify-event" type="file"
                                         onchange="angular.element(this).scope().imageChanged(this.files)" />
