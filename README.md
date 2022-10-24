@@ -4,8 +4,6 @@ Xây dựng ứng dụng web nhằm mục đích bán hàng online
 ### Frontend
 Link: https://github.com/duyplus/NghienDT
 
-Website: https://nghiendt.me
-
 ### Sàn thương mại điện tử
 - Các chức năng chính:
     + Đăng nhập bằng mạng xã hội, xác thực danh tính
@@ -25,17 +23,6 @@ Website: https://nghiendt.me
     + Swagger - http://localhost:8080/swagger-ui/index.html
     + Lombok
     + JPA Buddy
-
-## CRUD Rest APIs
-##### USER
-| Methods | Urls | Status Code | Actions |
-| ------------ | ------------ | ------------ | ------------ |
-| GET | /api/user | 200 (OK) | Retrieve all user |
-| POST | /api/user | 201 (Created) | Create a new user |
-| GET | /api/user/:id | 200 (OK) | Retrieve a user by :id |
-| PUT | /api/user/:id | 200 (OK) | Update a user by :id |
-| DELETE | /api/user/:id | 204 (No Content) | Delete a user by :id ||
-
 ### Git clone
 ```
   git init
@@ -43,4 +30,4 @@ Website: https://nghiendt.me
 ```
 ### License
 The language pack is released under the MIT license. Please
-see [the license terms](https://github.com/duyplus/eCommerceLaptop/blob/master/LICENSE).
+see [the license terms](https://github.com/duyplus/eCommerceNghienDT/blob/master/LICENSE).
