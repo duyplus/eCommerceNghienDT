@@ -2,9 +2,9 @@
 Xây dựng ứng dụng web nhằm mục đích bán hàng online
 
 ### Frontend
-Link: [https://github.com/duyplus/NghienDT](https://github.com/duyplus/NghienDT)
+Link: https://github.com/duyplus/NghienDT
 
-Website: [https://nghiendt.vercel.app](https://nghiendt.vercel.app)
+Website: https://nghiendt.me
 
 ### Sàn thương mại điện tử
 - Các chức năng chính:
