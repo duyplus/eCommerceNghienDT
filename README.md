@@ -23,6 +23,16 @@ Link: https://github.com/duyplus/NghienDT
     + Swagger - http://localhost:8080/swagger-ui/index.html
     + Lombok
     + JPA Buddy
+## CRUD Rest APIs
+##### USER
+| Methods | Urls | Status Code | Actions |
+| ------------ | ------------ | ------------ | ------------ |
+| GET | /api/user | 200 (OK) | Retrieve all user |
+| POST | /api/user | 201 (Created) | Create a new user |
+| GET | /api/user/:id | 200 (OK) | Retrieve a user by :id |
+| PUT | /api/user/:id | 200 (OK) | Update a user by :id |
+| DELETE | /api/user/:id | 204 (No Content) | Delete a user by :id ||
+
 ### Git clone
 ```
   git init
