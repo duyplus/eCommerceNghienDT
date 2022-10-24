@@ -1,5 +1,18 @@
 package nghiendt.service;
 
+import nghiendt.entity.Product;
+
+import java.util.List;
+
 public interface ProductService {
 
+    List<Product> findAll();
+
+    Product findById(int productid);
+
+    Product create(Product product);
+
+    Product update(Product product);
+
+    void delete(int productid);
 }
