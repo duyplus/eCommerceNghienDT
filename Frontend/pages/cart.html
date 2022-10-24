@@ -142,30 +142,29 @@
                                 <div class="cart-accordion-wrapper mt-full mt-40">
                                     <h3>Có mã giảm giá?</h3>
                                     <p>Nhấn phần dưới để nhập mã giảm giá nếu có.</p>
-                                    <div id="cart_accordion" class="accordion mt-4">
+                                    <div id="cart_Coupon" class="accordion mt-4">
                                         <div class="accordion-item active">
                                             <h2 class="accordion-header" id="headingCoupon">
                                                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                                    data-bs-target="#collapseCoupon" aria-expanded="true"
+                                                    data-bs-target="#coupon" aria-expanded="true"
                                                     aria-controls="collapseCoupon">
-                                                    Dùng mã giảm giá
+                                                    <b>Dùng mã giảm giá</b>
                                                 </button>
                                             </h2>
-                                            <div id="collapseCoupon" class="accordion-collapse collapse show"
-                                                aria-labelledby="headingCoupon" data-bs-parent="#cart_accordion">
+                                            <div id="coupon" class="accordion-collapse collapse show"
+                                                aria-labelledby="headingCoupon" data-bs-parent="#cart_Coupon">
                                                 <div class="accordion-body">
                                                     <div class="input-group row">
-                                                        <label class="col-12 col-sm-12 col-md-3" for="input-coupon">Nhập
-                                                            mã giảm giá của bạn ở
-                                                            đây</label>
+                                                        <label class="col-12 col-sm-12 col-md-3">
+                                                            Nhập mã giảm giá của bạn ở đây
+                                                        </label>
                                                         <div class="col-12 col-sm-12 col-md-9">
                                                             <div class="input-group">
-                                                                <input type="text" name="coupon" value=""
-                                                                    placeholder="Nhập mã giảm giá" id="input-coupon"
-                                                                    class="form-control">
-                                                                <input type="button" value="Áp dụng mã"
-                                                                    id="button-coupon"
-                                                                    class="btn btn-secondary cart-pg">
+                                                                <input type="text" name="coupon"
+                                                                    placeholder="Nhập mã giảm giá" class="form-control">
+                                                                <button class="btn btn-secondary cart-pg">
+                                                                    Áp dụng
+                                                                </button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -181,12 +180,16 @@
                                             <table class="table table-bordered">
                                                 <tbody>
                                                     <tr>
-                                                        <td><strong>Sub-Total:</strong></td>
+                                                        <td><strong>Tổng phụ:</strong></td>
                                                         <td>$860.00</td>
                                                     </tr>
                                                     <tr>
-                                                        <td><strong>Total:</strong></td>
-                                                        <td><span class="color-primary">$860.00</span></td>
+                                                        <td><strong>Mã giảm giá:</strong></td>
+                                                        <td>$60.00</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><strong>Tổng tiền:</strong></td>
+                                                        <td><span class="color-primary">$800.00</span></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -195,10 +198,12 @@
                                 </div>
 
                                 <div class="cart-button-wrapper d-flex justify-content-between mt-4">
-                                    <a href="#!shop" class="btn btn-secondary">Tiếp tục mua
-                                        sắm</a>
-                                    <a href="#!checkout" class="btn btn-secondary dark align-self-end">Thanh
-                                        toán</a>
+                                    <a href="#!shop" class="btn btn-secondary py-2 px-3">
+                                        Tiếp tục mua sắm
+                                    </a>
+                                    <a href="#!checkout" class="btn btn-secondary py-2 px-4 align-self-end">
+                                        Thanh toán
+                                    </a>
                                 </div>
                             </div>
                         </div>

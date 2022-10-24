@@ -60,4 +60,104 @@ app.controller('product-ctrl', function ($scope, $location, $http) {
     $('.modal').on('shown.bs.modal', function (e) {
         $('.pro-nav').resize();
     });
+
+    // Flash sale active
+    var flash_sale = $('.flash-sale-active');
+    flash_sale.owlCarousel({
+        loop: true,
+        margin: 30,
+        dots: false,
+        autoplay: false,
+        nav: true,
+        navText: ['<i class="lnr lnr-arrow-left"></i>', '<i class="lnr lnr-arrow-right"></i>'],
+        stagePadding: 0,
+        smartSpeed: 700,
+        responsive: {
+            0: {
+                items: 1
+            },
+            480: {
+                items: 2
+            },
+            768: {
+                items: 3
+            },
+            992: {
+                items: 1
+            },
+            1100: {
+                items: 1
+            }
+        }
+    });
+
+    // owl carousel active
+    var flash_sale = $('.flash-sale-active4');
+    flash_sale.owlCarousel({
+        loop: true,
+        margin: 30,
+        dots: false,
+        autoplay: false,
+        nav: true,
+        navText: ['<i class="lnr lnr-arrow-left"></i>', '<i class="lnr lnr-arrow-right"></i>'],
+        stagePadding: 0,
+        smartSpeed: 700,
+        responsive: {
+            0: {
+                items: 1
+            },
+            480: {
+                items: 2
+            },
+            768: {
+                items: 3
+            },
+            992: {
+                items: 4
+            },
+            1024: {
+                items: 5
+            },
+            1600: {
+                items: 6
+            }
+        }
+    });
+
+    // latest product slider
+    var latest_pro = $('.latest-slide-active');
+    latest_pro.owlCarousel({
+        margin: 30,
+        loop: true,
+        dots: false,
+        autoplay: false,
+        stagePadding: 0,
+        smartSpeed: 700,
+        responsive: {
+            0: {
+                items: 1
+            },
+
+            480: {
+                items: 1
+            },
+
+            576: {
+                items: 2
+            },
+
+            768: {
+                items: 2
+            },
+
+            992: {
+                items: 1
+            },
+
+            1100: {
+                items: 1
+            }
+        }
+
+    });
 });
