@@ -1,13 +1,10 @@
 ## Dự án tốt nghiệp - eCommerceNghienDT
-
 Xây dựng ứng dụng web nhằm mục đích bán hàng online
 
-### Vercel
-
-Link: [https://nghiendt.vercel.app](https://nghiendt.vercel.app)
+### Frontend
+Link: https://github.com/duyplus/NghienDT
 
 ### Sàn thương mại điện tử
-
 - Các chức năng chính:
     + Đăng nhập bằng mạng xã hội, xác thực danh tính
     + Quản lý sản phẩm, người dùng, đáng giá, danh mục, hãng
@@ -26,11 +23,8 @@ Link: [https://nghiendt.vercel.app](https://nghiendt.vercel.app)
     + Swagger - http://localhost:8080/swagger-ui/index.html
     + Lombok
     + JPA Buddy
-
 ## CRUD Rest APIs
-
 ##### USER
-
 | Methods | Urls | Status Code | Actions |
 | ------------ | ------------ | ------------ | ------------ |
 | GET | /api/user | 200 (OK) | Retrieve all user |
@@ -40,13 +34,10 @@ Link: [https://nghiendt.vercel.app](https://nghiendt.vercel.app)
 | DELETE | /api/user/:id | 204 (No Content) | Delete a user by :id ||
 
 ### Git clone
-
 ```
   git init
   git clone https://github.com/duyplus/eCommerceNghienDT.git
 ```
-
 ### License
-
 The language pack is released under the MIT license. Please
-see [the license terms](https://github.com/duyplus/eCommerceLaptop/blob/master/LICENSE).
+see [the license terms](https://github.com/duyplus/eCommerceNghienDT/blob/master/LICENSE).
