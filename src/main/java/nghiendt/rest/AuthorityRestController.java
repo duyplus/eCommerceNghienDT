@@ -32,7 +32,7 @@ public class AuthorityRestController {
     @GetMapping("{id}")
     public ResponseEntity<Authority> getCompaniesById(@PathVariable int id) {
         Authority authority = authorityRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Company not exist with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Authority not exist with id: " + id));
         return ResponseEntity.ok(authority);
     }
 
@@ -44,7 +44,7 @@ public class AuthorityRestController {
     @PutMapping("{id}")
     public ResponseEntity<Authority> update(@PathVariable("id") int id, @RequestBody Authority authority) {
         Authority updateAuthority = authorityRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Company not exist with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Authority not exist with id: " + id));
         authorityRepository.save(authority);
         return ResponseEntity.ok(updateAuthority);
     }
@@ -52,7 +52,7 @@ public class AuthorityRestController {
     @DeleteMapping("{id}")
     public ResponseEntity<HttpStatus> delete(@PathVariable int id) {
         Authority authority = authorityRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Company not exist with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Authority not exist with id: " + id));
         authorityRepository.delete(authority);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

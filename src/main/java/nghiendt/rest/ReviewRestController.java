@@ -33,7 +33,7 @@ public class ReviewRestController {
     @GetMapping("{id}")
     public ResponseEntity<Review> getCompaniesById(@PathVariable int id) {
         Review review = reviewRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Product not exist with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Review not exist with id: " + id));
         return ResponseEntity.ok(review);
     }
 
@@ -45,7 +45,7 @@ public class ReviewRestController {
     @PutMapping("{id}")
     public ResponseEntity<Review> update(@PathVariable("id") int id, @RequestBody Review review) {
         Review updateReview = reviewRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Product not exist with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Review not exist with id: " + id));
         reviewRepository.save(review);
         return ResponseEntity.ok(updateReview);
     }
@@ -53,7 +53,7 @@ public class ReviewRestController {
     @DeleteMapping("{id}")
     public ResponseEntity<HttpStatus> delete(@PathVariable int id) {
         Review review = reviewRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Product not exist with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Review not exist with id: " + id));
         reviewRepository.delete(review);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
