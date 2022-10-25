@@ -3,7 +3,6 @@ package nghiendt.controller;
 import nghiendt.entity.Role;
 import nghiendt.exception.ResourceNotFoundException;
 import nghiendt.repository.RoleRepository;
-import nghiendt.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,9 +14,6 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/api/role")
 public class RoleRestController {
-    @Autowired
-    private RoleService roleService;
-
     @Autowired
     private RoleRepository roleRepository;
 

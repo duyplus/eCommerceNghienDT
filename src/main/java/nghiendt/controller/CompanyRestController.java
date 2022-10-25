@@ -3,7 +3,6 @@ package nghiendt.controller;
 import nghiendt.entity.Company;
 import nghiendt.exception.ResourceNotFoundException;
 import nghiendt.repository.CompanyRepository;
-import nghiendt.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,10 +14,6 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/api/company")
 public class CompanyRestController {
-
-    @Autowired
-    private CompanyService companyService;
-
     @Autowired
     private CompanyRepository companyRepository;
 

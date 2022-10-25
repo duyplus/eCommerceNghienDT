@@ -3,7 +3,6 @@ package nghiendt.controller;
 import nghiendt.entity.Category;
 import nghiendt.exception.ResourceNotFoundException;
 import nghiendt.repository.CategoryRepository;
-import nghiendt.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,9 +14,6 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/api/category")
 public class CategoryRestController {
-    @Autowired
-    private CategoryService categoryService;
-
     @Autowired
     private CategoryRepository cateRepository;
 
