@@ -37,8 +37,7 @@ public class Order {
     @Column(name = "updated_at", nullable = false)
     private Date updatedat;
 
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;

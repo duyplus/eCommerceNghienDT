@@ -39,8 +39,7 @@ public class Review {
     @Column(name = "created_at", nullable = false)
     private Date createdAt = new Date();
 
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne
     @JoinColumn(name = "orderdetail_id", nullable = false)
     private OrderDetail orderDetail;
 
