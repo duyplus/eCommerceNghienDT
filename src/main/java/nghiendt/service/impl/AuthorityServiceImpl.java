@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class AuthorityServiceImpl implements AuthorityService {
     @Autowired
@@ -18,23 +19,22 @@ public class AuthorityServiceImpl implements AuthorityService {
     }
 
     @Override
-    public Authority findById(int authid) {
-        return authorityRepository.findById(authid).get();
-    }
-
-
-    @Override
-    public Authority create(Authority auth) {
-        return authorityRepository.save(auth);
+    public Authority findById(int id) {
+        return authorityRepository.findById(id).get();
     }
 
     @Override
-    public Authority update(Authority auth) {
-        return authorityRepository.save(auth);
+    public Authority create(Authority authority) {
+        return authorityRepository.save(authority);
     }
 
     @Override
-    public void delete(int authid) {
-        authorityRepository.deleteById(authid);
+    public Authority update(Authority authority) {
+        return authorityRepository.save(authority);
+    }
+
+    @Override
+    public void delete(int id) {
+        authorityRepository.deleteById(id);
     }
 }

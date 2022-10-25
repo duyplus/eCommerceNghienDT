@@ -8,11 +8,11 @@ public interface AuthorityService {
 
     List<Authority> findAll();
 
-    Authority findById(int authid);
+    Authority findById(int id);
 
     Authority create(Authority auth);
 
     Authority update(Authority auth);
 
-    void delete(int authid);
+    void delete(int id);
 }

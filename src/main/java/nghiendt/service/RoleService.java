@@ -8,11 +8,11 @@ public interface RoleService {
 
     List<Role> findAll();
 
-    Role findById(String roleid);
+    Role findById(String id);
 
     Role create(Role role);
 
     Role update(Role role);
 
-    void delete(String roleid);
+    void delete(String id);
 }

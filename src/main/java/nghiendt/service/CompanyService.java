@@ -7,11 +7,11 @@ import java.util.List;
 public interface CompanyService {
     List<Company> findAll();
 
-    Company findById(int companyid);
+    Company findById(int id);
 
     Company create(Company company);
 
     Company update(Company company);
 
-    void delete(int companyid);
+    void delete(int id);
 }

@@ -19,8 +19,8 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public Review findById(int reviewid) {
-        return reviewRepository.findById(reviewid).get();
+    public Review findById(int id) {
+        return reviewRepository.findById(id).get();
     }
 
 
@@ -35,7 +35,7 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public void delete(int reviewid) {
-        reviewRepository.deleteById(reviewid);
+    public void delete(int id) {
+        reviewRepository.deleteById(id);
     }
 }

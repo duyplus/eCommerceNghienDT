@@ -1,4 +1,4 @@
-package nghiendt.rest;
+package nghiendt.controller;
 
 import nghiendt.entity.Company;
 import nghiendt.exception.ResourceNotFoundException;
@@ -10,9 +10,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 @CrossOrigin("*")
 @RestController
-@RequestMapping(value = "/api/companies")
+@RequestMapping(value = "/api/company")
 public class CompanyRestController {
 
     @Autowired

@@ -1,4 +1,4 @@
-package nghiendt.rest;
+package nghiendt.controller;
 
 import nghiendt.entity.Order;
 import nghiendt.exception.ResourceNotFoundException;
@@ -13,7 +13,7 @@ import java.util.List;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping(value = "/api/orders")
+@RequestMapping(value = "/api/order")
 public class OrderRestController {
     @Autowired
     private OrderService orderService;

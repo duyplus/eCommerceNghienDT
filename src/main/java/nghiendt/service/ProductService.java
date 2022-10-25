@@ -8,11 +8,11 @@ public interface ProductService {
 
     List<Product> findAll();
 
-    Product findById(int productid);
+    Product findById(int id);
 
     Product create(Product product);
 
     Product update(Product product);
 
-    void delete(int productid);
+    void delete(int id);
 }

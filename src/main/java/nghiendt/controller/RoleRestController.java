@@ -1,4 +1,4 @@
-package nghiendt.rest;
+package nghiendt.controller;
 
 import nghiendt.entity.Role;
 import nghiendt.exception.ResourceNotFoundException;
@@ -38,7 +38,9 @@ public class RoleRestController {
     }
 
     @PostMapping
-    public Role create(@RequestBody Role role) { return roleRepository.save(role); }
+    public Role create(@RequestBody Role role) {
+        return roleRepository.save(role);
+    }
 
     @PutMapping("{id}")
     public ResponseEntity<Role> update(@PathVariable("id") String id, @RequestBody Role role) {

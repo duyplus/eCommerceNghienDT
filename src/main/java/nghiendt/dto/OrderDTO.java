@@ -15,13 +15,18 @@ import java.util.List;
 @Data
 public class OrderDTO implements Serializable {
     private final Integer id;
+
     @NotNull
     private final Boolean status;
+
     @NotNull
     private final LocalDateTime createdAt;
+
     @NotNull
     private final LocalDateTime updatedAt;
+
     @NotNull
     private final User user;
+    
     private final List<OrderDetail> orderDetails;
 }

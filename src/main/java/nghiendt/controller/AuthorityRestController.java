@@ -1,27 +1,24 @@
-package nghiendt.rest;
+package nghiendt.controller;
 
 import nghiendt.entity.Authority;
 import nghiendt.exception.ResourceNotFoundException;
 import nghiendt.repository.AuthorityRepository;
-import nghiendt.service.AuthorityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 @CrossOrigin("*")
 @RestController
-@RequestMapping(value = "/api/author")
+@RequestMapping(value = "/api/authority")
 public class AuthorityRestController {
-    @Autowired
-    private AuthorityService authorityService;
-
     @Autowired
     private AuthorityRepository authorityRepository;
 
     @GetMapping
-    public ResponseEntity<List<Authority>> getAllCompanies() {
+    public ResponseEntity<List<Authority>> getAllAuthorities() {
         List<Authority> listAuthority = authorityRepository.findAll();
         if (listAuthority.isEmpty()) {
             return new ResponseEntity<List<Authority>>(HttpStatus.NO_CONTENT);
@@ -30,7 +27,7 @@ public class AuthorityRestController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Authority> getCompaniesById(@PathVariable int id) {
+    public ResponseEntity<Authority> getAuthoritiesById(@PathVariable int id) {
         Authority authority = authorityRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Authority not exist with id: " + id));
         return ResponseEntity.ok(authority);

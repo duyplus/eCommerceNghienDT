@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class RoleServiceImpl implements RoleService {
     @Autowired
@@ -18,8 +19,8 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public Role findById(String roleid) {
-        return roleRepository.findById(roleid).get();
+    public Role findById(String id) {
+        return roleRepository.findById(id).get();
     }
 
 
@@ -29,10 +30,12 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public Role update(Role role) { return roleRepository.save(role); }
+    public Role update(Role role) {
+        return roleRepository.save(role);
+    }
 
     @Override
-    public void delete(String roleid) {
-        roleRepository.deleteById(roleid);
+    public void delete(String id) {
+        roleRepository.deleteById(id);
     }
 }

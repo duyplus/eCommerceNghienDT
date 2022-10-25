@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class OrderServiceImpl implements OrderService {
     @Autowired
@@ -18,8 +19,8 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Order findById(int orderid) {
-        return orderRepository.findById(orderid).get();
+    public Order findById(int id) {
+        return orderRepository.findById(id).get();
     }
 
 
@@ -34,7 +35,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void delete(int orderid) {
-        orderRepository.deleteById(orderid);
+    public void delete(int id) {
+        orderRepository.deleteById(id);
     }
 }

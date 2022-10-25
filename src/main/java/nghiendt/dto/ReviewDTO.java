@@ -14,13 +14,18 @@ import java.time.LocalDateTime;
 @Data
 public class ReviewDTO implements Serializable {
     private final Integer id;
+
     private final String content;
+
     @NotNull
     private final Integer mark;
+
     @Size(max = 255)
     private final String image;
+
     @NotNull
     private final LocalDateTime createdAt;
+
     @NotNull
     private final OrderDetail orderDetail;
 }

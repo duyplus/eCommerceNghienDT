@@ -8,11 +8,11 @@ public interface CategoryService {
 
     List<Category> findAll();
 
-    Category findById(int cateid);
+    Category findById(int id);
 
     Category create(Category category);
 
     Category update(Category category);
 
-    void delete(int cateid);
+    void delete(int id);
 }

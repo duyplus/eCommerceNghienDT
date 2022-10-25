@@ -1,4 +1,4 @@
-package nghiendt.rest;
+package nghiendt.controller;
 
 import nghiendt.entity.User;
 import nghiendt.exception.ResourceNotFoundException;

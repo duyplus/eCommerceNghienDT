@@ -1,20 +1,22 @@
 package nghiendt.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Nationalized;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name = "Contact")
-public class Contact {
+@Table(name = "Settings")
+public class Setting {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
@@ -24,16 +26,11 @@ public class Contact {
     @Column(name = "unit", nullable = false)
     private String unit;
 
-    @Size(max = 255)
     @NotNull
     @Nationalized
+    @Lob
     @Column(name = "address", nullable = false)
     private String address;
-
-    @Size(max = 20)
-    @NotNull
-    @Column(name = "fax", nullable = false, length = 20)
-    private String fax;
 
     @Size(max = 20)
     @NotNull
@@ -62,5 +59,4 @@ public class Contact {
     @Nationalized
     @Column(name = "zalo", nullable = false)
     private String zalo;
-
 }

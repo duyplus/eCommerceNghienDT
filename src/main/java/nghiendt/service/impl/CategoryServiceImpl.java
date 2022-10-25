@@ -7,10 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class CategoryServiceImpl implements CategoryService {
-     @Autowired
-     CategoryRepository categoryRepository;
+    @Autowired
+    CategoryRepository categoryRepository;
 
     @Override
     public List<Category> findAll() {
@@ -18,23 +19,23 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public Category findById(int cateid) {
-        return categoryRepository.findById(cateid).get();
+    public Category findById(int id) {
+        return categoryRepository.findById(id).get();
     }
 
 
     @Override
-    public Category create(Category cate) {
-        return categoryRepository.save(cate);
+    public Category create(Category category) {
+        return categoryRepository.save(category);
     }
 
     @Override
-    public Category update(Category cate) {
-        return categoryRepository.save(cate);
+    public Category update(Category category) {
+        return categoryRepository.save(category);
     }
 
     @Override
-    public void delete(int cateid) {
-        categoryRepository.deleteById(cateid);
+    public void delete(int id) {
+        categoryRepository.deleteById(id);
     }
 }

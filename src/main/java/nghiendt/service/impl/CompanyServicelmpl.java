@@ -21,8 +21,8 @@ public class CompanyServicelmpl implements CompanyService {
     }
 
     @Override
-    public Company findById(int companyid) {
-        return companyRepository.findById(companyid).get();
+    public Company findById(int id) {
+        return companyRepository.findById(id).get();
     }
 
 
@@ -37,7 +37,7 @@ public class CompanyServicelmpl implements CompanyService {
     }
 
     @Override
-    public void delete(int companyid) {
-        companyRepository.deleteById(companyid);
+    public void delete(int id) {
+        companyRepository.deleteById(id);
     }
 }
