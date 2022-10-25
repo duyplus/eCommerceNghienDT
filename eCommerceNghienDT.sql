@@ -123,7 +123,58 @@ CREATE TABLE Users (
 )
 GO
 
-SET IDENTITY_INSERT Authorities ON 
+SET IDENTITY_INSERT Products ON
+INSERT Products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (1, N'MSI Laptop', 2, 7, 0, 0, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer', N'anh3.png', CAST(N'2022-10-23 18:17:22.000' AS DateTime), CAST(N'2023-02-12 08:15:45.000' AS DateTime), 14, 4, 7)
+INSERT Products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (2, N'Lenovo Laptop', 5, 8, 0, 0, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer', N'anh3.png', CAST(N'2022-09-15 21:09:23.000' AS DateTime), CAST(N'2022-12-23 07:25:23.000' AS DateTime), 11, 3, 6)
+INSERT Products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (3, N'MSI Laptop', 1, 3, 5, 0, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer', N'anh2.png', CAST(N'2023-03-27 18:20:54.000' AS DateTime), CAST(N'2022-02-13 22:21:07.000' AS DateTime), 14, 2, 14)
+INSERT Products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (4, N'Laptop Aser', 6, 2, 10, 0, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing', N'anh1.png', CAST(N'2023-03-11 11:43:54.000' AS DateTime), CAST(N'2022-10-10 20:29:33.000' AS DateTime), 18, 1, 11)
+INSERT Products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (5, N'HP Laptop', 9, 2, 10, 0, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor.', N'anh2.png', CAST(N'2023-07-07 18:37:33.000' AS DateTime), CAST(N'2023-04-24 12:08:43.000' AS DateTime), 6, 3, 4)
+INSERT Products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (6, N'Laptop Aser', 7, 9, 20, 0, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer', N'anh3.png', CAST(N'2022-12-24 13:57:02.000' AS DateTime), CAST(N'2022-06-01 09:07:54.000' AS DateTime), 15, 2, 14)
+INSERT Products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (7, N'Aser Laptop', 1, 5, 20, 0, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor.', N'anh4.png', CAST(N'2022-11-22 19:35:17.000' AS DateTime), CAST(N'2021-12-28 04:47:47.000' AS DateTime), 8, 3, 7)
+INSERT Products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (8, N'Lenovo Laptop', 5, 3, 18, 1, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed', N'anh1.png', CAST(N'2022-09-14 02:28:31.000' AS DateTime), CAST(N'2021-11-17 14:07:53.000' AS DateTime), 9, 3, 3)
+INSERT Products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (9, N'Laptop Macbook', 7, 1, 15, 1, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed', N'anh4.png', CAST(N'2022-06-10 19:22:30.000' AS DateTime), CAST(N'2022-10-25 00:17:36.000' AS DateTime), 13, 2, 7)
+INSERT Products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (10, N'Laptop Lenovo', 7, 9, 15, 1, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam', N'anh2.png', CAST(N'2022-06-15 04:36:41.000' AS DateTime), CAST(N'2023-08-16 15:04:54.000' AS DateTime), 11, 4, 7)
+INSERT Products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (11, N'Điện thoại Iphone', 1, 8, 0, 0, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer', N'anh3.png,', CAST(N'2022-09-11 05:37:44.000' AS DateTime), CAST(N'2022-12-23 20:01:22.000' AS DateTime), 2, 2, 17)
+INSERT Products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (12, N'Điện thoại Xiaomi', 6, 0, 10, 1, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed', N'anh3.png,', CAST(N'2022-07-04 00:09:36.000' AS DateTime), CAST(N'2022-04-03 18:13:15.000' AS DateTime), 3, 3, 9)
+INSERT Products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (13, N'Điện thoại Huawei', 4, 3, 5, 1, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor.', N'anh1.png,', CAST(N'2023-10-19 19:13:55.000' AS DateTime), CAST(N'2023-10-06 23:35:18.000' AS DateTime), 14, 2, 11)
+INSERT Products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (14, N'Điện thoại Oppo', 9, 2, 5, 1, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam', N'anh1.png,', CAST(N'2022-04-30 21:24:49.000' AS DateTime), CAST(N'2023-05-05 13:06:35.000' AS DateTime), 17, 2, 10)
+INSERT Products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (15, N'Điện thoại Oppo', 1, 1, 5, 1, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing', N'anh2.png,', CAST(N'2022-05-23 02:56:55.000' AS DateTime), CAST(N'2022-01-31 02:39:54.000' AS DateTime), 11, 2, 17)
+INSERT Products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (16, N'Điện thoại Xiaomi', 8, 8, 0, 1, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam', N'anh4.png,', CAST(N'2023-07-04 09:42:16.000' AS DateTime), CAST(N'2022-04-28 13:51:26.000' AS DateTime), 2, 3, 17)
+INSERT Products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (17, N'Điện thoại Vivo', 2, 10, 20, 1, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor.', N'anh3.png,', CAST(N'2022-02-27 17:44:13.000' AS DateTime), CAST(N'2022-05-08 10:25:55.000' AS DateTime), 11, 2, 12)
+INSERT Products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (18, N'Điện thoại Oppo', 8, 9, 20, 1, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor.', N'anh3.png,', CAST(N'2023-07-25 01:35:17.000' AS DateTime), CAST(N'2022-10-06 00:52:29.000' AS DateTime), 16, 1, 11)
+INSERT Products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (19, N'Điện thoại Realme', 6, 1, 32, 1, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing', N'anh2.png,', CAST(N'2023-07-06 20:40:12.000' AS DateTime), CAST(N'2023-06-05 15:40:23.000' AS DateTime), 11, 2, 15)
+INSERT Products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (20, N'Điện thoại Vivo', 5, 3, 32, 1, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing', N'anh2.png,', CAST(N'2022-06-27 18:30:22.000' AS DateTime), CAST(N'2023-05-01 07:27:05.000' AS DateTime), 8, 4, 10)
+SET IDENTITY_INSERT Products OFF
+
+
+SET IDENTITY_INSERT Categories ON
+INSERT Categories (id, name, image) VALUES (1, N'Máy tính', N'mt.png')
+INSERT Categories (id, name, image) VALUES (2, N'Laptop', N'lt.png')
+INSERT Categories (id, name, image) VALUES (3, N'Điện thoại', N'dt.png')
+INSERT Categories (id, name, image) VALUES (4, N'Máy tính bảng', N'mtb,png')
+SET IDENTITY_INSERT Categories OFF
+
+SET IDENTITY_INSERT Companies ON
+INSERT Companies (id, name, logo) VALUES (1, N'Asus', N'asus.png')
+INSERT Companies (id, name, logo) VALUES (2, N'Dell', N'dell.png')
+INSERT Companies (id, name, logo) VALUES (3, N'MSI', N'msi.png')
+INSERT Companies (id, name, logo) VALUES (4, N'Acer', N'acer.png')
+INSERT Companies (id, name, logo) VALUES (5, N'Lenovo', N'lonovo.png')
+INSERT Companies (id, name, logo) VALUES (6, N'HP', N'hp.png')
+INSERT Companies (id, name, logo) VALUES (7, N'Alienware', N'alienware.png')
+INSERT Companies (id, name, logo) VALUES (8, N'Samsung', N'samsung.png')
+INSERT Companies (id, name, logo) VALUES (9, N'Apple', N'apple.png')
+INSERT Companies (id, name, logo) VALUES (10, N'Huawei', N'huawei.png')
+INSERT Companies (id, name, logo) VALUES (11, N'Gigabyte', N'gigabyte.png')
+INSERT Companies (id, name, logo) VALUES (12, N'LG', N'lg.png')
+INSERT Companies (id, name, logo) VALUES (13, N'Xiaomi', N'xiaomi.png')
+INSERT Companies (id, name, logo) VALUES (14, N'Vivo', N'vivo.png')
+INSERT Companies (id, name, logo) VALUES (15, N'Oppo', N'oppo.png')
+INSERT Companies (id, name, logo) VALUES (16, N'Realme', N'realme.png')
+INSERT Companies (id, name, logo) VALUES (17, N'Sony', N'sony.png')
+SET IDENTITY_INSERT Companies OFF
+
+SET IDENTITY_INSERT Authorities ON
 INSERT Authorities (id, user_id, role_id) VALUES (1, 1, N'DIRE')
 INSERT Authorities (id, user_id, role_id) VALUES (2, 2, N'STAF')
 INSERT Authorities (id, user_id, role_id) VALUES (3, 3, N'CUST')
@@ -150,11 +201,11 @@ INSERT Roles (id, name) VALUES (N'CUST', N'Customers')
 INSERT Roles (id, name) VALUES (N'DIRE', N'Directors')
 INSERT Roles (id, name) VALUES (N'STAF', N'Staffs')
 
-SET IDENTITY_INSERT Settings ON 
+SET IDENTITY_INSERT Settings ON
 INSERT Settings (id, unit, address, hotline, email, facebook, instagram, zalo) VALUES (1, N'NghienDT', N'140A Huỳnh Văn Bánh, Phú Nhuận, HCM', N'01234567890', N'nghienecomm@gmail.com', N'https://www.facebook.com/nghiendt', N'https://www.instagram.com/nghiendt', N'https://zalo.me/0919993715')
 SET IDENTITY_INSERT Settings OFF
 
-SET IDENTITY_INSERT Users ON 
+SET IDENTITY_INSERT Users ON
 INSERT Users (id, username, password, phone, fullname, birthday, email, address, image, created_at, updated_at, token) VALUES (1, N'admin', N'123', N'5263942068', N'Dori Dwine', CAST(N'1955-10-14' AS Date), N'ddwine0@npr.org', N'443 Glacier Hill Road', N'avt.png', CAST(N'2022-01-06 01:00:00.000' AS DateTime), CAST(N'2021-10-18 07:00:00.000' AS DateTime), NULL)
 INSERT Users (id, username, password, phone, fullname, birthday, email, address, image, created_at, updated_at, token) VALUES (2, N'staff', N'123', N'2568668500', N'Steve Kittiman', CAST(N'2022-08-24' AS Date), N'skittiman1@army.mil', N'84536 Lyons Parkway', N'avt.png', CAST(N'2021-11-03 05:00:00.000' AS DateTime), CAST(N'2022-04-08 01:00:00.000' AS DateTime), NULL)
 INSERT Users (id, username, password, phone, fullname, birthday, email, address, image, created_at, updated_at, token) VALUES (3, N'cust', N'123', N'8621753759', N'Leola Tufts', CAST(N'1930-04-29' AS Date), N'ltufts2@independent.co.uk', N'72707 Pleasure Crossing', N'avt.png', CAST(N'2022-09-14 07:00:00.000' AS DateTime), CAST(N'2022-08-01 02:00:00.000' AS DateTime), NULL)
