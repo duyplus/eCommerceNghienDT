@@ -14,6 +14,7 @@ import javax.validation.constraints.NotNull;
 @Table(name = "OrderDetails")
 public class OrderDetail {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
