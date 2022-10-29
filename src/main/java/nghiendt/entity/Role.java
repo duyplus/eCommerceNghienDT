@@ -5,10 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.hibernate.annotations.Nationalized;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
 
@@ -20,13 +18,10 @@ import java.util.List;
 public class Role {
     @Id
     @Size(max = 4)
-    @Nationalized
     @Column(name = "id", nullable = false, length = 4)
     private String id;
 
     @Size(max = 50)
-    @NotNull
-    @Nationalized
     @Column(name = "name", nullable = false, length = 50)
     private String name;
 

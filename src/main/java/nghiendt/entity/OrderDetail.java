@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 @Data
 @NoArgsConstructor
@@ -18,11 +17,9 @@ public class OrderDetail {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @NotNull
     @Column(name = "price", nullable = false)
     private Double price;
 
-    @NotNull
     @Column(name = "quantity", nullable = false)
     private Integer quantity;
 
