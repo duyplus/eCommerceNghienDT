@@ -59,7 +59,7 @@ public class ProductRestController {
     }
 
     @GetMapping("getTop5SP")
-    public List getTop5SP() {
+    public List<ProductRepository.Top5> getTop5SP() {
         return productRepository.getTop5SP();
     }
 }
