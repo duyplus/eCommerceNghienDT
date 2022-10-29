@@ -469,7 +469,8 @@ GO
 -- Top 5 sản phẩm bán chạy nhất
 CREATE PROC getTop5SP
 AS BEGIN
-	SELECT DISTINCT TOP 5 p.id as id, p.name as product_name, p.price as product_price, p.quantity product_quantity, c.name as company_name, u.username as user_name, p.available as product_available
+	SELECT DISTINCT TOP 5 p.id as id, p.name as product_name, p.price as product_price, p.quantity product_quantity,
+	p.available as product_available, p.image product_image, c.name as company_name, u.username as user_name
 	FROM Products as p
 		INNER JOIN Users u ON u.id = p.user_id
 		INNER JOIN Companies c ON c.id = p.company_id
