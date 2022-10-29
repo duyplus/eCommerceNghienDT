@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Integer> {
     @Modifying
-    @Query(value = "SELECT DISTINCT TOP 5 p.id as id, p.name as product_name, p.price as product_price, od.quantity order_quantity,\n" +
+    @Query(value = "SELECT DISTINCT TOP 5 p.id as id, p.name as product_name, p.price as product_price, od.quantity as order_quantity,\n" +
             "\tp.available as product_available, p.image product_image, c.name as company_name, u.fullname as full_name\n" +
             "\tFROM OrderDetails od\n" +
             "\t\tJOIN Orders o ON o.id = od.order_id\n" +
@@ -25,7 +25,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
         String getId();
         String getProduct_name();
         String getProduct_price();
-        String getProduct_quantity();
+        String getOrder_quantity();
         String getProduct_available();
         String getProduct_image();
         String getCompany_name();
