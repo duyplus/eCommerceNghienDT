@@ -24,7 +24,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     public static interface Top5 {
         int getId();
         String getProduct_name();
-        int getProduct_price();
+        double getProduct_price();
         int getOrder_quantity();
         boolean getProduct_available();
         String getProduct_image();
