@@ -22,11 +22,11 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     List<Top5> getTop5SP();
 
     public static interface Top5 {
-        String getId();
+        int getId();
         String getProduct_name();
-        String getProduct_price();
-        String getOrder_quantity();
-        String getProduct_available();
+        int getProduct_price();
+        int getOrder_quantity();
+        boolean getProduct_available();
         String getProduct_image();
         String getCompany_name();
         String getFull_name();
