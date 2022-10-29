@@ -442,39 +442,42 @@ SET IDENTITY_INSERT Settings OFF
 GO
 
 /* Authorities */
-ALTER TABLE Authorities WITH CHECK ADD CONSTRAINT FK_AuthoritiesRoles FOREIGN KEY(role_id)
+ALTER TABLE Authorities WITH CHECK ADD CONSTRAINT FK_Authorities_Roles FOREIGN KEY(role_id)
 REFERENCES Roles (id) ON UPDATE CASCADE
-ALTER TABLE Authorities WITH CHECK ADD CONSTRAINT FK_AuthoritiesUsers FOREIGN KEY(user_id)
+ALTER TABLE Authorities WITH CHECK ADD CONSTRAINT FK_Authorities_Users FOREIGN KEY(user_id)
 REFERENCES Users (id) ON UPDATE CASCADE ON DELETE CASCADE
 /* OrderDetails */
-ALTER TABLE OrderDetails WITH CHECK ADD CONSTRAINT FK_OrderDetailsOrders FOREIGN KEY(order_id)
+ALTER TABLE OrderDetails WITH CHECK ADD CONSTRAINT FK_OrderDetails_Orders FOREIGN KEY(order_id)
 REFERENCES Orders (id) ON UPDATE NO ACTION
-ALTER TABLE OrderDetails WITH CHECK ADD CONSTRAINT FK_OrderDetailsProducts FOREIGN KEY(product_id)
+ALTER TABLE OrderDetails WITH CHECK ADD CONSTRAINT FK_OrderDetails_Products FOREIGN KEY(product_id)
 REFERENCES Products (id) ON UPDATE NO ACTION
 /* Orders */
-ALTER TABLE Orders WITH CHECK ADD CONSTRAINT FK_OrdersUsers FOREIGN KEY(user_id)
-REFERENCES Users (id) ON UPDATE CASCADE ON DELETE CASCADE
+ALTER TABLE Orders WITH CHECK ADD CONSTRAINT FK_Orders_Users FOREIGN KEY(user_id)
+REFERENCES Users (id) ON DELETE NO ACTION ON UPDATE CASCADE
 /* Products */
-ALTER TABLE Products WITH CHECK ADD CONSTRAINT FK_CateatcompanyCompanies FOREIGN KEY(company_id)
-REFERENCES Companies (id) ON UPDATE CASCADE ON DELETE CASCADE
-ALTER TABLE Products WITH CHECK ADD CONSTRAINT FK_ProductsCategories FOREIGN KEY(category_id)
-REFERENCES Categories (id) ON UPDATE CASCADE ON DELETE CASCADE
-ALTER TABLE Products WITH CHECK ADD CONSTRAINT FK_ProductsUsers FOREIGN KEY(user_id)
-REFERENCES Users (id) ON UPDATE CASCADE ON DELETE CASCADE
+ALTER TABLE Products WITH CHECK ADD CONSTRAINT FK_Products_Companies FOREIGN KEY(company_id)
+REFERENCES Companies (id) ON DELETE NO ACTION ON UPDATE CASCADE
+ALTER TABLE Products WITH CHECK ADD CONSTRAINT FK_Products_Categories FOREIGN KEY(category_id)
+REFERENCES Categories (id) ON DELETE NO ACTION ON UPDATE CASCADE
+ALTER TABLE Products WITH CHECK ADD CONSTRAINT FK_Products_Users FOREIGN KEY(user_id)
+REFERENCES Users (id) ON DELETE NO ACTION ON UPDATE CASCADE
 /* Reviews */
-ALTER TABLE Reviews WITH CHECK ADD CONSTRAINT FK_ReviewsOrderDetails FOREIGN KEY(orderdetail_id)
+ALTER TABLE Reviews WITH CHECK ADD CONSTRAINT FK_Reviews_OrderDetails FOREIGN KEY(orderdetail_id)
 REFERENCES OrderDetails (id) ON DELETE NO ACTION
+GO
 
+-- Top 5 sản phẩm bán chạy nhất
+CREATE PROC getTop5SP
+AS BEGIN
+	SELECT DISTINCT TOP 5 p.id as id, p.name as product_name, p.price as product_price, p.quantity product_quantity, c.name as company_name, u.username as user_name, p.available as product_available
+	FROM Products as p
+		INNER JOIN Users u ON u.id = p.user_id
+		INNER JOIN Companies c ON c.id = p.company_id
+	ORDER BY product_quantity DESC
+END
+
+GO
 USE master
 GO
 ALTER DATABASE eCommerceNghienDT SET READ_WRITE 
 GO
-
---SELECT * FROM Products
---SELECT * FROM Orders
-
---SELECT * FROM Products
---WHERE quantity IN (SELECT DISTINCT TOP 5 quantity FROM OrderDetails ORDER BY quantity DESC)
-
---SELECT od.id,o.id FROM OrderDetails AS od
---CROSS APPLY (SELECT TOP 5 o.id FROM Orders o WHERE o.id = od.id ORDER BY o.id ASC) AS o
