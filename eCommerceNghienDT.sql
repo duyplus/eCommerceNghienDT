@@ -1,36 +1,27 @@
 ﻿USE master
 GO
-
 CREATE DATABASE eCommerceNghienDT
 GO
-
 USE eCommerceNghienDT
 GO
-
 CREATE TABLE Authorities (
 	id int IDENTITY(1,1) NOT NULL,
 	user_id int NOT NULL,
 	role_id nvarchar(4) NOT NULL,
 	CONSTRAINT PK_Authorities PRIMARY KEY CLUSTERED (id)
-)
-GO
-
+);
 CREATE TABLE Categories (
 	id int IDENTITY(1,1) NOT NULL,
 	name nvarchar(255) NOT NULL,
 	image nvarchar(255) NULL,
 	CONSTRAINT PK_Categories PRIMARY KEY CLUSTERED (id)
-)
-GO
-
+);
 CREATE TABLE Companies (
 	id int IDENTITY(1,1) NOT NULL,
 	name nvarchar(255) NOT NULL,
 	logo nvarchar(255) NULL,
 	CONSTRAINT PK_Companies PRIMARY KEY CLUSTERED (id)
-)
-GO
-
+);
 CREATE TABLE OrderDetails (
 	id int IDENTITY(1,1) NOT NULL,
 	price float NOT NULL,
@@ -38,9 +29,7 @@ CREATE TABLE OrderDetails (
 	order_id int NOT NULL,
 	product_id int NOT NULL,
 	CONSTRAINT PK_OrderDetails PRIMARY KEY CLUSTERED (id)
-)
-GO
-
+);
 CREATE TABLE Orders (
 	id int IDENTITY(1,1) NOT NULL,
 	status bit NOT NULL,
@@ -48,9 +37,7 @@ CREATE TABLE Orders (
 	updated_at datetime NOT NULL,
 	user_id int NOT NULL,
 	CONSTRAINT PK_Orders PRIMARY KEY CLUSTERED (id)
-)
-GO
-
+);
 CREATE TABLE Products (
 	id int IDENTITY(1,1) NOT NULL,
 	name nvarchar(255) NOT NULL,
@@ -66,9 +53,7 @@ CREATE TABLE Products (
 	category_id int NOT NULL,
 	company_id int NOT NULL,
 	CONSTRAINT PK_Products PRIMARY KEY CLUSTERED (id)
-)
-GO
-
+);
 CREATE TABLE Reviews (
 	id int IDENTITY(1,1) NOT NULL,
 	content nvarchar(max) NULL,
@@ -77,16 +62,12 @@ CREATE TABLE Reviews (
 	created_at datetime NOT NULL,
 	orderdetail_id int NOT NULL,
 	CONSTRAINT PK_Reviews PRIMARY KEY CLUSTERED (id)
-)
-GO
-
+);
 CREATE TABLE Roles (
 	id nvarchar(4) NOT NULL,
 	name nvarchar(50) NOT NULL,
 	CONSTRAINT PK_Roles PRIMARY KEY CLUSTERED (id)
-)
-GO
-
+);
 CREATE TABLE Settings (
 	id int IDENTITY(1,1) NOT NULL,
 	unit nvarchar(255) NULL,
@@ -97,9 +78,7 @@ CREATE TABLE Settings (
 	instagram nvarchar(255) NULL,
 	zalo nvarchar(255) NULL,
 	CONSTRAINT PK_Settings PRIMARY KEY CLUSTERED (id)
-)
-GO
-
+);
 CREATE TABLE Users (
 	id int IDENTITY(1,1) NOT NULL,
 	username varchar(50) NOT NULL,
@@ -114,9 +93,8 @@ CREATE TABLE Users (
 	updated_at datetime NOT NULL,
 	token varchar(50) NULL,
 	CONSTRAINT PK_Users PRIMARY KEY CLUSTERED (id)
-)
+);
 GO
-
 SET IDENTITY_INSERT Categories ON
 INSERT INTO Categories (id, name, image) VALUES (1, N'Máy tính', N'mt.png')
 INSERT INTO Categories (id, name, image) VALUES (2, N'Laptop', N'lt.png')
@@ -124,7 +102,6 @@ INSERT INTO Categories (id, name, image) VALUES (3, N'Điện thoại', N'dt.png
 INSERT INTO Categories (id, name, image) VALUES (4, N'Máy tính bảng', N'mtb,png')
 SET IDENTITY_INSERT Categories OFF
 GO
-
 SET IDENTITY_INSERT Companies ON
 INSERT INTO Companies (id, name, logo) VALUES (1, N'Asus', N'asus.png')
 INSERT INTO Companies (id, name, logo) VALUES (2, N'Dell', N'dell.png')
@@ -145,7 +122,6 @@ INSERT INTO Companies (id, name, logo) VALUES (16, N'Realme', N'realme.png')
 INSERT INTO Companies (id, name, logo) VALUES (17, N'Sony', N'sony.png')
 SET IDENTITY_INSERT Companies OFF
 GO
-
 SET IDENTITY_INSERT Users ON
 INSERT INTO Users (id, username, password, phone, fullname, birthday, email, address, image, created_at, updated_at, token) VALUES (1, N'admin', N'123', N'5263942068', N'Dori Dwine', CAST(N'1955-10-14' AS Date), N'ddwine0@npr.org', N'443 Glacier Hill Road', N'avt.png', CAST(N'2022-01-06T01:00:00.000' AS DateTime), CAST(N'2021-10-18T07:00:00.000' AS DateTime), NULL)
 INSERT INTO Users (id, username, password, phone, fullname, birthday, email, address, image, created_at, updated_at, token) VALUES (2, N'staff', N'123', N'2568668500', N'Steve Kittiman', CAST(N'2022-08-24' AS Date), N'skittiman1@army.mil', N'84536 Lyons Parkway', N'avt.png', CAST(N'2021-11-03T05:00:00.000' AS DateTime), CAST(N'2022-04-08T01:00:00.000' AS DateTime), NULL)
@@ -169,7 +145,6 @@ INSERT INTO Users (id, username, password, phone, fullname, birthday, email, add
 INSERT INTO Users (id, username, password, phone, fullname, birthday, email, address, image, created_at, updated_at, token) VALUES (20, N'gbelisonj', N'Q9FA64H0MkjU', N'9066819835', N'Gerek Belison', CAST(N'1967-01-13' AS Date), N'gbelisonj@ifeng.com', N'685 Randy Court', N'avt.png', CAST(N'2022-01-12T00:00:00.000' AS DateTime), CAST(N'2022-05-17T00:00:00.000' AS DateTime), NULL)
 SET IDENTITY_INSERT Users OFF
 GO
-
 SET IDENTITY_INSERT Products ON
 INSERT INTO Products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (1, N'MSI Laptop', 2, 7, 0, 0, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer', N'anh3.png', CAST(N'2022-10-23T18:17:22.000' AS DateTime), CAST(N'2023-02-12T08:15:45.000' AS DateTime), 14, 4, 7)
 INSERT INTO Products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (2, N'Lenovo Laptop', 5, 8, 0, 0, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer', N'anh3.png', CAST(N'2022-09-15T21:09:23.000' AS DateTime), CAST(N'2022-12-23T07:25:23.000' AS DateTime), 11, 3, 6)
@@ -193,7 +168,6 @@ INSERT INTO Products (id, name, price, quantity, discount, available, descriptio
 INSERT INTO Products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (20, N'Điện thoại Vivo', 5, 3, 32, 1, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur sed tortor. Integer aliquam adipiscing', N'anh2.png,', CAST(N'2022-06-27T18:30:22.000' AS DateTime), CAST(N'2023-05-01T07:27:05.000' AS DateTime), 8, 4, 10)
 SET IDENTITY_INSERT Products OFF
 GO
-
 SET IDENTITY_INSERT Orders ON
 INSERT INTO Orders (id, status, created_at, updated_at, user_id) VALUES (1, 1, '2022-02-28 11:04:23', '2022-02-04 23:04:57', 3)
 INSERT INTO Orders (id, status, created_at, updated_at, user_id) VALUES (2, 1, '2022-08-15 12:17:28', '2021-12-06 02:33:09', 12)
@@ -297,7 +271,6 @@ INSERT INTO Orders (id, status, created_at, updated_at, user_id) VALUES (99, 1, 
 INSERT INTO Orders (id, status, created_at, updated_at, user_id) VALUES (100, 1, '2021-11-23 23:25:33', '2022-04-27 22:17:13', 4)
 SET IDENTITY_INSERT Orders OFF
 GO
-
 SET IDENTITY_INSERT OrderDetails ON 
 INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (1, 25348395, 47, 36, 14);
 INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (2, 41410920, 3, 76, 18);
@@ -401,17 +374,14 @@ INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (99,
 INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (100, 16571363, 34, 74, 16);
 SET IDENTITY_INSERT OrderDetails OFF
 GO
-
 SET IDENTITY_INSERT Reviews ON 
 INSERT INTO Reviews (id, content, mark, image, created_at, orderdetail_id) VALUES (1, N'Hàng sài rất ok', 10, N'anh1.png', CAST(N'2022-10-26T18:15:22.000' AS DateTime), 1)
 SET IDENTITY_INSERT Reviews OFF
 GO
-
 INSERT INTO Roles (id, name) VALUES (N'CUST', N'Customers')
 INSERT INTO Roles (id, name) VALUES (N'DIRE', N'Directors')
 INSERT INTO Roles (id, name) VALUES (N'STAF', N'Staffs')
 GO
-
 SET IDENTITY_INSERT Authorities ON 
 INSERT INTO Authorities (id, user_id, role_id) VALUES (1, 1, N'DIRE')
 INSERT INTO Authorities (id, user_id, role_id) VALUES (2, 2, N'STAF')
@@ -435,12 +405,10 @@ INSERT INTO Authorities (id, user_id, role_id) VALUES (19, 19, N'CUST')
 INSERT INTO Authorities (id, user_id, role_id) VALUES (20, 20, N'CUST')
 SET IDENTITY_INSERT Authorities OFF
 GO
-
 SET IDENTITY_INSERT Settings ON 
 INSERT INTO Settings (id, unit, address, hotline, email, facebook, instagram, zalo) VALUES (1, N'NghienDT', N'140A Huỳnh Văn Bánh, Phú Nhuận, HCM', N'01234567890', N'nghienecomm@gmail.com', N'https://www.facebook.com/nghiendt', N'https://www.instagram.com/nghiendt', N'https://zalo.me/0919993715')
 SET IDENTITY_INSERT Settings OFF
 GO
-
 /* Authorities */
 ALTER TABLE Authorities WITH CHECK ADD CONSTRAINT FK_Authorities_Roles FOREIGN KEY(role_id)
 REFERENCES Roles (id) ON UPDATE CASCADE
@@ -469,12 +437,14 @@ GO
 -- Top 5 sản phẩm bán chạy nhất
 CREATE PROC getTop5SP
 AS BEGIN
-	SELECT DISTINCT TOP 5 p.id as id, p.name as product_name, p.price as product_price, p.quantity product_quantity,
+	SELECT DISTINCT TOP 5 p.id as id, p.name as product_name, p.price as product_price, od.quantity order_quantity,
 	p.available as product_available, p.image product_image, c.name as company_name, u.fullname as full_name
-	FROM Products as p
-		INNER JOIN Users u ON u.id = p.user_id
-		INNER JOIN Companies c ON c.id = p.company_id
-	ORDER BY product_quantity DESC
+	FROM OrderDetails od
+		JOIN Orders o ON o.id = od.order_id
+		JOIN Users u ON u.id = o.user_id
+		JOIN Products as p ON p.user_id = u.id
+		JOIN Companies c ON c.id = p.company_id
+	ORDER BY order_quantity DESC
 END
 
 GO
