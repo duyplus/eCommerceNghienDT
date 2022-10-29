@@ -22,7 +22,7 @@ public class OrderRestController {
     private OrderRepository orderRepository;
 
     @GetMapping
-    public ResponseEntity<List<Order>> getAllCompanies() {
+    public ResponseEntity<List<Order>> getAllOrders() {
         List<Order> listOrder = orderRepository.findAll();
         if (listOrder.isEmpty()) {
             return new ResponseEntity<List<Order>>(HttpStatus.NO_CONTENT);
@@ -31,19 +31,19 @@ public class OrderRestController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Order> getCompaniesById(@PathVariable int id) {
+    public ResponseEntity<Order> getOrdersById(@PathVariable int id) {
         Order order = orderRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Order not exist with id: " + id));
         return ResponseEntity.ok(order);
     }
 
     @PostMapping
-    public Order create(@RequestBody Order order) {
+    public Order createOrders(@RequestBody Order order) {
         return orderRepository.save(order);
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Order> update(@PathVariable("id") int id, @RequestBody Order order) {
+    public ResponseEntity<Order> updateOrders(@PathVariable("id") int id, @RequestBody Order order) {
         Order updateOrder = orderRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Order not exist with id: " + id));
         orderRepository.save(order);
@@ -51,7 +51,7 @@ public class OrderRestController {
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<HttpStatus> delete(@PathVariable int id) {
+    public ResponseEntity<HttpStatus> deleteOrders(@PathVariable int id) {
         Order order = orderRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Order not exist with id: " + id));
         orderRepository.delete(order);

@@ -34,12 +34,12 @@ public class AuthorityRestController {
     }
 
     @PostMapping
-    public Authority create(@RequestBody Authority authority) {
+    public Authority createCategories(@RequestBody Authority authority) {
         return authorityRepository.save(authority);
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Authority> update(@PathVariable("id") int id, @RequestBody Authority authority) {
+    public ResponseEntity<Authority> updateAuthorities(@PathVariable("id") int id, @RequestBody Authority authority) {
         Authority updateAuthority = authorityRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Authority not exist with id: " + id));
         authorityRepository.save(authority);
@@ -47,7 +47,7 @@ public class AuthorityRestController {
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<HttpStatus> delete(@PathVariable int id) {
+    public ResponseEntity<HttpStatus> deleteAuthorities(@PathVariable int id) {
         Authority authority = authorityRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Authority not exist with id: " + id));
         authorityRepository.delete(authority);

@@ -18,7 +18,7 @@ public class CategoryRestController {
     private CategoryRepository cateRepository;
 
     @GetMapping
-    public ResponseEntity<List<Category>> getAllCompanies() {
+    public ResponseEntity<List<Category>> getAllCategories() {
         List<Category> listCategory = cateRepository.findAll();
         if (listCategory.isEmpty()) {
             return new ResponseEntity<List<Category>>(HttpStatus.NO_CONTENT);
@@ -27,19 +27,19 @@ public class CategoryRestController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Category> getCompaniesById(@PathVariable int id) {
+    public ResponseEntity<Category> getCategoriesById(@PathVariable int id) {
         Category category = cateRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Category not exist with id: " + id));
         return ResponseEntity.ok(category);
     }
 
     @PostMapping
-    public Category create(@RequestBody Category category) {
+    public Category createCategories(@RequestBody Category category) {
         return cateRepository.save(category);
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Category> update(@PathVariable("id") int id, @RequestBody Category category) {
+    public ResponseEntity<Category> updateCategories(@PathVariable("id") int id, @RequestBody Category category) {
         Category updateCategory = cateRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Category not exist with id: " + id));
         cateRepository.save(category);
@@ -47,7 +47,7 @@ public class CategoryRestController {
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<HttpStatus> delete(@PathVariable int id) {
+    public ResponseEntity<HttpStatus> deleteCategories(@PathVariable int id) {
         Category category = cateRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Category not exist with id: " + id));
         cateRepository.delete(category);

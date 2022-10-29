@@ -34,12 +34,12 @@ public class CompanyRestController {
     }
 
     @PostMapping
-    public Company create(@RequestBody Company company) {
+    public Company createCompanies(@RequestBody Company company) {
         return companyRepository.save(company);
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Company> update(@PathVariable("id") int id, @RequestBody Company company) {
+    public ResponseEntity<Company> updateCompanies(@PathVariable("id") int id, @RequestBody Company company) {
         Company updateCompany = companyRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Company not exist with id: " + id));
         companyRepository.save(company);
@@ -47,7 +47,7 @@ public class CompanyRestController {
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<HttpStatus> delete(@PathVariable int id) {
+    public ResponseEntity<HttpStatus> deleteCompanies(@PathVariable int id) {
         Company company = companyRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Company not exist with id: " + id));
         companyRepository.delete(company);

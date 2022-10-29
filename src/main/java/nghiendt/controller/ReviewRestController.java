@@ -22,7 +22,7 @@ public class ReviewRestController {
     private ReviewRepository reviewRepository;
 
     @GetMapping
-    public ResponseEntity<List<Review>> getAllCompanies() {
+    public ResponseEntity<List<Review>> getAllReviews() {
         List<Review> listReview = reviewRepository.findAll();
         if (listReview.isEmpty()) {
             return new ResponseEntity<List<Review>>(HttpStatus.NO_CONTENT);
@@ -31,19 +31,19 @@ public class ReviewRestController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Review> getCompaniesById(@PathVariable int id) {
+    public ResponseEntity<Review> getReviewsById(@PathVariable int id) {
         Review review = reviewRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Review not exist with id: " + id));
         return ResponseEntity.ok(review);
     }
 
     @PostMapping
-    public Review create(@RequestBody Review review) {
+    public Review createReviews(@RequestBody Review review) {
         return reviewRepository.save(review);
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Review> update(@PathVariable("id") int id, @RequestBody Review review) {
+    public ResponseEntity<Review> updateReviews(@PathVariable("id") int id, @RequestBody Review review) {
         Review updateReview = reviewRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Review not exist with id: " + id));
         reviewRepository.save(review);
@@ -51,7 +51,7 @@ public class ReviewRestController {
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<HttpStatus> delete(@PathVariable int id) {
+    public ResponseEntity<HttpStatus> deleteReviews(@PathVariable int id) {
         Review review = reviewRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Review not exist with id: " + id));
         reviewRepository.delete(review);

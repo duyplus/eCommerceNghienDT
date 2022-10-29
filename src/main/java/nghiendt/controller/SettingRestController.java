@@ -18,7 +18,7 @@ public class SettingRestController {
     private SettingRepository settingRepository;
 
     @GetMapping
-    public ResponseEntity<List<Setting>> getAllCompanies() {
+    public ResponseEntity<List<Setting>> getAllSettings() {
         List<Setting> listContact = settingRepository.findAll();
         if (listContact.isEmpty()) {
             return new ResponseEntity<List<Setting>>(HttpStatus.NO_CONTENT);
@@ -27,19 +27,19 @@ public class SettingRestController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Setting> getCompaniesById(@PathVariable int id) {
+    public ResponseEntity<Setting> getSettingsById(@PathVariable int id) {
         Setting setting = settingRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Contact not exist with id: " + id));
         return ResponseEntity.ok(setting);
     }
 
     @PostMapping
-    public Setting create(@RequestBody Setting setting) {
+    public Setting createSettings(@RequestBody Setting setting) {
         return settingRepository.save(setting);
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Setting> update(@PathVariable("id") int id, @RequestBody Setting setting) {
+    public ResponseEntity<Setting> updateSettings(@PathVariable("id") int id, @RequestBody Setting setting) {
         Setting updateSetting = settingRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Contact not exist with id: " + id));
         settingRepository.save(setting);
@@ -47,7 +47,7 @@ public class SettingRestController {
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<HttpStatus> delete(@PathVariable int id) {
+    public ResponseEntity<HttpStatus> deleteSettings(@PathVariable int id) {
         Setting setting = settingRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Contact not exist with id: " + id));
         settingRepository.delete(setting);

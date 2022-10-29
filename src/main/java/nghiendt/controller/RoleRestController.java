@@ -18,7 +18,7 @@ public class RoleRestController {
     private RoleRepository roleRepository;
 
     @GetMapping
-    public ResponseEntity<List<Role>> getAllCompanies() {
+    public ResponseEntity<List<Role>> getAllRoles() {
         List<Role> listRole = roleRepository.findAll();
         if (listRole.isEmpty()) {
             return new ResponseEntity<List<Role>>(HttpStatus.NO_CONTENT);
@@ -27,19 +27,19 @@ public class RoleRestController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Role> getCompaniesById(@PathVariable String id) {
+    public ResponseEntity<Role> getRolesById(@PathVariable String id) {
         Role role = roleRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Role not exist with id: " + id));
         return ResponseEntity.ok(role);
     }
 
     @PostMapping
-    public Role create(@RequestBody Role role) {
+    public Role createRoles(@RequestBody Role role) {
         return roleRepository.save(role);
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Role> update(@PathVariable("id") String id, @RequestBody Role role) {
+    public ResponseEntity<Role> updateRoles(@PathVariable("id") String id, @RequestBody Role role) {
         Role updateRole = roleRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Role not exist with id: " + id));
         roleRepository.save(role);
@@ -47,7 +47,7 @@ public class RoleRestController {
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<HttpStatus> delete(@PathVariable String id) {
+    public ResponseEntity<HttpStatus> deleteRoles(@PathVariable String id) {
         Role role = roleRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Role not exist with id: " + id));
         roleRepository.delete(role);

@@ -22,7 +22,7 @@ public class ProductRestController {
     private ProductRepository productRepository;
 
     @GetMapping
-    public ResponseEntity<List<Product>> getAllCompanies() {
+    public ResponseEntity<List<Product>> getAllProducts() {
         List<Product> listProduct = productRepository.findAll();
         if (listProduct.isEmpty()) {
             return new ResponseEntity<List<Product>>(HttpStatus.NO_CONTENT);
@@ -31,19 +31,19 @@ public class ProductRestController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Product> getCompaniesById(@PathVariable int id) {
+    public ResponseEntity<Product> getProductsById(@PathVariable int id) {
         Product product = productRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Product not exist with id: " + id));
         return ResponseEntity.ok(product);
     }
 
     @PostMapping
-    public Product create(@RequestBody Product product) {
+    public Product createProducts(@RequestBody Product product) {
         return productRepository.save(product);
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Product> update(@PathVariable("id") int id, @RequestBody Product product) {
+    public ResponseEntity<Product> updateProducts(@PathVariable("id") int id, @RequestBody Product product) {
         Product updateProduct = productRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Product not exist with id: " + id));
         productRepository.save(product);
@@ -51,7 +51,7 @@ public class ProductRestController {
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<HttpStatus> delete(@PathVariable int id) {
+    public ResponseEntity<HttpStatus> deleteProducts(@PathVariable int id) {
         Product product = productRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Product not exist with id: " + id));
         productRepository.delete(product);
