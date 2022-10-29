@@ -57,4 +57,9 @@ public class ProductRestController {
         productRepository.delete(product);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @GetMapping("getTop5SP")
+    public List getTop5SP() {
+        return productRepository.getTop5SP();
+    }
 }
