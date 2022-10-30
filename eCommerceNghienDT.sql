@@ -60,6 +60,7 @@ CREATE TABLE Reviews (
 	mark int NULL,
 	image nvarchar(255) NULL,
 	created_at datetime NOT NULL,
+	enable bit NOT NULL,
 	order_detail_id int NOT NULL,
 	CONSTRAINT PK_Reviews PRIMARY KEY CLUSTERED (id)
 );
@@ -375,7 +376,7 @@ INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (10
 SET IDENTITY_INSERT Order_Details OFF
 GO
 SET IDENTITY_INSERT Reviews ON 
-INSERT INTO Reviews (id, content, mark, image, created_at, order_detail_id) VALUES (1, N'Hàng sài rất ok', 10, N'anh1.png', CAST(N'2022-10-26T18:15:22.000' AS DateTime), 1)
+INSERT INTO Reviews (id, content, mark, image, created_at, order_detail_id, enable) VALUES (1, N'Hàng sài rất ok', 10, N'anh1.png', CAST(N'2022-10-26T18:15:22.000' AS DateTime), 1, 1)
 SET IDENTITY_INSERT Reviews OFF
 GO
 INSERT INTO Roles (id, name) VALUES (N'CUST', N'Customers')
