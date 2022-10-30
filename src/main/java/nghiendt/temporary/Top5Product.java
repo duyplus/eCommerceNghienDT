@@ -14,4 +14,6 @@ public interface Top5Product {
     String getProduct_image();
 
     String getCompany_name();
+
+    String getFull_name();
 }
