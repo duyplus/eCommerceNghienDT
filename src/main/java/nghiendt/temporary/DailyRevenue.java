@@ -8,4 +8,6 @@ public interface DailyRevenue {
     Date getToday();
 
     double getRevenue_order();
+
+    double getSum_revenue();
 }

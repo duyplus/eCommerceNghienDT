@@ -35,7 +35,8 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     List<Top5Customer> getTop5Customer();
 
     @Modifying
-    @Query(value = "SELECT sum(od.quantity) as order_quantity, CAST(o.created_at as DATE) as today, SUM(od.price) as revenue_order\n" +
+    @Query(value = "SELECT sum(od.quantity) as order_quantity, CAST(o.created_at as DATE) as today,\n" +
+            "\tSUM(od.price) as revenue_order, (SELECT SUM(price) FROM Order_Details) as sum_revenue\n" +
             "\tFROM Order_Details od\n" +
             "\t\tJOIN Orders o ON o.id = od.order_id\n" +
             "\t\tJOIN Users u ON u.id = o.user_id\n" +
