@@ -22,13 +22,13 @@ CREATE TABLE Companies (
 	logo nvarchar(255) NULL,
 	CONSTRAINT PK_Companies PRIMARY KEY CLUSTERED (id)
 );
-CREATE TABLE OrderDetails (
+CREATE TABLE Order_Details (
 	id int IDENTITY(1,1) NOT NULL,
 	price float NOT NULL,
 	quantity int NOT NULL,
 	order_id int NOT NULL,
 	product_id int NOT NULL,
-	CONSTRAINT PK_OrderDetails PRIMARY KEY CLUSTERED (id)
+	CONSTRAINT PK_Order_Details PRIMARY KEY CLUSTERED (id)
 );
 CREATE TABLE Orders (
 	id int IDENTITY(1,1) NOT NULL,
@@ -60,7 +60,7 @@ CREATE TABLE Reviews (
 	mark int NULL,
 	image nvarchar(255) NULL,
 	created_at datetime NOT NULL,
-	orderdetail_id int NOT NULL,
+	order_detail_id int NOT NULL,
 	CONSTRAINT PK_Reviews PRIMARY KEY CLUSTERED (id)
 );
 CREATE TABLE Roles (
@@ -264,118 +264,118 @@ INSERT INTO Orders (id, status, created_at, updated_at, user_id) VALUES (92, 1, 
 INSERT INTO Orders (id, status, created_at, updated_at, user_id) VALUES (93, 1, '2021-11-18 10:17:34', '2022-04-13 22:47:57', 4)
 INSERT INTO Orders (id, status, created_at, updated_at, user_id) VALUES (94, 1, '2022-03-19 16:12:26', '2021-11-13 10:48:35', 16)
 INSERT INTO Orders (id, status, created_at, updated_at, user_id) VALUES (95, 1, '2022-02-28 00:52:11', '2022-04-18 15:49:17', 4)
-INSERT INTO Orders (id, status, created_at, updated_at, user_id) VALUES (96, 1, '2022-04-18 18:20:16', '2022-01-20 09:59:25', 4)
-INSERT INTO Orders (id, status, created_at, updated_at, user_id) VALUES (97, 1, '2021-11-27 06:14:47', '2022-10-03 21:27:08', 4)
-INSERT INTO Orders (id, status, created_at, updated_at, user_id) VALUES (98, 1, '2022-06-19 08:52:14', '2022-05-31 00:07:01', 16)
-INSERT INTO Orders (id, status, created_at, updated_at, user_id) VALUES (99, 1, '2022-02-27 02:32:32', '2022-09-21 08:08:09', 12)
-INSERT INTO Orders (id, status, created_at, updated_at, user_id) VALUES (100, 1, '2021-11-23 23:25:33', '2022-04-27 22:17:13', 4)
+INSERT INTO Orders (id, status, created_at, updated_at, user_id) VALUES (96, 1, '2022-10-31 07:20:16', '2022-10-31 07:59:25', 4)
+INSERT INTO Orders (id, status, created_at, updated_at, user_id) VALUES (97, 1, '2022-10-31 08:14:47', '2022-10-31 09:27:08', 4)
+INSERT INTO Orders (id, status, created_at, updated_at, user_id) VALUES (98, 1, '2022-10-31 09:52:14', '2022-10-31 11:07:01', 16)
+INSERT INTO Orders (id, status, created_at, updated_at, user_id) VALUES (99, 1, '2022-10-31 10:32:32', '2022-10-31 12:08:09', 12)
+INSERT INTO Orders (id, status, created_at, updated_at, user_id) VALUES (100, 1, '2022-10-31 19:25:33', '2022-10-31 22:17:13', 4)
 SET IDENTITY_INSERT Orders OFF
 GO
-SET IDENTITY_INSERT OrderDetails ON 
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (1, 25348395, 47, 36, 14);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (2, 41410920, 3, 76, 18);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (3, 22798890, 21, 6, 4);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (4, 5992905, 27, 10, 11);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (5, 34056264, 49, 42, 16);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (6, 45723758, 45, 30, 12);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (7, 11043870, 33, 21, 8);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (8, 25001290, 8, 19, 12);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (9, 47532518, 3, 92, 5);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (10, 35421124, 1, 89, 12);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (11, 48602966, 36, 42, 5);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (12, 39347184, 34, 2, 5);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (13, 39046654, 28, 66, 7);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (14, 9100771, 40, 73, 9);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (15, 16088599, 23, 56, 8);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (16, 17684375, 21, 20, 2);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (17, 25745334, 10, 88, 9);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (18, 12286289, 5, 27, 16);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (19, 15415471, 29, 32, 6);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (20, 9402708, 3, 78, 15);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (21, 7928236, 22, 87, 18);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (22, 24787552, 7, 14, 6);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (23, 26232175, 36, 72, 19);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (24, 43406485, 17, 16, 1);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (25, 11545336, 6, 3, 2);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (26, 39256974, 16, 87, 2);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (27, 26323450, 23, 14, 15);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (28, 13196660, 27, 23, 16);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (29, 8514161, 13, 11, 9);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (30, 34294399, 9, 84, 3);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (31, 19982662, 48, 13, 2);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (32, 18104943, 19, 13, 19);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (33, 7485834, 23, 47, 1);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (34, 16785669, 37, 58, 5);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (35, 16752777, 5, 26, 12);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (36, 28225339, 26, 80, 13);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (37, 24747669, 46, 23, 4);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (38, 34660888, 36, 69, 9);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (39, 26857659, 1, 56, 2);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (40, 32306827, 5, 93, 2);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (41, 47864492, 46, 75, 1);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (42, 33856184, 8, 42, 13);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (43, 45208023, 26, 5, 16);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (44, 20340408, 30, 64, 4);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (45, 46736610, 47, 88, 2);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (46, 22094064, 28, 39, 9);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (47, 42551253, 43, 97, 11);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (48, 47400209, 2, 24, 6);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (49, 22874482, 10, 75, 2);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (50, 26321475, 35, 97, 10);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (51, 11505203, 36, 43, 16);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (52, 15426416, 29, 43, 18);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (53, 8256656, 43, 40, 11);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (54, 40712760, 5, 11, 4);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (55, 19513034, 16, 83, 12);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (56, 48902762, 50, 95, 5);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (57, 11412878, 26, 87, 19);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (58, 19898755, 15, 33, 15);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (59, 47823320, 38, 39, 17);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (60, 49977622, 3, 44, 5);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (61, 22843223, 24, 99, 12);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (62, 11192531, 6, 59, 11);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (63, 12917500, 43, 20, 16);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (64, 43056491, 49, 54, 19);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (65, 23132184, 10, 71, 8);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (66, 29681727, 48, 92, 12);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (67, 39012605, 12, 30, 14);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (68, 30033335, 8, 81, 11);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (69, 32129611, 2, 45, 12);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (70, 41974458, 40, 54, 3);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (71, 5428641, 18, 6, 18);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (72, 49100204, 46, 63, 1);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (73, 13357335, 1, 69, 17);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (74, 35794223, 38, 3, 16);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (75, 8623966, 15, 64, 17);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (76, 26195302, 29, 10, 6);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (77, 9937762, 11, 68, 7);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (78, 37870537, 16, 95, 15);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (79, 44606696, 7, 90, 17);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (80, 5140739, 3, 59, 17);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (81, 24101392, 20, 10, 11);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (82, 13854940, 46, 83, 6);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (83, 26905656, 25, 51, 16);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (84, 16033864, 30, 100, 7);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (85, 17883323, 29, 16, 20);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (86, 20924061, 49, 28, 8);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (87, 38792774, 16, 82, 16);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (88, 36661963, 25, 66, 9);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (89, 27000628, 15, 90, 2);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (90, 32434697, 7, 68, 1);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (91, 48171227, 42, 81, 4);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (92, 23966638, 9, 2, 10);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (93, 31127802, 28, 66, 16);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (94, 18012629, 47, 96, 5);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (95, 21019774, 13, 76, 7);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (96, 43022719, 19, 36, 9);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (97, 19279960, 2, 83, 18);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (98, 18548795, 30, 38, 10);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (99, 40495574, 26, 13, 3);
-INSERT INTO OrderDetails (id, price, quantity, order_id, product_id) VALUES (100, 16571363, 34, 74, 16);
-SET IDENTITY_INSERT OrderDetails OFF
+SET IDENTITY_INSERT Order_Details ON 
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (1, 25348395, 47, 36, 14);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (2, 41410920, 3, 76, 18);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (3, 22798890, 21, 6, 4);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (4, 5992905, 27, 10, 11);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (5, 34056264, 49, 42, 16);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (6, 45723758, 45, 30, 12);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (7, 11043870, 33, 21, 8);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (8, 25001290, 8, 19, 12);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (9, 47532518, 3, 92, 5);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (10, 35421124, 1, 89, 12);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (11, 48602966, 36, 42, 5);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (12, 39347184, 34, 2, 5);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (13, 39046654, 28, 66, 7);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (14, 9100771, 40, 73, 9);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (15, 16088599, 23, 56, 8);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (16, 17684375, 21, 20, 2);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (17, 25745334, 10, 88, 9);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (18, 12286289, 5, 27, 16);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (19, 15415471, 29, 32, 6);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (20, 9402708, 3, 78, 15);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (21, 7928236, 22, 87, 18);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (22, 24787552, 7, 14, 6);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (23, 26232175, 36, 72, 19);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (24, 43406485, 17, 16, 1);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (25, 11545336, 6, 3, 2);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (26, 39256974, 16, 87, 2);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (27, 26323450, 23, 14, 15);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (28, 13196660, 27, 23, 16);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (29, 8514161, 13, 11, 9);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (30, 34294399, 9, 84, 3);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (31, 19982662, 48, 13, 2);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (32, 18104943, 19, 13, 19);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (33, 7485834, 23, 47, 1);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (34, 16785669, 37, 58, 5);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (35, 16752777, 5, 26, 12);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (36, 28225339, 26, 80, 13);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (37, 24747669, 46, 23, 4);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (38, 34660888, 36, 69, 9);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (39, 26857659, 1, 56, 2);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (40, 32306827, 5, 93, 2);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (41, 47864492, 46, 75, 1);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (42, 33856184, 8, 42, 13);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (43, 45208023, 26, 5, 16);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (44, 20340408, 30, 64, 4);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (45, 46736610, 47, 88, 2);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (46, 22094064, 28, 39, 9);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (47, 42551253, 43, 97, 11);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (48, 47400209, 2, 24, 6);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (49, 22874482, 10, 75, 2);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (50, 26321475, 35, 97, 10);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (51, 11505203, 36, 43, 16);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (52, 15426416, 29, 43, 18);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (53, 8256656, 43, 40, 11);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (54, 40712760, 5, 11, 4);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (55, 19513034, 16, 83, 12);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (56, 48902762, 50, 95, 5);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (57, 11412878, 26, 87, 19);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (58, 19898755, 15, 33, 15);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (59, 47823320, 38, 39, 17);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (60, 49977622, 3, 44, 5);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (61, 22843223, 24, 99, 12);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (62, 11192531, 6, 59, 11);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (63, 12917500, 43, 20, 16);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (64, 43056491, 49, 54, 19);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (65, 23132184, 10, 71, 8);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (66, 29681727, 48, 92, 12);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (67, 39012605, 12, 30, 14);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (68, 30033335, 8, 81, 11);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (69, 32129611, 2, 45, 12);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (70, 41974458, 40, 54, 3);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (71, 5428641, 18, 6, 18);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (72, 49100204, 46, 63, 1);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (73, 13357335, 1, 69, 17);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (74, 35794223, 38, 3, 16);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (75, 8623966, 15, 64, 17);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (76, 26195302, 29, 10, 6);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (77, 9937762, 11, 68, 7);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (78, 37870537, 16, 95, 15);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (79, 44606696, 7, 90, 17);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (80, 5140739, 3, 59, 17);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (81, 24101392, 20, 10, 11);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (82, 13854940, 46, 83, 6);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (83, 26905656, 25, 51, 16);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (84, 16033864, 30, 100, 7);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (85, 17883323, 29, 16, 20);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (86, 20924061, 49, 28, 8);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (87, 38792774, 16, 82, 16);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (88, 36661963, 25, 66, 9);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (89, 27000628, 15, 90, 2);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (90, 32434697, 7, 68, 1);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (91, 48171227, 42, 81, 4);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (92, 23966638, 9, 2, 10);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (93, 31127802, 28, 66, 16);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (94, 18012629, 47, 96, 5);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (95, 21019774, 13, 76, 7);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (96, 43022719, 19, 36, 9);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (97, 19279960, 2, 83, 18);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (98, 18548795, 30, 38, 10);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (99, 40495574, 26, 13, 3);
+INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (100, 16571363, 34, 74, 16);
+SET IDENTITY_INSERT Order_Details OFF
 GO
 SET IDENTITY_INSERT Reviews ON 
-INSERT INTO Reviews (id, content, mark, image, created_at, orderdetail_id) VALUES (1, N'Hàng sài rất ok', 10, N'anh1.png', CAST(N'2022-10-26T18:15:22.000' AS DateTime), 1)
+INSERT INTO Reviews (id, content, mark, image, created_at, order_detail_id) VALUES (1, N'Hàng sài rất ok', 10, N'anh1.png', CAST(N'2022-10-26T18:15:22.000' AS DateTime), 1)
 SET IDENTITY_INSERT Reviews OFF
 GO
 INSERT INTO Roles (id, name) VALUES (N'CUST', N'Customers')
@@ -414,10 +414,10 @@ ALTER TABLE Authorities WITH CHECK ADD CONSTRAINT FK_Authorities_Roles FOREIGN K
 REFERENCES Roles (id) ON UPDATE CASCADE
 ALTER TABLE Authorities WITH CHECK ADD CONSTRAINT FK_Authorities_Users FOREIGN KEY(user_id)
 REFERENCES Users (id) ON UPDATE CASCADE ON DELETE CASCADE
-/* OrderDetails */
-ALTER TABLE OrderDetails WITH CHECK ADD CONSTRAINT FK_OrderDetails_Orders FOREIGN KEY(order_id)
+/* Order_Details */
+ALTER TABLE Order_Details WITH CHECK ADD CONSTRAINT FK_Order_Details_Orders FOREIGN KEY(order_id)
 REFERENCES Orders (id) ON UPDATE NO ACTION
-ALTER TABLE OrderDetails WITH CHECK ADD CONSTRAINT FK_OrderDetails_Products FOREIGN KEY(product_id)
+ALTER TABLE Order_Details WITH CHECK ADD CONSTRAINT FK_Order_Details_Products FOREIGN KEY(product_id)
 REFERENCES Products (id) ON UPDATE NO ACTION
 /* Orders */
 ALTER TABLE Orders WITH CHECK ADD CONSTRAINT FK_Orders_Users FOREIGN KEY(user_id)
@@ -430,23 +430,46 @@ REFERENCES Categories (id) ON DELETE NO ACTION ON UPDATE CASCADE
 ALTER TABLE Products WITH CHECK ADD CONSTRAINT FK_Products_Users FOREIGN KEY(user_id)
 REFERENCES Users (id) ON DELETE NO ACTION ON UPDATE CASCADE
 /* Reviews */
-ALTER TABLE Reviews WITH CHECK ADD CONSTRAINT FK_Reviews_OrderDetails FOREIGN KEY(orderdetail_id)
-REFERENCES OrderDetails (id) ON DELETE NO ACTION
+ALTER TABLE Reviews WITH CHECK ADD CONSTRAINT FK_Reviews_Order_Details FOREIGN KEY(order_detail_id)
+REFERENCES Order_Details (id) ON DELETE NO ACTION
 GO
 
 -- Top 5 sản phẩm bán chạy nhất
-CREATE PROC getTop5SP
+CREATE PROC getTop5Product
 AS BEGIN
-	SELECT DISTINCT TOP 5 p.id as id, p.name as product_name, p.price as product_price, od.quantity order_quantity,
+	SELECT DISTINCT TOP 5 p.id as id, p.name as product_name, p.price as product_price, od.quantity as order_quantity,
 	p.available as product_available, p.image product_image, c.name as company_name, u.fullname as full_name
-	FROM OrderDetails od
+	FROM Order_Details od
 		JOIN Orders o ON o.id = od.order_id
 		JOIN Users u ON u.id = o.user_id
 		JOIN Products as p ON p.user_id = u.id
 		JOIN Companies c ON c.id = p.company_id
 	ORDER BY order_quantity DESC
 END
-
+GO
+-- Top 5 khách hàng thân thiết
+CREATE PROC getTop5Customer
+AS BEGIN
+	SELECT DISTINCT TOP 5 u.id as id, u.fullname as full_name, u.phone as user_phone, u.address as user_address,
+	od.quantity as order_quantity, sum(od.price) as sum_order
+	FROM Order_Details od
+		JOIN Orders o ON o.id = od.order_id
+		JOIN Users u ON u.id = o.user_id
+	GROUP BY u.id, u.fullname, u.phone, u.address, od.quantity
+	ORDER BY order_quantity DESC
+END
+GO
+-- Doanh thu theo ngày
+CREATE PROC getDailyRevenue
+AS BEGIN
+	SELECT sum(od.quantity) as order_quantity, CAST(o.created_at as DATE) as today, SUM(od.price) as revenue_order
+	FROM Order_Details od
+		JOIN Orders o ON o.id = od.order_id
+		JOIN Users u ON u.id = o.user_id
+	WHERE CAST(o.created_at as DATE) = CAST(GETDATE() as DATE)
+	GROUP BY CAST(o.created_at as DATE)
+	ORDER BY today DESC
+END
 GO
 USE master
 GO
