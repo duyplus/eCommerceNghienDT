@@ -1,16 +1,9 @@
 package nghiendt.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
-@Table(name = "OrderDetails")
+@Table(name = "Order_Details")
 public class OrderDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,5 +23,4 @@ public class OrderDetail {
     @ManyToOne
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
-
 }

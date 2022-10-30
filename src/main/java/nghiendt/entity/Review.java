@@ -22,7 +22,7 @@ public class Review {
     @Column(name = "content")
     private String content;
 
-    @Column(name = "mark", nullable = false)
+    @Column(name = "mark")
     private Integer mark;
 
     @Size(max = 255)
@@ -34,7 +34,7 @@ public class Review {
     private Date createdAt = new Date();
 
     @ManyToOne
-    @JoinColumn(name = "orderdetail_id", nullable = false)
-    private OrderDetail orderDetail;
+    @JoinColumn(name = "order_detail_id", nullable = false)
+    private OrderDetail orderdetail;
 
 }

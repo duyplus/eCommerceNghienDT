@@ -55,6 +55,6 @@ public class ProductDTO implements Serializable {
 
     @NotNull
     private final Company company;
-    
+
     private final List<OrderDetail> orderDetails;
 }

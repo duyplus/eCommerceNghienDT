@@ -27,6 +27,6 @@ public class OrderDTO implements Serializable {
 
     @NotNull
     private final User user;
-    
+
     private final List<OrderDetail> orderDetails;
 }
