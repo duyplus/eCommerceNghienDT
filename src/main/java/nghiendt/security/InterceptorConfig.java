@@ -1,4 +1,4 @@
-package nghiendt;
+package nghiendt.security;
 
 //@Configuration
 //public class InterceptorConfig implements WebMvcConfigurer {
