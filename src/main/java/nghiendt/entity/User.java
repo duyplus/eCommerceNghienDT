@@ -22,30 +22,30 @@ public class User {
     private Integer id;
 
     @Size(max = 50)
-    @Column(name = "username", nullable = false, length = 50)
+    @Column(name = "username")
     private String username;
 
     @Size(max = 255)
-    @Column(name = "password", nullable = false)
+    @Column(name = "password")
     private String password;
 
     @Size(max = 15)
-    @Column(name = "phone", nullable = false, length = 15)
+    @Column(name = "phone")
     private String phone;
 
     @Size(max = 255)
-    @Column(name = "fullname", nullable = false)
+    @Column(name = "fullname")
     private String fullname;
 
     @Temporal(TemporalType.DATE)
-    @Column(name = "birthday", nullable = false)
+    @Column(name = "birthday")
     private Date birthday;
 
     @Size(max = 255)
-    @Column(name = "email", nullable = false)
+    @Column(name = "email")
     private String email;
 
-    @Column(name = "address", nullable = false)
+    @Column(name = "address")
     private String address;
 
     @Size(max = 255)
@@ -53,15 +53,15 @@ public class User {
     private String image;
 
     @Temporal(TemporalType.DATE)
-    @Column(name = "created_at", nullable = false)
+    @Column(name = "created_at")
     private Date createdat;
 
     @Temporal(TemporalType.DATE)
-    @Column(name = "updated_at", nullable = false)
+    @Column(name = "updated_at")
     private Date updatedat;
 
     @Size(max = 50)
-    @Column(name = "token", length = 50)
+    @Column(name = "token")
     private String token;
 
     @JsonIgnore
