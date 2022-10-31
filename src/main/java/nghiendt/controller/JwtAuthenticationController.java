@@ -1,7 +1,7 @@
 package nghiendt.controller;
 
-import nghiendt.dto.JwtRequest;
-import nghiendt.dto.JwtResponse;
+import nghiendt.payload.JwtRequest;
+import nghiendt.payload.JwtResponse;
 import nghiendt.payload.JwtTokenUtil;
 import nghiendt.service.impl.JwtUserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package nghiendt.dto;
+package nghiendt.payload;
 
 import java.io.Serializable;
 
