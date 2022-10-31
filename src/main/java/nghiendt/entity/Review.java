@@ -31,7 +31,7 @@ public class Review {
 
     @Temporal(TemporalType.DATE)
     @Column(name = "created_at", nullable = false)
-    private Date createdAt = new Date();
+    private Date createdAt;
 
     @Column(name = "enable", nullable = false)
     private Boolean enable = false;
