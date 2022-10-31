@@ -30,14 +30,14 @@ public class Review {
     private String image;
 
     @Temporal(TemporalType.DATE)
-    @Column(name = "created_at")
-    private Date createdAt = new Date();
+    @Column(name = "created_at", nullable = false)
+    private Date createdAt;
 
-    @Column(name = "enable")
+    @Column(name = "enable", nullable = false)
     private Boolean enable = false;
 
     @ManyToOne
-    @JoinColumn(name = "order_detail_id")
+    @JoinColumn(name = "order_detail_id", nullable = false)
     private OrderDetail orderDetail;
 
 }
