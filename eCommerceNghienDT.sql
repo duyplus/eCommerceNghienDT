@@ -4,12 +4,6 @@ CREATE DATABASE eCommerceNghienDT
 GO
 USE eCommerceNghienDT
 GO
-CREATE TABLE Authorities (
-	id int IDENTITY(1,1) NOT NULL,
-	user_id int NOT NULL,
-	role_id nvarchar(4) NOT NULL,
-	CONSTRAINT PK_Authorities PRIMARY KEY CLUSTERED (id)
-);
 CREATE TABLE Categories (
 	id int IDENTITY(1,1) NOT NULL,
 	name nvarchar(255) NOT NULL,
@@ -47,8 +41,8 @@ CREATE TABLE Products (
 	available bit NOT NULL,
 	description nvarchar(max) NOT NULL,
 	image nvarchar(255) NOT NULL,
-	created_at datetime NOT NULL,
-	updated_at datetime NOT NULL,
+	created_at datetime NULL,
+	updated_at datetime NULL,
 	user_id int NOT NULL,
 	category_id int NOT NULL,
 	company_id int NOT NULL,
@@ -59,15 +53,10 @@ CREATE TABLE Reviews (
 	content nvarchar(max) NULL,
 	mark int NULL,
 	image nvarchar(255) NULL,
-	created_at datetime NOT NULL,
-	enable bit NOT NULL,
+	created_at datetime NULL,
+	enable bit NULL,
 	order_detail_id int NOT NULL,
 	CONSTRAINT PK_Reviews PRIMARY KEY CLUSTERED (id)
-);
-CREATE TABLE Roles (
-	id nvarchar(4) NOT NULL,
-	name nvarchar(50) NOT NULL,
-	CONSTRAINT PK_Roles PRIMARY KEY CLUSTERED (id)
 );
 CREATE TABLE Settings (
 	id int IDENTITY(1,1) NOT NULL,
@@ -80,20 +69,31 @@ CREATE TABLE Settings (
 	zalo nvarchar(255) NULL,
 	CONSTRAINT PK_Settings PRIMARY KEY CLUSTERED (id)
 );
+CREATE TABLE Roles (
+	id nvarchar(4) NOT NULL,
+	name nvarchar(50) NOT NULL,
+	CONSTRAINT PK_Roles PRIMARY KEY CLUSTERED (id)
+);
 CREATE TABLE Users (
 	id int IDENTITY(1,1) NOT NULL,
 	username varchar(50) NOT NULL,
 	password varchar(255) NOT NULL,
 	phone varchar(15) NOT NULL,
-	fullname nvarchar(255) NOT NULL,
+	fullname nvarchar(255) NULL,
 	birthday date NULL,
 	email varchar(255) NOT NULL,
 	address nvarchar(max) NULL,
 	image nvarchar(255) NULL,
-	created_at datetime NOT NULL,
-	updated_at datetime NOT NULL,
+	created_at datetime NULL,
+	updated_at datetime NULL,
 	token varchar(50) NULL,
 	CONSTRAINT PK_Users PRIMARY KEY CLUSTERED (id)
+);
+CREATE TABLE Authorities (
+	id int IDENTITY(1,1) NOT NULL,
+	user_id int NOT NULL,
+	role_id nvarchar(4) NOT NULL,
+	CONSTRAINT PK_Authorities PRIMARY KEY CLUSTERED (id)
 );
 GO
 SET IDENTITY_INSERT Categories ON

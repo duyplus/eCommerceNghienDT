@@ -18,11 +18,11 @@ import java.util.List;
 public class Role {
     @Id
     @Size(max = 4)
-    @Column(name = "id", nullable = false, length = 4)
+    @Column(name = "id", nullable = false)
     private String id;
 
     @Size(max = 50)
-    @Column(name = "name", nullable = false, length = 50)
+    @Column(name = "name")
     private String name;
 
     @JsonIgnore

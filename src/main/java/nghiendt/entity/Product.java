@@ -24,48 +24,48 @@ public class Product {
     private Integer id;
 
     @Size(max = 255)
-    @Column(name = "name", nullable = false)
+    @Column(name = "name")
     private String name;
 
-    @Column(name = "price", nullable = false)
+    @Column(name = "price")
     private Double price;
 
-    @Column(name = "quantity", nullable = false)
+    @Column(name = "quantity")
     private Integer quantity;
 
     @Column(name = "discount")
     private Integer discount;
 
-    @Column(name = "available", nullable = false)
+    @Column(name = "available")
     private Boolean available = false;
 
-    @Column(name = "description", nullable = false)
+    @Column(name = "description")
     private String description;
 
     @Size(max = 255)
-    @Column(name = "image", nullable = false)
+    @Column(name = "image")
     private String image;
 
     @Temporal(TemporalType.DATE)
-    @Column(name = "created_at", nullable = false)
+    @Column(name = "created_at")
     private Date createdAt;
 
-    @Column(name = "updated_at", nullable = false)
+    @Column(name = "updated_at")
     private Date updatedAt;
 
     @ManyToOne
     @JsonProperty("User")
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id")
     private User user;
 
     @ManyToOne
     @JsonProperty("Category")
-    @JoinColumn(name = "category_id", nullable = false)
+    @JoinColumn(name = "category_id")
     private Category category;
 
     @ManyToOne
     @JsonProperty("Company")
-    @JoinColumn(name = "company_id", nullable = false)
+    @JoinColumn(name = "company_id")
     private Company company;
 
     @JsonIgnore

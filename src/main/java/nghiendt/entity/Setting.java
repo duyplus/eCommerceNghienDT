@@ -19,29 +19,29 @@ public class Setting {
     private Integer id;
 
     @Size(max = 255)
-    @Column(name = "unit", nullable = false)
+    @Column(name = "unit")
     private String unit;
 
-    @Column(name = "address", nullable = false)
+    @Column(name = "address")
     private String address;
 
     @Size(max = 20)
-    @Column(name = "hotline", nullable = false, length = 20)
+    @Column(name = "hotline")
     private String hotline;
 
     @Size(max = 55)
-    @Column(name = "email", nullable = false, length = 55)
+    @Column(name = "email")
     private String email;
 
     @Size(max = 255)
-    @Column(name = "facebook", nullable = false)
+    @Column(name = "facebook")
     private String facebook;
 
     @Size(max = 255)
-    @Column(name = "instagram", nullable = false)
+    @Column(name = "instagram")
     private String instagram;
 
     @Size(max = 255)
-    @Column(name = "zalo", nullable = false)
+    @Column(name = "zalo")
     private String zalo;
 }

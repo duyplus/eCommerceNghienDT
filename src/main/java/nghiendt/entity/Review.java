@@ -31,13 +31,13 @@ public class Review {
 
     @Temporal(TemporalType.DATE)
     @Column(name = "created_at", nullable = false)
-    private Date createdAt;
+    private Date createdAt = new Date();
 
     @Column(name = "enable", nullable = false)
     private Boolean enable = false;
 
     @ManyToOne
     @JoinColumn(name = "order_detail_id", nullable = false)
-    private OrderDetail order_Detail;
+    private OrderDetail orderDetail;
 
 }
