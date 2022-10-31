@@ -13,8 +13,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
 @CrossOrigin("*")
+@RestController
 @RequestMapping(value = "/auth")
 public class JwtAuthenticationController {
 
@@ -35,7 +35,7 @@ public class JwtAuthenticationController {
         return ResponseEntity.ok(new JwtResponse(token));
     }
 
-    @PostMapping("/register")
+    @PostMapping("register")
     public ResponseEntity<?> register(@RequestBody JwtRequest user) throws Exception {
         return ResponseEntity.ok(userDetailsService.save(user));
     }

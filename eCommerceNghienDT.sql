@@ -55,7 +55,7 @@ CREATE TABLE Reviews (
 	image nvarchar(255) NULL,
 	created_at datetime NULL,
 	enable bit NULL,
-	order_detail_id int NOT NULL,
+	ordetail_id int NOT NULL,
 	CONSTRAINT PK_Reviews PRIMARY KEY CLUSTERED (id)
 );
 CREATE TABLE Settings (
@@ -376,7 +376,7 @@ INSERT INTO Order_Details (id, price, quantity, order_id, product_id) VALUES (10
 SET IDENTITY_INSERT Order_Details OFF
 GO
 SET IDENTITY_INSERT Reviews ON 
-INSERT INTO Reviews (id, content, mark, image, created_at, order_detail_id, enable) VALUES (1, N'Hàng sài rất ok', 10, N'anh1.png', CAST(N'2022-10-26T18:15:22.000' AS DateTime), 1, 1)
+INSERT INTO Reviews (id, content, mark, image, created_at, ordetail_id, enable) VALUES (1, N'Hàng sài rất ok', 10, N'anh1.png', CAST(N'2022-10-26T18:15:22.000' AS DateTime), 1, 1)
 SET IDENTITY_INSERT Reviews OFF
 GO
 INSERT INTO Roles (id, name) VALUES (N'CUST', N'Customers')
@@ -411,27 +411,27 @@ INSERT INTO Settings (id, unit, address, hotline, email, facebook, instagram, za
 SET IDENTITY_INSERT Settings OFF
 GO
 /* Authorities */
-ALTER TABLE Authorities WITH CHECK ADD CONSTRAINT FK_Authorities_Roles FOREIGN KEY(role_id)
+ALTER TABLE Authorities ADD CONSTRAINT FK_Authorities_Roles FOREIGN KEY(role_id)
 REFERENCES Roles (id) ON UPDATE CASCADE
-ALTER TABLE Authorities WITH CHECK ADD CONSTRAINT FK_Authorities_Users FOREIGN KEY(user_id)
+ALTER TABLE Authorities ADD CONSTRAINT FK_Authorities_Users FOREIGN KEY(user_id)
 REFERENCES Users (id) ON UPDATE CASCADE ON DELETE CASCADE
 /* Order_Details */
-ALTER TABLE Order_Details WITH CHECK ADD CONSTRAINT FK_Order_Details_Orders FOREIGN KEY(order_id)
+ALTER TABLE Order_Details ADD CONSTRAINT FK_Order_Details_Orders FOREIGN KEY(order_id)
 REFERENCES Orders (id) ON UPDATE NO ACTION
-ALTER TABLE Order_Details WITH CHECK ADD CONSTRAINT FK_Order_Details_Products FOREIGN KEY(product_id)
+ALTER TABLE Order_Details ADD CONSTRAINT FK_Order_Details_Products FOREIGN KEY(product_id)
 REFERENCES Products (id) ON UPDATE NO ACTION
 /* Orders */
-ALTER TABLE Orders WITH CHECK ADD CONSTRAINT FK_Orders_Users FOREIGN KEY(user_id)
+ALTER TABLE Orders ADD CONSTRAINT FK_Orders_Users FOREIGN KEY(user_id)
 REFERENCES Users (id) ON DELETE NO ACTION ON UPDATE CASCADE
 /* Products */
-ALTER TABLE Products WITH CHECK ADD CONSTRAINT FK_Products_Companies FOREIGN KEY(company_id)
+ALTER TABLE Products ADD CONSTRAINT FK_Products_Companies FOREIGN KEY(company_id)
 REFERENCES Companies (id) ON DELETE NO ACTION ON UPDATE CASCADE
-ALTER TABLE Products WITH CHECK ADD CONSTRAINT FK_Products_Categories FOREIGN KEY(category_id)
+ALTER TABLE Products ADD CONSTRAINT FK_Products_Categories FOREIGN KEY(category_id)
 REFERENCES Categories (id) ON DELETE NO ACTION ON UPDATE CASCADE
-ALTER TABLE Products WITH CHECK ADD CONSTRAINT FK_Products_Users FOREIGN KEY(user_id)
+ALTER TABLE Products ADD CONSTRAINT FK_Products_Users FOREIGN KEY(user_id)
 REFERENCES Users (id) ON DELETE NO ACTION ON UPDATE CASCADE
 /* Reviews */
-ALTER TABLE Reviews WITH CHECK ADD CONSTRAINT FK_Reviews_Order_Details FOREIGN KEY(order_detail_id)
+ALTER TABLE Reviews ADD CONSTRAINT FK_Reviews_OrderDetails FOREIGN KEY(ordetail_id)
 REFERENCES Order_Details (id) ON DELETE NO ACTION
 GO
 
