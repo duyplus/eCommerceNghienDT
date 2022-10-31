@@ -1,7 +1,7 @@
 package nghiendt.service.impl;
 
-import nghiendt.dto.JwtRequest;
 import nghiendt.entity.User;
+import nghiendt.payload.JwtRequest;
 import nghiendt.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
