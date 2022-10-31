@@ -19,11 +19,11 @@ public class Category {
     private Integer id;
 
     @Size(max = 100)
-    @Column(name = "name", nullable = false, length = 100)
+    @Column(name = "name")
     private String name;
 
     @Size(max = 255)
-    @Column(name = "image", nullable = false)
+    @Column(name = "image")
     private String image;
 
 }
