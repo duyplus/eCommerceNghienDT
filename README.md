@@ -48,5 +48,5 @@ Link: https://github.com/duyplus/NghienDT
 
 ### License
 
-The language pack is released under the MIT license. Please
+The source code for the site is licensed under the MIT license. Please
 see [the license terms](https://github.com/duyplus/eCommerceNghienDT/blob/master/LICENSE).

@@ -10,4 +10,6 @@ public interface Top5Customer {
     String getUser_address();
 
     int getOrder_quantity();
+
+    int getSum_order();
 }
