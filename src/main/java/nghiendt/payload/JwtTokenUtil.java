@@ -47,7 +47,6 @@ public class JwtTokenUtil implements Serializable {
     }
 
     private Boolean ignoreTokenExpiration(String token) {
-        // here you specify tokens, for that the expiration is ignored
         return false;
     }
 
@@ -57,11 +56,13 @@ public class JwtTokenUtil implements Serializable {
     }
 
     private String doGenerateToken(Map<String, Object> claims, String subject) {
+        final Date createdDate = new Date(System.currentTimeMillis());
+        final Date expirationDate = new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000);
         return Jwts.builder()
                 .setClaims(claims)
                 .setSubject(subject)
-                .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))
+                .setIssuedAt(createdDate)
+                .setExpiration(expirationDate)
                 .signWith(SignatureAlgorithm.HS512, secret)
                 .compact();
     }
