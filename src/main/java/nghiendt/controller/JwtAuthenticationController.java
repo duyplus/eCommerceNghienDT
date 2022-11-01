@@ -1,9 +1,9 @@
 package nghiendt.controller;
 
-import nghiendt.payload.JwtRequest;
+import nghiendt.dto.UserRequest;
 import nghiendt.payload.JwtResponse;
 import nghiendt.payload.JwtTokenUtil;
-import nghiendt.service.impl.JwtUserServiceImpl;
+import nghiendt.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -25,19 +25,19 @@ public class JwtAuthenticationController {
     private JwtTokenUtil jwtTokenUtil;
 
     @Autowired
-    private JwtUserServiceImpl userDetailsService;
+    private UserServiceImpl userServiceImpl;
 
     @PostMapping("login")
-    public ResponseEntity<?> login(@RequestBody JwtRequest authenticationRequest) throws Exception {
+    public ResponseEntity<?> login(@RequestBody UserRequest authenticationRequest) throws Exception {
         checkLogin(authenticationRequest.getUsername(), authenticationRequest.getPassword());
-        final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
+        final UserDetails userDetails = userServiceImpl.loadUserByUsername(authenticationRequest.getUsername());
         final String token = jwtTokenUtil.generateToken(userDetails);
         return ResponseEntity.ok(new JwtResponse(token));
     }
 
     @PostMapping("register")
-    public ResponseEntity<?> register(@RequestBody JwtRequest user) throws Exception {
-        return ResponseEntity.ok(userDetailsService.save(user));
+    public ResponseEntity<?> register(@RequestBody UserRequest user) throws Exception {
+        return ResponseEntity.ok(userServiceImpl.save(user));
     }
 
     private void checkLogin(String username, String password) throws Exception {
