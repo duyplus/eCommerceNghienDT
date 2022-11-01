@@ -13,10 +13,10 @@ import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping(value = "/auth")
 public class HomeRestController {
 
     @Autowired
@@ -28,7 +28,20 @@ public class HomeRestController {
     @Autowired
     private UserDetailsImpl userDetailsService;
 
-    @PostMapping("login")
+//    @GetMapping("/")
+//    public String sayHello() {
+////        return ResponseEntity.ok("Hello! This is the project spring boot application that will be used to do restful api");
+//        return "index";
+//    }
+
+    @RequestMapping({"/", "/index", "home"})
+    public ModelAndView index() {
+        ModelAndView view = new ModelAndView();
+        view.setViewName("index");
+        return view;
+    }
+
+    @PostMapping("auth/login")
     public ResponseEntity<?> login(@RequestBody UserRequest userRequest) throws Exception {
         authenticate(userRequest.getUsername(), userRequest.getPassword());
         final UserDetails userDetails = userDetailsService.loadUserByUsername(userRequest.getUsername());
@@ -36,7 +49,7 @@ public class HomeRestController {
         return ResponseEntity.ok(new JwtResponse(token));
     }
 
-    @PostMapping("register")
+    @PostMapping("auth/register")
     public ResponseEntity<?> register(@RequestBody UserDTO user) throws Exception {
         return ResponseEntity.ok(userDetailsService.save(user));
     }
