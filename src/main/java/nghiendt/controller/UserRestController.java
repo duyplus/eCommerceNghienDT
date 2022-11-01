@@ -1,6 +1,5 @@
 package nghiendt.controller;
 
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import nghiendt.entity.User;
 import nghiendt.exception.ResourceNotFoundException;
 import nghiendt.repository.UserRepository;
@@ -14,7 +13,6 @@ import java.util.List;
 
 @CrossOrigin("*")
 @RestController
-@SecurityRequirement(name = "nghiendt")
 @RequestMapping(value = "/api/user")
 public class UserRestController {
     @Autowired

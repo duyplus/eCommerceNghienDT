@@ -1,6 +1,5 @@
 package nghiendt.controller;
 
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import nghiendt.entity.Category;
 import nghiendt.exception.ResourceNotFoundException;
 import nghiendt.repository.CategoryRepository;
@@ -13,7 +12,6 @@ import java.util.List;
 
 @CrossOrigin("*")
 @RestController
-@SecurityRequirement(name = "nghiendt")
 @RequestMapping(value = "/api/category")
 public class CategoryRestController {
     @Autowired

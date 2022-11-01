@@ -1,6 +1,5 @@
 package nghiendt.controller;
 
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import nghiendt.entity.Review;
 import nghiendt.exception.ResourceNotFoundException;
 import nghiendt.repository.ReviewRepository;
@@ -14,7 +13,6 @@ import java.util.List;
 
 @CrossOrigin("*")
 @RestController
-@SecurityRequirement(name = "nghiendt")
 @RequestMapping(value = "/api/review")
 public class ReviewRestController {
     @Autowired
