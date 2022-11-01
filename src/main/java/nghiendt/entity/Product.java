@@ -50,6 +50,7 @@ public class Product {
     @Column(name = "created_at")
     private Date createdAt;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "updated_at")
     private Date updatedAt;
 

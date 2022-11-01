@@ -1,9 +1,10 @@
 package nghiendt.controller;
 
-import nghiendt.payload.JwtRequest;
+import nghiendt.dto.UserDTO;
+import nghiendt.dto.UserRequest;
 import nghiendt.payload.JwtResponse;
 import nghiendt.payload.JwtTokenUtil;
-import nghiendt.service.impl.JwtUserServiceImpl;
+import nghiendt.service.impl.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -13,36 +14,36 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
 @CrossOrigin("*")
+@RestController
 @RequestMapping(value = "/auth")
-public class JwtAuthenticationController {
+public class HomeRestController {
 
     @Autowired
-    private AuthenticationManager authenticationManager;
+    private AuthenticationManager authManager;
 
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
 
     @Autowired
-    private JwtUserServiceImpl userDetailsService;
+    private UserDetailsImpl userDetailsService;
 
     @PostMapping("login")
-    public ResponseEntity<?> login(@RequestBody JwtRequest authenticationRequest) throws Exception {
-        checkLogin(authenticationRequest.getUsername(), authenticationRequest.getPassword());
-        final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
+    public ResponseEntity<?> login(@RequestBody UserRequest userRequest) throws Exception {
+        authenticate(userRequest.getUsername(), userRequest.getPassword());
+        final UserDetails userDetails = userDetailsService.loadUserByUsername(userRequest.getUsername());
         final String token = jwtTokenUtil.generateToken(userDetails);
         return ResponseEntity.ok(new JwtResponse(token));
     }
 
-    @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody JwtRequest user) throws Exception {
+    @PostMapping("register")
+    public ResponseEntity<?> register(@RequestBody UserDTO user) throws Exception {
         return ResponseEntity.ok(userDetailsService.save(user));
     }
 
-    private void checkLogin(String username, String password) throws Exception {
+    private void authenticate(String username, String password) throws Exception {
         try {
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
+            authManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
         } catch (DisabledException e) {
             throw new Exception("USER_DISABLED", e);
         } catch (BadCredentialsException e) {

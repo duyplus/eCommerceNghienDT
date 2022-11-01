@@ -1,7 +1,7 @@
 package nghiendt.service.impl;
 
+import nghiendt.dto.UserDTO;
 import nghiendt.entity.User;
-import nghiendt.payload.JwtRequest;
 import nghiendt.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,12 +13,12 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 
 @Service
-public class JwtUserServiceImpl implements UserDetailsService {
+public class UserDetailsImpl implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
     @Autowired
-    private PasswordEncoder bcryptEncoder;
+    private PasswordEncoder pe;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -29,12 +29,13 @@ public class JwtUserServiceImpl implements UserDetailsService {
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), new ArrayList<>());
     }
 
-    public User save(JwtRequest user) {
-        User newUser = new User();
-        newUser.setUsername(user.getUsername());
-        newUser.setPassword(bcryptEncoder.encode(user.getPassword()));
-        newUser.setEmail(user.getEmail());
-        newUser.setPhone(user.getPhone());
-        return userRepository.save(newUser);
+    public User save(UserDTO userDto) {
+        User user = new User();
+        user.setUsername(userDto.getUsername());
+        user.setPassword(pe.encode(userDto.getPassword()));
+        user.setPhone(userDto.getPhone());
+        user.setEmail(userDto.getEmail());
+        user.setFullname(userDto.getFullname());
+        return userRepository.save(user);
     }
 }

@@ -1,23 +1,23 @@
-package nghiendt.payload;
+package nghiendt.dto;
 
 import java.io.Serializable;
 
-public class JwtRequest implements Serializable {
+public class UserRequest implements Serializable {
     private String username;
     private String password;
     private String phone;
-    private String email;
     private String fullname;
+    private String email;
 
-    public JwtRequest() {
+    public UserRequest() {
     }
 
-    public JwtRequest(String username, String password, String phone, String email, String fullname) {
+    public UserRequest(String username, String password, String phone, String fullname, String email) {
         this.username = username;
         this.password = password;
         this.phone = phone;
-        this.email = email;
         this.fullname = fullname;
+        this.email = email;
     }
 
     public String getUsername() {
@@ -44,19 +44,19 @@ public class JwtRequest implements Serializable {
         this.phone = phone;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getFullname() {
         return fullname;
     }
 
     public void setFullname(String fullname) {
         this.fullname = fullname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
