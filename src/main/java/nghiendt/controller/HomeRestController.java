@@ -1,5 +1,6 @@
 package nghiendt.controller;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import nghiendt.dto.UserRequest;
 import nghiendt.payload.JwtResponse;
 import nghiendt.payload.JwtTokenUtil;
@@ -15,8 +16,9 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin("*")
 @RestController
+@SecurityRequirement(name = "nghiendt")
 @RequestMapping(value = "/auth")
-public class JwtAuthenticationController {
+public class HomeRestController {
 
     @Autowired
     private AuthenticationManager authenticationManager;
