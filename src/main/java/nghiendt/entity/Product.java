@@ -55,17 +55,17 @@ public class Product {
     private Date updatedAt;
 
     @ManyToOne
-    @JsonProperty("User")
+    @JsonProperty("user")
     @JoinColumn(name = "user_id")
     private User user;
 
     @ManyToOne
-    @JsonProperty("Category")
+    @JsonProperty("category")
     @JoinColumn(name = "category_id")
     private Category category;
 
     @ManyToOne
-    @JsonProperty("Company")
+    @JsonProperty("company")
     @JoinColumn(name = "company_id")
     private Company company;
 
