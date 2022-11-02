@@ -1,7 +1,6 @@
 package nghiendt.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,7 +15,11 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "Products")
-@NamedStoredProcedureQueries({@NamedStoredProcedureQuery(name = "getTop5SP", procedureName = "getTop5SP")})
+@NamedStoredProcedureQueries({
+        @NamedStoredProcedureQuery(name = "getTop5Product", procedureName = "getTop5Product"),
+        @NamedStoredProcedureQuery(name = "getTop5Customer", procedureName = "getTop5Customer"),
+        @NamedStoredProcedureQuery(name = "getDailyRevenue", procedureName = "getDailyRevenue")
+})
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -55,17 +58,14 @@ public class Product {
     private Date updatedAt;
 
     @ManyToOne
-    @JsonProperty("User")
     @JoinColumn(name = "user_id")
     private User user;
 
     @ManyToOne
-    @JsonProperty("Category")
     @JoinColumn(name = "category_id")
     private Category category;
 
     @ManyToOne
-    @JsonProperty("Company")
     @JoinColumn(name = "company_id")
     private Company company;
 
