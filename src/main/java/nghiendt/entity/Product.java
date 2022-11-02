@@ -1,6 +1,7 @@
 package nghiendt.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -51,21 +52,24 @@ public class Product {
 
     @Temporal(TemporalType.DATE)
     @Column(name = "created_at")
-    private Date createdAt;
+    private Date createdAt = new Date();
 
     @Temporal(TemporalType.DATE)
     @Column(name = "updated_at")
     private Date updatedAt;
 
     @ManyToOne
+    @JsonProperty("user")
     @JoinColumn(name = "user_id")
     private User user;
 
     @ManyToOne
+    @JsonProperty("category")
     @JoinColumn(name = "category_id")
     private Category category;
 
     @ManyToOne
+    @JsonProperty("company")
     @JoinColumn(name = "company_id")
     private Company company;
 
