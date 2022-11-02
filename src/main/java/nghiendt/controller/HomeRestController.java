@@ -28,12 +28,6 @@ public class HomeRestController {
     @Autowired
     private UserDetailsImpl userDetailsService;
 
-//    @GetMapping("/")
-//    public String sayHello() {
-////        return ResponseEntity.ok("Hello! This is the project spring boot application that will be used to do restful api");
-//        return "index";
-//    }
-
     @RequestMapping({"/", "/index", "home"})
     public ModelAndView index() {
         ModelAndView view = new ModelAndView();
