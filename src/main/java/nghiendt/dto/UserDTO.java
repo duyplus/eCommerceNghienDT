@@ -3,55 +3,32 @@ package nghiendt.dto;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * A DTO for the {@link nghiendt.entity.User} entity
  */
 @Data
 public class UserDTO implements Serializable {
-    private String username;
-    private String password;
-    private String phone;
-    private String fullname;
-    private String email;
+    private final String username;
 
-    public String getUsername() {
-        return username;
-    }
+    private final String password;
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+    private final String phone;
 
-    public String getPassword() {
-        return password;
-    }
+    private final String fullname;
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    private final Date birthday;
 
-    public String getPhone() {
-        return phone;
-    }
+    private final String email;
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
+    private final String address;
 
-    public String getFullname() {
-        return fullname;
-    }
+    private final String image;
 
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
-    }
+    private final Date createdAt;
 
-    public String getEmail() {
-        return email;
-    }
+    private final Date updatedAt;
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    private final String token;
 }
