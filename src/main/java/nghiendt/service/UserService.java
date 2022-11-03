@@ -15,4 +15,9 @@ public interface UserService {
     User update(User user);
 
     void delete(int id);
+
+    User findByEmail(String email);
+
+    User findByToken(String token);
+
 }

@@ -1,9 +1,14 @@
 package nghiendt.controller;
 
+import lombok.SneakyThrows;
 import nghiendt.dto.UserDTO;
 import nghiendt.dto.UserRequest;
+import nghiendt.entity.User;
+import nghiendt.exception.ResourceNotFoundException;
 import nghiendt.payload.JwtResponse;
 import nghiendt.payload.JwtTokenUtil;
+import nghiendt.service.AuthenticationService;
+import nghiendt.service.MailerService;
 import nghiendt.service.impl.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +19,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.Optional;
 
 @CrossOrigin("*")
 @RestController
@@ -27,6 +34,11 @@ public class HomeRestController {
 
     @Autowired
     private UserDetailsImpl userDetailsService;
+
+    @Autowired
+    MailerService mailerService;
+    @Autowired
+    AuthenticationService authService;
 
     @RequestMapping({"/", "/index", "home"})
     public ModelAndView index() {
@@ -56,5 +68,30 @@ public class HomeRestController {
         } catch (BadCredentialsException e) {
             throw new Exception("INVALID_CREDENTIALS", e);
         }
+    }
+
+    @PostMapping("auth/forgot-password")
+    public ResponseEntity<Void> sendMailToken(@RequestBody String email) {
+        if (authService.sendResetMail(email)) {
+            return ResponseEntity.ok().build();
+        }
+        throw new ResourceNotFoundException("User not exists with email: " + email);
+    }
+
+    @SneakyThrows
+    @GetMapping("auth/reset-password")
+    public ResponseEntity<User> checkToken(@RequestParam Optional<String> token) {
+        ResourceNotFoundException exception = new ResourceNotFoundException("Cannot find token: " + token);
+        String tokenVal = token.orElseThrow(() -> exception);
+        User user = authService.findByToken(tokenVal);
+        if (user != null) {
+            return ResponseEntity.ok(user);
+        }
+        throw exception;
+    }
+
+    @PostMapping("auth/reset-password")
+    public ResponseEntity<Void> changePassword(@RequestBody User user) {
+        return authService.changePassword(user) ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
     }
 }
