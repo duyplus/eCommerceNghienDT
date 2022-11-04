@@ -16,6 +16,8 @@ public interface UserService {
 
     void delete(int id);
 
+    User findUsernameByEmail(String email);
+
     User findByEmail(String email);
 
     User findByToken(String token);
