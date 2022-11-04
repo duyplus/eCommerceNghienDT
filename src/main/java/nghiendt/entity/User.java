@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.List;
@@ -47,6 +48,7 @@ public class User {
     private Date birthday;
 
     @Size(max = 255)
+    @Email
     @Column(name = "email")
     private String email;
 

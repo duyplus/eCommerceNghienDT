@@ -2,7 +2,6 @@ package nghiendt.controller;
 
 import lombok.SneakyThrows;
 import nghiendt.dto.UserDTO;
-import nghiendt.dto.UserRequest;
 import nghiendt.entity.User;
 import nghiendt.exception.ResourceNotFoundException;
 import nghiendt.payload.JwtResponse;
@@ -58,9 +57,9 @@ public class HomeRestController {
     }
 
     @PostMapping("auth/login")
-    public ResponseEntity<?> login(@RequestBody UserRequest userRequest) throws Exception {
-        authenticate(userRequest.getUsername(), userRequest.getPassword());
-        final UserDetails userDetails = userDetailsService.loadUserByUsername(userRequest.getUsername());
+    public ResponseEntity<?> login(@RequestBody UserDTO userDTO) throws Exception {
+        authenticate(userDTO.getUsername(), userDTO.getPassword());
+        final UserDetails userDetails = userDetailsService.loadUserByUsername(userDTO.getUsername());
         final String token = jwtTokenUtil.generateToken(userDetails);
         return ResponseEntity.ok(new JwtResponse(token));
     }

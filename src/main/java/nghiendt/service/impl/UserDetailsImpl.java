@@ -36,6 +36,12 @@ public class UserDetailsImpl implements UserDetailsService {
         user.setPhone(userDto.getPhone());
         user.setEmail(userDto.getEmail());
         user.setFullname(userDto.getFullname());
+        user.setAddress(userDto.getAddress());
+        user.setBirthday(userDto.getBirthday());
+        user.setCreatedat(userDto.getCreatedAt());
+        user.setUpdatedat(userDto.getUpdatedAt());
+        user.setImage(userDto.getImage());
+        user.setToken(userDto.getToken());
         return userRepository.save(user);
     }
 }
