@@ -15,7 +15,6 @@ import java.util.function.Function;
 
 @Component
 public class JwtTokenUtil implements Serializable {
-    public static final long JWT_TOKEN_VALIDITY = 5 * 60 * 60;
 
     @Value("${jwt.secret}")
     private String secret;
@@ -56,8 +55,9 @@ public class JwtTokenUtil implements Serializable {
     }
 
     private String doGenerateToken(Map<String, Object> claims, String subject) {
+        final long JWT_TOKEN_VALIDITY = 5 * 60 * 60 * 1000;
         final Date createdDate = new Date(System.currentTimeMillis());
-        final Date expirationDate = new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000);
+        final Date expirationDate = new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY);
         return Jwts.builder()
                 .setClaims(claims)
                 .setSubject(subject)

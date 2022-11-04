@@ -1,6 +1,8 @@
 package nghiendt.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -9,16 +11,18 @@ import java.util.Date;
  * A DTO for the {@link nghiendt.entity.Review} entity
  */
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class ReviewDTO implements Serializable {
-    private final Integer id;
+    private Integer id;
 
-    private final String content;
+    private String content;
 
-    private final Integer mark;
+    private Integer mark;
 
-    private final String image;
+    private String image;
 
-    private final Date createdAt;
+    private Date createdAt;
 
-    private final Double enable;
+    private Double enable;
 }

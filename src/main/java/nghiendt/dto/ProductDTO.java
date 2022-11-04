@@ -1,6 +1,8 @@
 package nghiendt.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -9,24 +11,26 @@ import java.util.Date;
  * A DTO for the {@link nghiendt.entity.Product} entity
  */
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class ProductDTO implements Serializable {
-    private final Integer id;
+    private Integer id;
 
-    private final String name;
+    private String name;
 
-    private final Double price;
+    private Double price;
 
-    private final Integer quantity;
+    private Integer quantity;
 
-    private final Integer discount;
+    private Integer discount;
 
-    private final Boolean available;
+    private Boolean available;
 
-    private final String description;
+    private String description;
 
-    private final String image;
+    private String image;
 
-    private final Date createdAt;
+    private Date createdAt;
 
-    private final Date updatedAt;
+    private Date updatedAt;
 }

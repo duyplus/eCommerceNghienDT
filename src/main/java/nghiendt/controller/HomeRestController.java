@@ -47,6 +47,16 @@ public class HomeRestController {
         return view;
     }
 
+    private void authenticate(String username, String password) throws Exception {
+        try {
+            authManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
+        } catch (DisabledException e) {
+            throw new Exception("USER_DISABLED", e);
+        } catch (BadCredentialsException e) {
+            throw new Exception("INVALID_CREDENTIALS", e);
+        }
+    }
+
     @PostMapping("auth/login")
     public ResponseEntity<?> login(@RequestBody UserRequest userRequest) throws Exception {
         authenticate(userRequest.getUsername(), userRequest.getPassword());
@@ -58,16 +68,6 @@ public class HomeRestController {
     @PostMapping("auth/register")
     public ResponseEntity<?> register(@RequestBody UserDTO user) throws Exception {
         return ResponseEntity.ok(userDetailsService.save(user));
-    }
-
-    private void authenticate(String username, String password) throws Exception {
-        try {
-            authManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
-        } catch (DisabledException e) {
-            throw new Exception("USER_DISABLED", e);
-        } catch (BadCredentialsException e) {
-            throw new Exception("INVALID_CREDENTIALS", e);
-        }
     }
 
     @PostMapping("auth/forgot-password")

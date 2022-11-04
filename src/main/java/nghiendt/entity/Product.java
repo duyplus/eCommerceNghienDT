@@ -1,5 +1,6 @@
 package nghiendt.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -52,10 +53,12 @@ public class Product {
 
     @Temporal(TemporalType.DATE)
     @Column(name = "created_at")
-    private Date createdAt = new Date();
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm")
+    private Date createdAt;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "updated_at")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm")
     private Date updatedAt;
 
     @ManyToOne
