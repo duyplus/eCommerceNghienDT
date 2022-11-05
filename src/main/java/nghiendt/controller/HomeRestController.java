@@ -2,7 +2,6 @@ package nghiendt.controller;
 
 import lombok.SneakyThrows;
 import nghiendt.dto.UserDTO;
-import nghiendt.dto.UserRequest;
 import nghiendt.entity.User;
 import nghiendt.exception.ResourceNotFoundException;
 import nghiendt.payload.JwtResponse;
@@ -47,19 +46,6 @@ public class HomeRestController {
         return view;
     }
 
-    @PostMapping("auth/login")
-    public ResponseEntity<?> login(@RequestBody UserRequest userRequest) throws Exception {
-        authenticate(userRequest.getUsername(), userRequest.getPassword());
-        final UserDetails userDetails = userDetailsService.loadUserByUsername(userRequest.getUsername());
-        final String token = jwtTokenUtil.generateToken(userDetails);
-        return ResponseEntity.ok(new JwtResponse(token));
-    }
-
-    @PostMapping("auth/register")
-    public ResponseEntity<?> register(@RequestBody UserDTO user) throws Exception {
-        return ResponseEntity.ok(userDetailsService.save(user));
-    }
-
     private void authenticate(String username, String password) throws Exception {
         try {
             authManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
@@ -68,6 +54,19 @@ public class HomeRestController {
         } catch (BadCredentialsException e) {
             throw new Exception("INVALID_CREDENTIALS", e);
         }
+    }
+
+    @PostMapping("auth/login")
+    public ResponseEntity<?> login(@RequestBody UserDTO userDTO) throws Exception {
+        authenticate(userDTO.getUsername(), userDTO.getPassword());
+        final UserDetails userDetails = userDetailsService.loadUserByUsername(userDTO.getUsername());
+        final String token = jwtTokenUtil.generateToken(userDetails);
+        return ResponseEntity.ok(new JwtResponse(token));
+    }
+
+    @PostMapping("auth/register")
+    public ResponseEntity<?> register(@RequestBody UserDTO user) throws Exception {
+        return ResponseEntity.ok(userDetailsService.save(user));
     }
 
     @PostMapping("auth/forgot-password")

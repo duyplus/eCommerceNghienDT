@@ -1,6 +1,8 @@
 package nghiendt.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -9,12 +11,14 @@ import java.util.Date;
  * A DTO for the {@link nghiendt.entity.Order} entity
  */
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class OrderDTO implements Serializable {
-    private final Integer id;
+    private Integer id;
 
-    private final Boolean status;
+    private Boolean status;
 
-    private final Date createdAt;
+    private Date createdAt;
 
-    private final Date updatedAt;
+    private Date updatedAt;
 }

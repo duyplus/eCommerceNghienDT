@@ -1,5 +1,6 @@
 package nghiendt.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
@@ -8,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.List;
@@ -42,9 +44,11 @@ public class User {
 
     @Temporal(TemporalType.DATE)
     @Column(name = "birthday")
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date birthday;
 
     @Size(max = 255)
+    @Email
     @Column(name = "email")
     private String email;
 
@@ -57,10 +61,12 @@ public class User {
 
     @Temporal(TemporalType.DATE)
     @Column(name = "created_at")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm")
     private Date createdat;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "updated_at")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm")
     private Date updatedat;
 
     @Size(max = 50)

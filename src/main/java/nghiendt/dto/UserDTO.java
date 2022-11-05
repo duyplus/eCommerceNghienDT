@@ -1,6 +1,8 @@
 package nghiendt.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -9,26 +11,28 @@ import java.util.Date;
  * A DTO for the {@link nghiendt.entity.User} entity
  */
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserDTO implements Serializable {
-    private final String username;
+    private String username;
 
-    private final String password;
+    private String password;
 
-    private final String phone;
+    private String phone;
 
-    private final String fullname;
+    private String fullname;
 
-    private final Date birthday;
+    private Date birthday;
 
-    private final String email;
+    private String email;
 
-    private final String address;
+    private String address;
 
-    private final String image;
+    private String image;
 
-    private final Date createdAt;
+    private Date createdAt;
 
-    private final Date updatedAt;
+    private Date updatedAt;
 
-    private final String token;
+    private String token;
 }
