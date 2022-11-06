@@ -7,6 +7,7 @@ import nghiendt.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,6 +21,9 @@ public class UserRestController {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder pe;
 
     @GetMapping
     public ResponseEntity<List<User>> getAllUsers() {
@@ -39,6 +43,7 @@ public class UserRestController {
 
     @PostMapping
     public User createUsers(@RequestBody User user) {
+        user.setPassword(pe.encode(user.getPassword()));
         return userRepository.save(user);
     }
 
@@ -46,6 +51,7 @@ public class UserRestController {
     public ResponseEntity<User> updateUsers(@PathVariable("id") int id, @RequestBody User user) {
         User updateUser = userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User not exist with id: " + id));
+        user.setPassword(pe.encode(user.getPassword()));
         userRepository.save(user);
         return ResponseEntity.ok(updateUser);
     }

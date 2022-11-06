@@ -2,6 +2,7 @@ package nghiendt.security;
 
 import nghiendt.payload.JwtAuthentication;
 import nghiendt.payload.JwtRequestFilter;
+import nghiendt.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +14,9 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -22,7 +25,9 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import java.util.Collections;
+import javax.servlet.http.HttpSession;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Configuration
 @EnableWebSecurity
@@ -31,6 +36,10 @@ public class WebSecurityConfig {
 
     private static final String[] AUTH_WHITELIST = {"/v3/api-docs/**", "/swagger-ui/**"};
 
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    HttpSession session;
     @Autowired
     private JwtAuthentication jwtAuthentication;
 
@@ -42,6 +51,22 @@ public class WebSecurityConfig {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(username -> {
+            try {
+                nghiendt.entity.User user = userRepository.findByUsername(username);
+                String password = passwordEncoder().encode(user.getPassword()); // Mã hóa mật khấu
+                String[] roles = user.getAuthorities().stream().map(er -> er.getRole().getId())
+                        .collect(Collectors.toList()).toArray(new String[0]);
+                Map<String, Object> authentication = new HashMap<>();
+                authentication.put("user", user);
+                byte[] token = (username + ":" + user.getPassword()).getBytes();
+                authentication.put("token", "Basic " + Base64.getEncoder().encodeToString(token));
+                session.setAttribute("authentication", authentication);
+                return User.withUsername(username).password(password).roles(roles).build();
+            } catch (NoSuchElementException e) {
+                throw new UsernameNotFoundException(username + " not found!");
+            }
+        });
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
 
@@ -57,7 +82,7 @@ public class WebSecurityConfig {
 
 //    @Bean
 //    public WebSecurityCustomizer webSecurityCustomizer() {
-//        return (web) -> web.ignoring().antMatchers(AUTH_WHITELIST);
+//        return (web) -> web.ignoring().antMatchers(HttpMethod.OPTIONS, "/**");
 //    }
 
     @Bean

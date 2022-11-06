@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 import java.util.List;
 
 @Data
@@ -17,11 +16,9 @@ import java.util.List;
 @Table(name = "Roles")
 public class Role {
     @Id
-    @Size(max = 4)
     @Column(name = "id", nullable = false)
     private String id;
 
-    @Size(max = 50)
     @Column(name = "name")
     private String name;
 
