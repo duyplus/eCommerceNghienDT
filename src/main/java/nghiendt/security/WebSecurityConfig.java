@@ -87,8 +87,7 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.cors().disable();
-        http.csrf().disable();
+        http.cors().configurationSource(corsConfigurationSource()).and().csrf().disable();
         http.authorizeRequests().antMatchers(AUTH_WHITELIST).permitAll();
         http.authorizeRequests()
                 .antMatchers("/**", "/auth/**", "/api/**").permitAll()
@@ -117,7 +116,8 @@ public class WebSecurityConfig {
         configuration.applyPermitDefaultValues();
         configuration.setAllowedMethods(Collections.singletonList("*"));
         configuration.addAllowedOriginPattern("*");
-        configuration.setAllowCredentials(false);
+        configuration.addAllowedHeader("*");
+        configuration.setAllowCredentials(true);
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
