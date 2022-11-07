@@ -115,7 +115,7 @@ public class WebSecurityConfig {
         http.cors().configurationSource(corsConfigurationSource()).and().csrf().disable();
         http.authorizeRequests().antMatchers(AUTH_WHITELIST).permitAll();
         http.authorizeRequests()
-                .antMatchers("/**", "/auth/**", "/api/**").permitAll()
+                .antMatchers("/**", "/auth/**", "/api/**", "/api/**/**").permitAll()
                 .anyRequest().authenticated();
         http.httpBasic();
         http.logout().invalidateHttpSession(true).clearAuthentication(true);

@@ -24,7 +24,7 @@ public class Order {
     private Integer id;
 
     @Column(name = "status")
-    private Boolean status = false;
+    private int status;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "created_at")
