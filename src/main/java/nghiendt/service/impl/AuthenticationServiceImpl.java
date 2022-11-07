@@ -23,20 +23,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     MailerService mailer;
 
     @Override
-    public boolean sendResetMail(String email) {
-        User user = userService.findByEmail(email);
-        if (user != null) {
-            String token = getToken(50);
-            user.setToken(token);
-            MailDTO mail = getResetMail(email, token);
-            mailer.queue(mail);
-            userService.update(user);
-            return true;
-        }
-        return false;
-    }
-
-    @Override
     public User findByToken(String token) {
         User user = userService.findByToken(token);
         return user != null ? User.builder().id(user.getId()).token(user.getToken()).build() : null;
@@ -55,6 +41,20 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         return RandomString.make(length);
     }
 
+    @Override
+    public boolean sendResetMail(String email) {
+        User user = userService.findByEmail(email);
+        if (user != null) {
+            String token = getToken(50);
+            user.setToken(token);
+            MailDTO mail = getResetMail(email, token);
+            mailer.queue(mail);
+            userService.update(user);
+            return true;
+        }
+        return false;
+    }
+
     private MailDTO getResetMail(String email, String token) {
         User user = userService.findUsernameByEmail(email);
         String username = user.getUsername();
@@ -67,10 +67,10 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                     "<div style='background-color:#f0f8ff;font-size:14px;padding:2em 5em'>" +
                         "<img src='https://i.imgur.com/VtXfSgp.png' referrerpolicy='no-referrer'>" +
                         "<div style='display:flex;border:1px;height:1px;background:lightblue'></div>" +
-                        "<p>Hi <b>"+ username +"</b>,</p>" +
+                        "<p>Hi <b>" + username + "</b>,</p>" +
                         "<p>Chúng tôi đã nhận được yêu cầu đặt lại mật khẩu cho tài khoản NghienDT được liên kết với " + email + ". Chưa có thay đổi nào đối với tài khoản của bạn.</p>" +
                         "<p>Bạn có thể đặt lại mật khẩu của mình bằng cách nhấp vào liên kết bên dưới:</p>" +
-                        "<p style='display:grid;margin:0 auto;text-align:center'><a href=\""+ url + "\" style='" + button + "'>Đặt lại mật khẩu</a></p>" +
+                        "<p style='display:grid;margin:0 auto;text-align:center'><a href=\"" + url + "\" style='" + button + "'>Đặt lại mật khẩu</a></p>" +
                         "<p>Nếu bạn không yêu cầu mật khẩu mới, vui lòng cho chúng tôi biết ngay lập tức bằng cách trả lời email này.</p>" +
                         "<p>Bạn có thể tìm thấy câu trả lời cho hầu hết các câu hỏi và liên hệ với chúng tôi tại nghienecomm@gmail.com. Chúng tôi ở đây để giúp bạn.</p>" +
                         "<div style='display:flex;border:1px;height:1px;background:lightblue'></div>" +
