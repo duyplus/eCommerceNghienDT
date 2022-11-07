@@ -1,14 +1,13 @@
 package nghiendt.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
+import org.hibernate.annotations.Nationalized;
 
 import javax.persistence.*;
 import java.util.List;
 
+@Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,9 +15,11 @@ import java.util.List;
 @Table(name = "Roles")
 public class Role {
     @Id
+    @Nationalized
     @Column(name = "id", nullable = false)
     private String id;
 
+    @Nationalized
     @Column(name = "name")
     private String name;
 

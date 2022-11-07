@@ -4,14 +4,17 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Nationalized;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.List;
 
+@Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -29,6 +32,7 @@ public class Product {
     private Integer id;
 
     @Size(max = 255)
+    @Nationalized
     @Column(name = "name")
     private String name;
 
@@ -44,21 +48,21 @@ public class Product {
     @Column(name = "available")
     private Boolean available = false;
 
+    @Nationalized
     @Column(name = "description")
     private String description;
 
     @Size(max = 255)
-    @Column(name = "image")
     private String image;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "created_at")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date createdAt;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "updated_at")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date updatedAt;
 
     @ManyToOne

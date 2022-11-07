@@ -1,5 +1,6 @@
 package nghiendt.security;
 
+import nghiendt.entity.User;
 import nghiendt.payload.JwtAuthentication;
 import nghiendt.payload.JwtRequestFilter;
 import nghiendt.repository.UserRepository;
@@ -14,7 +15,6 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -38,8 +38,10 @@ public class WebSecurityConfig {
 
     @Autowired
     private UserRepository userRepository;
+
     @Autowired
     HttpSession session;
+
     @Autowired
     private JwtAuthentication jwtAuthentication;
 
@@ -49,27 +51,6 @@ public class WebSecurityConfig {
     @Autowired
     private JwtRequestFilter jwtRequestFilter;
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(username -> {
-            try {
-                nghiendt.entity.User user = userRepository.findByUsername(username);
-                String password = passwordEncoder().encode(user.getPassword()); // Mã hóa mật khấu
-                String[] roles = user.getAuthorities().stream().map(er -> er.getRole().getId())
-                        .collect(Collectors.toList()).toArray(new String[0]);
-                Map<String, Object> authentication = new HashMap<>();
-                authentication.put("user", user);
-                byte[] token = (username + ":" + user.getPassword()).getBytes();
-                authentication.put("token", "Basic " + Base64.getEncoder().encodeToString(token));
-                session.setAttribute("authentication", authentication);
-                return User.withUsername(username).password(password).roles(roles).build();
-            } catch (NoSuchElementException e) {
-                throw new UsernameNotFoundException(username + " not found!");
-            }
-        });
-        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-    }
-
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -78,6 +59,50 @@ public class WebSecurityConfig {
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
         return authConfig.getAuthenticationManager();
+    }
+
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(username -> {
+            try {
+                User user = userRepository.findByUsername(username);
+                String password = passwordEncoder().encode(user.getPassword()); // Mã hóa mật khấu
+                String[] roles = user.getAuthorities().stream().map(er -> er.getRole().getId())
+                        .collect(Collectors.toList()).toArray(new String[0]);
+                Map<String, Object> authentication = new HashMap<>();
+                authentication.put("user", user);
+                byte[] token = (username + ":" + user.getPassword()).getBytes();
+                authentication.put("token", "Basic " + Base64.getEncoder().encodeToString(token));
+                session.setAttribute("authentication", authentication);
+                return org.springframework.security.core.userdetails.User.withUsername(username).password(password).roles(roles).build();
+            } catch (NoSuchElementException e) {
+                throw new UsernameNotFoundException(username + " not found!");
+            }
+        });
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+        auth.authenticationProvider(authenticationProvider());
+    }
+
+    @Bean
+    public DaoAuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+        authProvider.setUserDetailsService(userDetailsService);
+        authProvider.setPasswordEncoder(passwordEncoder());
+        return authProvider;
+    }
+
+    //Cors filter to accept incoming requests
+    @Bean
+    CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration corsConfig = new CorsConfiguration();
+        corsConfig.applyPermitDefaultValues();
+        corsConfig.setAllowedMethods(Collections.singletonList("*"));
+        corsConfig.addAllowedOriginPattern("*");
+        corsConfig.addAllowedHeader("*");
+        corsConfig.setAllowCredentials(false);
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", corsConfig);
+        return source;
     }
 
 //    @Bean
@@ -99,27 +124,5 @@ public class WebSecurityConfig {
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
-    }
-
-    @Bean
-    public DaoAuthenticationProvider authenticationProvider() {
-        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-        authProvider.setUserDetailsService(userDetailsService);
-        authProvider.setPasswordEncoder(passwordEncoder());
-        return authProvider;
-    }
-
-    //Cors filter to accept incoming requests
-    @Bean
-    CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration configuration = new CorsConfiguration();
-        configuration.applyPermitDefaultValues();
-        configuration.setAllowedMethods(Collections.singletonList("*"));
-        configuration.addAllowedOriginPattern("*");
-        configuration.addAllowedHeader("*");
-        configuration.setAllowCredentials(false);
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
-        return source;
     }
 }

@@ -2,13 +2,16 @@ package nghiendt.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Nationalized;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
+@Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,6 +23,7 @@ public class Review {
     @Column(name = "id", nullable = false)
     private Integer id;
 
+    @Nationalized
     @Column(name = "content")
     private String content;
 
@@ -32,7 +36,7 @@ public class Review {
 
     @Temporal(TemporalType.DATE)
     @Column(name = "created_at")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date createdAt;
 
     @Column(name = "enable")

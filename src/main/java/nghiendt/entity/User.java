@@ -7,11 +7,13 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Nationalized;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.List;
+
 @Builder
 @Data
 @NoArgsConstructor
@@ -38,18 +40,20 @@ public class User {
     private String phone;
 
     @Size(max = 255)
+    @Nationalized
     @Column(name = "fullname")
     private String fullname;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "birthday")
-    @JsonFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
 
     @Size(max = 255)
     @Column(name = "email")
     private String email;
 
+    @Nationalized
     @Column(name = "address")
     private String address;
 
@@ -59,12 +63,12 @@ public class User {
 
     @Temporal(TemporalType.DATE)
     @Column(name = "created_at")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date createdat;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "updated_at")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date updatedat;
 
     @Size(max = 50)

@@ -1,12 +1,15 @@
 package nghiendt.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Nationalized;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 
+@Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,9 +22,11 @@ public class Setting {
     private Integer id;
 
     @Size(max = 255)
+    @Nationalized
     @Column(name = "unit")
     private String unit;
 
+    @Nationalized
     @Column(name = "address")
     private String address;
 
