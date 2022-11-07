@@ -61,7 +61,7 @@ public class OrderRestController {
     @GetMapping("/approval/{status}")
     public ResponseEntity<List<Order>> getAllOrdersApproval(@PathVariable int status) {
         List<Order> listOrder = orderRepository.findOrderByStatusApproval(status);
-        if (listOrder.isEmpty()) {
+        if (listOrder.isEmpty())  {
             return new ResponseEntity<List<Order>>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<List<Order>>(listOrder, HttpStatus.OK);
