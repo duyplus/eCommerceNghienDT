@@ -1,15 +1,13 @@
 package nghiendt.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.annotations.Nationalized;
 
 import javax.persistence.*;
 import java.util.List;
 
+@Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,11 +16,11 @@ import java.util.List;
 public class Role {
     @Id
     @Nationalized
-    @Column(name = "id", nullable = false)
+    @Column(name = "id", columnDefinition = "nvarchar", nullable = false)
     private String id;
 
     @Nationalized
-    @Column(name = "name")
+    @Column(name = "name", columnDefinition = "nvarchar")
     private String name;
 
     @JsonIgnore

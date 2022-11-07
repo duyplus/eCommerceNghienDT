@@ -13,6 +13,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.List;
+
 @Builder
 @Data
 @NoArgsConstructor
@@ -40,12 +41,12 @@ public class User {
 
     @Size(max = 255)
     @Nationalized
-    @Column(name = "fullname")
+    @Column(name = "fullname", columnDefinition = "nvarchar")
     private String fullname;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "birthday")
-    @JsonFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
 
     @Size(max = 255)
@@ -53,7 +54,7 @@ public class User {
     private String email;
 
     @Nationalized
-    @Column(name = "address")
+    @Column(name = "address", columnDefinition = "nvarchar")
     private String address;
 
     @Size(max = 255)
@@ -62,12 +63,12 @@ public class User {
 
     @Temporal(TemporalType.DATE)
     @Column(name = "created_at")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date createdat;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "updated_at")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date updatedat;
 
     @Size(max = 50)
