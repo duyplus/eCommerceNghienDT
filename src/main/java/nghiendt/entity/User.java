@@ -41,7 +41,7 @@ public class User {
 
     @Size(max = 255)
     @Nationalized
-    @Column(name = "fullname", columnDefinition = "nvarchar")
+    @Column(name = "fullname")
     private String fullname;
 
     @Temporal(TemporalType.DATE)
@@ -54,7 +54,7 @@ public class User {
     private String email;
 
     @Nationalized
-    @Column(name = "address", columnDefinition = "nvarchar")
+    @Column(name = "address")
     private String address;
 
     @Size(max = 255)

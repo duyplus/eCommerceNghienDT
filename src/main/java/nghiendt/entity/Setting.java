@@ -23,11 +23,11 @@ public class Setting {
 
     @Size(max = 255)
     @Nationalized
-    @Column(name = "unit", columnDefinition = "nvarchar")
+    @Column(name = "unit")
     private String unit;
 
     @Nationalized
-    @Column(name = "address", columnDefinition = "nvarchar")
+    @Column(name = "address")
     private String address;
 
     @Size(max = 20)

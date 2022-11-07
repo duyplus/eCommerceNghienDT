@@ -33,7 +33,7 @@ public class Product {
 
     @Size(max = 255)
     @Nationalized
-    @Column(name = "name", columnDefinition = "nvarchar")
+    @Column(name = "name")
     private String name;
 
     @Column(name = "price")
@@ -49,7 +49,7 @@ public class Product {
     private Boolean available = false;
 
     @Nationalized
-    @Column(name = "description", columnDefinition = "nvarchar")
+    @Column(name = "description")
     private String description;
 
     @Size(max = 255)

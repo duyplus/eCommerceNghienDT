@@ -24,7 +24,7 @@ public class Review {
     private Integer id;
 
     @Nationalized
-    @Column(name = "content", columnDefinition = "nvarchar")
+    @Column(name = "content")
     private String content;
 
     @Column(name = "mark")

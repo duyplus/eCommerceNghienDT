@@ -16,11 +16,11 @@ import java.util.List;
 public class Role {
     @Id
     @Nationalized
-    @Column(name = "id", columnDefinition = "nvarchar", nullable = false)
+    @Column(name = "id", nullable = false)
     private String id;
 
     @Nationalized
-    @Column(name = "name", columnDefinition = "nvarchar")
+    @Column(name = "name")
     private String name;
 
     @JsonIgnore

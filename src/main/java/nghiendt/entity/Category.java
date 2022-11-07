@@ -23,7 +23,7 @@ public class Category {
 
     @Size(max = 100)
     @Nationalized
-    @Column(name = "name", columnDefinition = "nvarchar")
+    @Column(name = "name")
     private String name;
 
     @Size(max = 255)
