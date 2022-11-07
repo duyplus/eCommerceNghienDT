@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Nationalized;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -20,6 +21,7 @@ public class Review {
     @Column(name = "id", nullable = false)
     private Integer id;
 
+    @Nationalized
     @Column(name = "content")
     private String content;
 
@@ -27,6 +29,7 @@ public class Review {
     private Integer mark;
 
     @Size(max = 255)
+    @Nationalized
     @Column(name = "image")
     private String image;
 

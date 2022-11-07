@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Nationalized;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -29,6 +30,7 @@ public class Product {
     private Integer id;
 
     @Size(max = 255)
+    @Nationalized
     @Column(name = "name")
     private String name;
 
@@ -44,10 +46,12 @@ public class Product {
     @Column(name = "available")
     private Boolean available = false;
 
+    @Nationalized
     @Column(name = "description")
     private String description;
 
     @Size(max = 255)
+    @Nationalized
     @Column(name = "image")
     private String image;
 

@@ -3,6 +3,7 @@ package nghiendt.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Nationalized;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -19,6 +20,7 @@ public class Category {
     private Integer id;
 
     @Size(max = 100)
+    @Nationalized
     @Column(name = "name")
     private String name;
 

@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Nationalized;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -38,6 +39,7 @@ public class User {
     private String phone;
 
     @Size(max = 255)
+    @Nationalized
     @Column(name = "fullname")
     private String fullname;
 
@@ -50,6 +52,7 @@ public class User {
     @Column(name = "email")
     private String email;
 
+    @Nationalized
     @Column(name = "address")
     private String address;
 
