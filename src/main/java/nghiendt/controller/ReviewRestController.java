@@ -3,7 +3,6 @@ package nghiendt.controller;
 import nghiendt.entity.Review;
 import nghiendt.exception.ResourceNotFoundException;
 import nghiendt.repository.ReviewRepository;
-import nghiendt.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,9 +14,6 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/api/review")
 public class ReviewRestController {
-    @Autowired
-    private ReviewService reviewService;
-
     @Autowired
     private ReviewRepository reviewRepository;
 
