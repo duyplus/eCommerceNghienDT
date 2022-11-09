@@ -13,7 +13,7 @@
     <artifactId>eCommerceNghienDT</artifactId>
     <version>0.1</version>
     <name>eCommerceNghienDT</name>
-    <packaging>war</packaging>
+    <!--    <packaging>war</packaging>-->
     <description>DATN-eCommerceNghienDT</description>
     <properties>
         <java.version>1.8</java.version>
