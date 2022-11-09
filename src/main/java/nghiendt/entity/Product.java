@@ -19,7 +19,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Products")
+@Table(name = "products")
 @NamedStoredProcedureQueries({
         @NamedStoredProcedureQuery(name = "getTop5Product", procedureName = "getTop5Product"),
         @NamedStoredProcedureQuery(name = "getTop5Customer", procedureName = "getTop5Customer"),
