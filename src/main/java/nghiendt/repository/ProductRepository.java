@@ -21,7 +21,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
             "\t\tJOIN products as p ON p.user_id = u.id\n" +
             "\t\tJOIN companies c ON c.id = p.company_id\n" +
             "\tORDER BY order_quantity DESC\n" +
-            "\tLIMIT 5;", nativeQuery = true)
+            "\tLIMIT 5", nativeQuery = true)
     List<Top5Product> getTop5Product();
 
     @Modifying
@@ -32,7 +32,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
             "\t\tJOIN users u ON u.id = o.user_id\n" +
             "\tGROUP BY u.id, u.fullname, u.phone, u.address, od.quantity\n" +
             "\tORDER BY order_quantity DESC\n" +
-            "\tLIMIT 5;", nativeQuery = true)
+            "\tLIMIT 5", nativeQuery = true)
     List<Top5Product> getTop5Customer();
 
     @Modifying
@@ -43,7 +43,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
             "\t\tJOIN users u ON u.id = o.user_id\n" +
             "\tWHERE CAST(o.created_at as DATE) = CAST(NOW(3) as DATE)\n" +
             "\tGROUP BY CAST(o.created_at as DATE)\n" +
-            "\tORDER BY today DESC;", nativeQuery = true)
+            "\tORDER BY today DESC", nativeQuery = true)
     List<Top5Product> getDailyRevenue();
 
 //    SQL SERVER

@@ -4,8 +4,6 @@ import nghiendt.entity.Product;
 import nghiendt.exception.ResourceNotFoundException;
 import nghiendt.repository.ProductRepository;
 import nghiendt.service.ProductService;
-import nghiendt.temporary.DailyRevenue;
-import nghiendt.temporary.Top5Customer;
 import nghiendt.temporary.Top5Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -67,12 +65,12 @@ public class ProductRestController {
     }
 
     @GetMapping("getTop5Customer")
-    public List<Top5Customer> getTop5Customer() {
+    public List<Top5Product> getTop5Customer() {
         return productRepository.getTop5Customer();
     }
 
     @GetMapping("getDailyRevenue")
-    public List<DailyRevenue> getDailyRevenue() {
+    public List<Top5Product> getDailyRevenue() {
         return productRepository.getDailyRevenue();
     }
 }
