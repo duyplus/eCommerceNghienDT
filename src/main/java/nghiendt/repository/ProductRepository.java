@@ -1,6 +1,8 @@
 package nghiendt.repository;
 
 import nghiendt.entity.Product;
+import nghiendt.temporary.DailyRevenue;
+import nghiendt.temporary.Top5Customer;
 import nghiendt.temporary.Top5Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -33,7 +35,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
             "\tGROUP BY u.id, u.fullname, u.phone, u.address, od.quantity\n" +
             "\tORDER BY order_quantity DESC\n" +
             "\tLIMIT 5", nativeQuery = true)
-    List<Top5Product> getTop5Customer();
+    List<Top5Customer> getTop5Customer();
 
     @Modifying
     @Query(value = "SELECT sum(od.quantity) as order_quantity, CAST(o.created_at as DATE) as today,\n" +
@@ -44,7 +46,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
             "\tWHERE CAST(o.created_at as DATE) = CAST(NOW(3) as DATE)\n" +
             "\tGROUP BY CAST(o.created_at as DATE)\n" +
             "\tORDER BY today DESC", nativeQuery = true)
-    List<Top5Product> getDailyRevenue();
+    List<DailyRevenue> getDailyRevenue();
 
 //    SQL SERVER
 //    @Modifying
