@@ -282,7 +282,7 @@ INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VAL
 INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (7, 11043870, 33, 4, 21, 8);
 INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (8, 25001290, 8, 4, 19, 12);
 INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (9, 47532518, 3, 3, 92, 5);
-INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (10, 35421124, 1, 89, 12);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (10, 35421124, 1, 2, 89, 12);
 INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (11, 48602966, 36, 2, 42, 5);
 INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (12, 39347184, 34, 3, 2, 5);
 INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (13, 39046654, 28, 4, 66, 7);
