@@ -6,11 +6,12 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import nghiendt.repository.OrderDetailRepository;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 @Builder
 @Data
 @NoArgsConstructor
@@ -22,9 +23,6 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
-
-    @Column(name = "status")
-    private int status;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "created_at")
@@ -43,5 +41,10 @@ public class Order {
     @JsonIgnore
     @OneToMany(mappedBy = "order")
     List<OrderDetail> orderDetails;
+
+    public List<OrderDetail> getOrderDetails() {
+
+        return orderDetails;
+    }
 
 }

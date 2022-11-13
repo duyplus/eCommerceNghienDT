@@ -53,4 +53,13 @@ public class OrderDetailRestController {
         orderDetailRepository.delete(orderDetail);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+        @GetMapping("/approval/{status}")
+    public ResponseEntity<List<OrderDetail>> getAllOrdersApproval(@PathVariable int status) {
+        List<OrderDetail> listOrder = orderDetailRepository.findOrderByStatusApproval(status);
+        if (listOrder.isEmpty())  {
+            return new ResponseEntity<List<OrderDetail>>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<List<OrderDetail>>(listOrder, HttpStatus.OK);
+    }
 }

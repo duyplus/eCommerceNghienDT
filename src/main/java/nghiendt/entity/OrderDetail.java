@@ -25,6 +25,8 @@ public class OrderDetail {
     @Column(name = "quantity")
     private Integer quantity;
 
+    @Column(name = "status")
+    private int status;
     @ManyToOne
     @JoinColumn(name = "order_id")
     private Order order;

@@ -20,13 +20,13 @@ CREATE TABLE order_details (
 	id int IDENTITY(1,1) NOT NULL,
 	price float NOT NULL,
 	quantity int NOT NULL,
+	status tinyint NOT NULL,
 	order_id int NOT NULL,
 	product_id int NOT NULL,
 	CONSTRAINT PK_order_details PRIMARY KEY CLUSTERED (id)
 );
 CREATE TABLE orders (
 	id int IDENTITY(1,1) NOT NULL,
-	status tinyint NOT NULL,
 	created_at datetime NOT NULL,
 	updated_at datetime NOT NULL,
 	user_id int NOT NULL,
@@ -170,209 +170,209 @@ INSERT products (id, name, price, quantity, discount, available, description, im
 SET IDENTITY_INSERT products OFF
 GO
 SET IDENTITY_INSERT orders ON
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (1, 1, '2022-02-28 11:04:23', '2022-02-04 23:04:57', 3)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (2, 2, '2022-08-15 12:17:28', '2021-12-06 02:33:09', 12)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (3, 1, '2022-04-26 20:45:06', '2022-04-07 10:54:57', 12)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (4, 3, '2022-02-02 15:31:09', '2022-06-21 07:22:51', 3)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (5, 1, '2022-09-08 03:20:35', '2022-02-27 03:11:05', 12)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (6, 4, '2022-09-21 10:15:50', '2021-10-31 11:08:00', 3)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (7, 4, '2022-03-17 06:17:06', '2022-04-23 04:47:09', 3)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (8, 1, '2022-08-07 09:45:41', '2022-08-05 02:39:32', 4)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (9, 1, '2021-11-25 03:10:49', '2022-09-16 07:30:51', 4)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (10, 4, '2022-10-03 00:05:13', '2022-08-29 06:15:27', 12)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (11, 1, '2022-08-29 07:58:04', '2022-10-23 13:16:54', 11)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (12, 2, '2022-05-16 10:19:34', '2022-05-30 12:18:07', 11)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (13, 1, '2022-09-01 00:40:41', '2022-09-04 00:26:12', 11)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (14, 3, '2022-01-19 02:13:05', '2022-01-06 17:09:46', 4)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (15, 1, '2021-11-05 12:05:36', '2021-11-10 16:59:43', 15)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (16, 4, '2022-04-21 20:37:07', '2022-07-17 17:28:04', 15)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (17, 1, '2022-07-18 17:48:10', '2022-06-27 14:17:38', 4)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (18, 2, '2022-03-20 03:35:12', '2021-11-28 15:30:10', 4)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (19, 1, '2022-06-01 23:41:16', '2022-04-19 21:30:23', 15)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (20, 3, '2022-04-01 23:09:56', '2021-11-09 12:01:58', 15)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (21, 1, '2022-04-09 19:31:30', '2022-06-19 12:22:25', 4)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (22, 2, '2022-03-31 05:54:49', '2022-07-13 19:44:36', 4)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (23, 1, '2022-05-15 16:23:48', '2022-02-19 16:04:39', 3)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (24, 4, '2022-09-23 19:03:41', '2022-05-29 09:41:27', 12)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (25, 1, '2021-10-29 14:44:00', '2022-07-05 06:47:15', 12)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (26, 1, '2022-08-19 20:09:44', '2022-07-31 21:05:01', 3)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (27, 1, '2021-12-11 23:13:05', '2021-12-20 10:33:23', 12)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (28, 1, '2022-07-20 23:09:06', '2022-05-28 13:34:25', 3)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (29, 1, '2022-03-12 23:32:41', '2021-10-29 01:32:19', 3)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (30, 1, '2022-03-21 02:33:31', '2022-04-15 22:24:52', 7)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (31, 1, '2022-08-21 06:13:50', '2022-10-24 17:46:07', 7)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (32, 1, '2022-01-06 16:42:57', '2022-08-18 15:49:57', 12)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (33, 1, '2021-10-30 03:00:03', '2022-04-29 23:50:04', 7)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (34, 1, '2022-06-05 03:18:54', '2022-02-05 19:53:10', 12)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (35, 2, '2022-03-18 09:24:49', '2021-11-12 14:20:47', 6)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (36, 1, '2021-10-29 13:43:40', '2022-03-03 02:00:01', 6)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (37, 3, '2022-10-06 14:22:08', '2021-11-01 04:36:55', 6)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (38, 4, '2022-05-20 04:33:32', '2021-11-09 06:15:01', 6)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (39, 1, '2022-05-05 06:03:54', '2022-07-19 03:23:27', 12)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (40, 1, '2021-11-22 14:35:44', '2022-07-11 03:27:43', 6)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (41, 1, '2021-11-19 22:22:34', '2022-07-02 15:40:32', 12)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (42, 1, '2022-07-14 09:32:33', '2022-01-16 05:32:42', 5)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (43, 1, '2022-02-18 15:17:08', '2021-11-20 04:45:36', 5)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (44, 1, '2022-06-10 18:04:55', '2022-02-15 13:29:58', 5)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (45, 1, '2021-12-25 20:16:17', '2022-03-13 06:11:31', 12)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (46, 1, '2022-07-28 07:44:38', '2021-11-27 00:34:57', 12)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (47, 2, '2022-06-13 03:42:24', '2022-03-08 01:44:58', 5)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (48, 3, '2022-04-21 02:13:25', '2022-01-04 08:52:19', 12)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (49, 1, '2022-05-19 22:40:37', '2021-11-16 19:24:09', 12)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (50, 1, '2022-09-02 05:56:26', '2021-12-29 06:53:26', 8)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (51, 1, '2022-06-24 11:06:03', '2022-06-23 08:40:44', 5)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (52, 4, '2022-02-27 14:44:48', '2022-02-28 10:57:59', 8)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (53, 1, '2022-04-23 14:28:45', '2021-11-05 08:21:19', 5)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (54, 1, '2022-08-05 00:35:37', '2021-11-02 06:56:20', 8)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (55, 1, '2021-12-13 08:27:08', '2022-04-02 19:56:46', 8)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (56, 1, '2022-06-19 05:12:42', '2022-09-23 15:08:41', 8)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (57, 1, '2022-03-28 07:17:08', '2021-11-11 12:04:17', 8)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (58, 1, '2022-04-10 08:12:56', '2021-11-18 06:21:13', 8)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (59, 1, '2022-01-13 20:39:55', '2022-04-11 11:58:02', 8)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (60, 1, '2022-02-24 15:34:20', '2022-09-18 13:41:19', 8)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (61, 1, '2021-12-15 09:12:11', '2022-04-09 03:02:49', 8)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (62, 1, '2022-02-15 02:16:18', '2021-11-18 13:17:06', 13)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (63, 1, '2022-04-10 14:04:20', '2022-09-29 00:11:07', 5)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (64, 2, '2022-07-25 12:45:47', '2022-08-01 02:51:18', 13)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (65, 3, '2022-01-10 20:08:30', '2022-03-23 08:03:10', 5)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (66, 4, '2021-11-27 11:50:34', '2021-11-12 09:50:35', 5)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (67, 1, '2022-03-22 19:39:37', '2022-09-10 11:41:49', 13)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (68, 1, '2022-04-07 05:11:49', '2022-03-26 04:53:31', 13)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (69, 1, '2022-08-01 05:09:22', '2021-11-30 18:43:53', 13)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (70, 1, '2022-03-25 04:56:45', '2022-08-07 18:07:51', 5)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (71, 1, '2021-12-25 07:54:05', '2021-11-08 09:37:16', 13)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (72, 1, '2022-03-20 19:55:01', '2022-01-24 03:46:08', 13)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (73, 1, '2022-08-06 19:54:01', '2022-07-16 23:57:56', 5)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (74, 1, '2022-06-09 15:07:07', '2022-01-10 11:49:41', 5)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (75, 1, '2022-09-30 14:02:14', '2022-08-15 13:10:26', 5)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (76, 1, '2022-03-27 19:59:32', '2021-11-26 18:32:18', 14)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (77, 1, '2022-10-27 17:17:30', '2021-12-03 22:32:17', 5)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (78, 1, '2022-10-12 00:11:44', '2021-11-17 14:20:53', 5)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (79, 1, '2022-10-26 07:59:59', '2022-05-18 03:03:23', 5)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (80, 1, '2022-10-18 11:22:49', '2022-05-26 06:31:31', 14)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (81, 1, '2021-11-02 18:16:48', '2022-10-03 12:30:01', 14)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (82, 1, '2022-01-06 23:04:39', '2021-11-11 23:26:41', 5)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (83, 1, '2022-10-07 14:44:34', '2022-04-19 13:40:41', 14)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (84, 1, '2022-07-29 01:40:32', '2022-08-05 21:58:14', 5)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (85, 1, '2022-07-25 04:51:45', '2022-01-16 06:35:21', 4)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (86, 1, '2021-12-27 08:42:49', '2022-02-18 19:18:45', 4)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (87, 1, '2022-02-24 20:06:13', '2022-01-23 12:12:31', 14)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (88, 1, '2021-12-25 13:43:43', '2022-07-13 04:54:12', 14)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (89, 1, '2022-04-16 21:47:37', '2022-04-12 10:43:48', 14)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (90, 1, '2021-11-29 11:03:13', '2022-10-07 23:54:08', 14)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (91, 1, '2022-06-27 19:30:52', '2022-09-26 02:19:01', 4)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (92, 1, '2022-05-31 04:49:49', '2022-10-25 05:53:53', 16)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (93, 1, '2021-11-18 10:17:34', '2022-04-13 22:47:57', 4)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (94, 1, '2022-03-19 16:12:26', '2021-11-13 10:48:35', 16)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (95, 1, '2022-02-28 00:52:11', '2022-04-18 15:49:17', 4)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (96, 1, '2022-10-31 07:20:16', '2022-10-31 07:59:25', 4)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (97, 1, '2022-10-31 08:14:47', '2022-10-31 09:27:08', 4)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (98, 1, '2022-10-31 09:52:14', '2022-10-31 11:07:01', 16)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (99, 1, '2022-10-31 10:32:32', '2022-10-31 12:08:09', 12)
-INSERT INTO orders (id, status, created_at, updated_at, user_id) VALUES (100, 1, '2022-10-31 19:25:33', '2022-10-31 22:17:13', 4)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (1, '2022-02-28 11:04:23', '2022-02-04 23:04:57', 3)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (2, '2022-08-15 12:17:28', '2021-12-06 02:33:09', 12)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (3, '2022-04-26 20:45:06', '2022-04-07 10:54:57', 12)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (4, '2022-02-02 15:31:09', '2022-06-21 07:22:51', 3)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (5, '2022-09-08 03:20:35', '2022-02-27 03:11:05', 12)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (6, '2022-09-21 10:15:50', '2021-10-31 11:08:00', 3)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (7, '2022-03-17 06:17:06', '2022-04-23 04:47:09', 3)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (8, '2022-08-07 09:45:41', '2022-08-05 02:39:32', 4)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (9, '2021-11-25 03:10:49', '2022-09-16 07:30:51', 4)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (10, '2022-10-03 00:05:13', '2022-08-29 06:15:27', 12)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (11, '2022-08-29 07:58:04', '2022-10-23 13:16:54', 11)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (12, '2022-05-16 10:19:34', '2022-05-30 12:18:07', 11)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (13, '2022-09-01 00:40:41', '2022-09-04 00:26:12', 11)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (14, '2022-01-19 02:13:05', '2022-01-06 17:09:46', 4)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (15, '2021-11-05 12:05:36', '2021-11-10 16:59:43', 15)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (16, '2022-04-21 20:37:07', '2022-07-17 17:28:04', 15)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (17, '2022-07-18 17:48:10', '2022-06-27 14:17:38', 4)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (18, '2022-03-20 03:35:12', '2021-11-28 15:30:10', 4)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (19, '2022-06-01 23:41:16', '2022-04-19 21:30:23', 15)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (20, '2022-04-01 23:09:56', '2021-11-09 12:01:58', 15)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (21, '2022-04-09 19:31:30', '2022-06-19 12:22:25', 4)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (22, '2022-03-31 05:54:49', '2022-07-13 19:44:36', 4)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (23, '2022-05-15 16:23:48', '2022-02-19 16:04:39', 3)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (24, '2022-09-23 19:03:41', '2022-05-29 09:41:27', 12)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (25, '2021-10-29 14:44:00', '2022-07-05 06:47:15', 12)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (26, '2022-08-19 20:09:44', '2022-07-31 21:05:01', 3)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (27, '2021-12-11 23:13:05', '2021-12-20 10:33:23', 12)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (28, '2022-07-20 23:09:06', '2022-05-28 13:34:25', 3)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (29, '2022-03-12 23:32:41', '2021-10-29 01:32:19', 3)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (30, '2022-03-21 02:33:31', '2022-04-15 22:24:52', 7)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (31, '2022-08-21 06:13:50', '2022-10-24 17:46:07', 7)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (32, '2022-01-06 16:42:57', '2022-08-18 15:49:57', 12)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (33, '2021-10-30 03:00:03', '2022-04-29 23:50:04', 7)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (34, '2022-06-05 03:18:54', '2022-02-05 19:53:10', 12)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (35, '2022-03-18 09:24:49', '2021-11-12 14:20:47', 6)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (36, '2021-10-29 13:43:40', '2022-03-03 02:00:01', 6)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (37, '2022-10-06 14:22:08', '2021-11-01 04:36:55', 6)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (38, '2022-05-20 04:33:32', '2021-11-09 06:15:01', 6)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (39, '2022-05-05 06:03:54', '2022-07-19 03:23:27', 12)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (40, '2021-11-22 14:35:44', '2022-07-11 03:27:43', 6)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (41, '2021-11-19 22:22:34', '2022-07-02 15:40:32', 12)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (42, '2022-07-14 09:32:33', '2022-01-16 05:32:42', 5)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (43, '2022-02-18 15:17:08', '2021-11-20 04:45:36', 5)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (44, '2022-06-10 18:04:55', '2022-02-15 13:29:58', 5)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (45, '2021-12-25 20:16:17', '2022-03-13 06:11:31', 12)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (46, '2022-07-28 07:44:38', '2021-11-27 00:34:57', 12)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (47, '2022-06-13 03:42:24', '2022-03-08 01:44:58', 5)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (48, '2022-04-21 02:13:25', '2022-01-04 08:52:19', 12)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (49, '2022-05-19 22:40:37', '2021-11-16 19:24:09', 12)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (50, '2022-09-02 05:56:26', '2021-12-29 06:53:26', 8)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (51, '2022-06-24 11:06:03', '2022-06-23 08:40:44', 5)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (52, '2022-02-27 14:44:48', '2022-02-28 10:57:59', 8)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (53, '2022-04-23 14:28:45', '2021-11-05 08:21:19', 5)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (54, '2022-08-05 00:35:37', '2021-11-02 06:56:20', 8)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (55, '2021-12-13 08:27:08', '2022-04-02 19:56:46', 8)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (56, '2022-06-19 05:12:42', '2022-09-23 15:08:41', 8)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (57, '2022-03-28 07:17:08', '2021-11-11 12:04:17', 8)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (58, '2022-04-10 08:12:56', '2021-11-18 06:21:13', 8)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (59, '2022-01-13 20:39:55', '2022-04-11 11:58:02', 8)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (60, '2022-02-24 15:34:20', '2022-09-18 13:41:19', 8)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (61, '2021-12-15 09:12:11', '2022-04-09 03:02:49', 8)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (62, '2022-02-15 02:16:18', '2021-11-18 13:17:06', 13)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (63, '2022-04-10 14:04:20', '2022-09-29 00:11:07', 5)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (64, '2022-07-25 12:45:47', '2022-08-01 02:51:18', 13)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (65, '2022-01-10 20:08:30', '2022-03-23 08:03:10', 5)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (66, '2021-11-27 11:50:34', '2021-11-12 09:50:35', 5)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (67, '2022-03-22 19:39:37', '2022-09-10 11:41:49', 13)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (68, '2022-04-07 05:11:49', '2022-03-26 04:53:31', 13)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (69, '2022-08-01 05:09:22', '2021-11-30 18:43:53', 13)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (70, '2022-03-25 04:56:45', '2022-08-07 18:07:51', 5)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (71, '2021-12-25 07:54:05', '2021-11-08 09:37:16', 13)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (72, '2022-03-20 19:55:01', '2022-01-24 03:46:08', 13)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (73, '2022-08-06 19:54:01', '2022-07-16 23:57:56', 5)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (74, '2022-06-09 15:07:07', '2022-01-10 11:49:41', 5)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (75, '2022-09-30 14:02:14', '2022-08-15 13:10:26', 5)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (76, '2022-03-27 19:59:32', '2021-11-26 18:32:18', 14)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (77, '2022-10-27 17:17:30', '2021-12-03 22:32:17', 5)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (78, '2022-10-12 00:11:44', '2021-11-17 14:20:53', 5)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (79, '2022-10-26 07:59:59', '2022-05-18 03:03:23', 5)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (80, '2022-10-18 11:22:49', '2022-05-26 06:31:31', 14)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (81, '2021-11-02 18:16:48', '2022-10-03 12:30:01', 14)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (82, '2022-01-06 23:04:39', '2021-11-11 23:26:41', 5)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (83, '2022-10-07 14:44:34', '2022-04-19 13:40:41', 14)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (84, '2022-07-29 01:40:32', '2022-08-05 21:58:14', 5)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (85, '2022-07-25 04:51:45', '2022-01-16 06:35:21', 4)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (86, '2021-12-27 08:42:49', '2022-02-18 19:18:45', 4)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (87, '2022-02-24 20:06:13', '2022-01-23 12:12:31', 14)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (88, '2021-12-25 13:43:43', '2022-07-13 04:54:12', 14)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (89, '2022-04-16 21:47:37', '2022-04-12 10:43:48', 14)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (90, '2021-11-29 11:03:13', '2022-10-07 23:54:08', 14)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (91, '2022-06-27 19:30:52', '2022-09-26 02:19:01', 4)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (92, '2022-05-31 04:49:49', '2022-10-25 05:53:53', 16)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (93, '2021-11-18 10:17:34', '2022-04-13 22:47:57', 4)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (94, '2022-03-19 16:12:26', '2021-11-13 10:48:35', 16)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (95, '2022-02-28 00:52:11', '2022-04-18 15:49:17', 4)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (96, '2022-10-31 07:20:16', '2022-10-31 07:59:25', 4)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (97, '2022-10-31 08:14:47', '2022-10-31 09:27:08', 4)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (98, '2022-10-31 09:52:14', '2022-10-31 11:07:01', 16)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (99, '2022-10-31 10:32:32', '2022-10-31 12:08:09', 12)
+INSERT INTO orders (id, created_at, updated_at, user_id) VALUES (100, '2022-10-31 19:25:33', '2022-10-31 22:17:13', 4)
 SET IDENTITY_INSERT orders OFF
 GO
 SET IDENTITY_INSERT order_details ON 
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (1, 25348395, 47, 36, 14);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (2, 41410920, 3, 76, 18);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (3, 22798890, 21, 6, 4);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (4, 5992905, 27, 10, 11);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (5, 34056264, 49, 42, 16);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (6, 45723758, 45, 30, 12);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (7, 11043870, 33, 21, 8);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (8, 25001290, 8, 19, 12);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (9, 47532518, 3, 92, 5);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (10, 35421124, 1, 89, 12);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (11, 48602966, 36, 42, 5);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (12, 39347184, 34, 2, 5);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (13, 39046654, 28, 66, 7);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (14, 9100771, 40, 73, 9);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (15, 16088599, 23, 56, 8);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (16, 17684375, 21, 20, 2);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (17, 25745334, 10, 88, 9);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (18, 12286289, 5, 27, 16);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (19, 15415471, 29, 32, 6);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (20, 9402708, 3, 78, 15);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (21, 7928236, 22, 87, 18);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (22, 24787552, 7, 14, 6);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (23, 26232175, 36, 72, 19);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (24, 43406485, 17, 16, 1);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (25, 11545336, 6, 3, 2);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (26, 39256974, 16, 87, 2);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (27, 26323450, 23, 14, 15);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (28, 13196660, 27, 23, 16);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (29, 8514161, 13, 11, 9);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (30, 34294399, 9, 84, 3);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (31, 19982662, 48, 13, 2);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (32, 18104943, 19, 13, 19);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (33, 7485834, 23, 47, 1);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (34, 16785669, 37, 58, 5);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (35, 16752777, 5, 26, 12);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (36, 28225339, 26, 80, 13);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (37, 24747669, 46, 23, 4);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (38, 34660888, 36, 69, 9);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (39, 26857659, 1, 56, 2);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (40, 32306827, 5, 93, 2);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (41, 47864492, 46, 75, 1);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (42, 33856184, 8, 42, 13);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (43, 45208023, 26, 5, 16);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (44, 20340408, 30, 64, 4);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (45, 46736610, 47, 88, 2);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (46, 22094064, 28, 39, 9);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (47, 42551253, 43, 97, 11);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (48, 47400209, 2, 24, 6);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (49, 22874482, 10, 75, 2);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (50, 26321475, 35, 97, 10);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (51, 11505203, 36, 43, 16);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (52, 15426416, 29, 43, 18);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (53, 8256656, 43, 40, 11);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (54, 40712760, 5, 11, 4);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (55, 19513034, 16, 83, 12);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (56, 48902762, 50, 95, 5);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (57, 11412878, 26, 87, 19);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (58, 19898755, 15, 33, 15);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (59, 47823320, 38, 39, 17);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (60, 49977622, 3, 44, 5);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (61, 22843223, 24, 99, 12);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (62, 11192531, 6, 59, 11);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (63, 12917500, 43, 20, 16);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (64, 43056491, 49, 54, 19);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (65, 23132184, 10, 71, 8);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (66, 29681727, 48, 92, 12);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (67, 39012605, 12, 30, 14);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (68, 30033335, 8, 81, 11);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (69, 32129611, 2, 45, 12);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (70, 41974458, 40, 54, 3);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (71, 5428641, 18, 6, 18);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (72, 49100204, 46, 63, 1);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (73, 13357335, 1, 69, 17);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (74, 35794223, 38, 3, 16);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (75, 8623966, 15, 64, 17);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (76, 26195302, 29, 10, 6);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (77, 9937762, 11, 68, 7);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (78, 37870537, 16, 95, 15);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (79, 44606696, 7, 90, 17);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (80, 5140739, 3, 59, 17);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (81, 24101392, 20, 10, 11);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (82, 13854940, 46, 83, 6);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (83, 26905656, 25, 51, 16);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (84, 16033864, 30, 100, 7);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (85, 17883323, 29, 16, 20);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (86, 20924061, 49, 28, 8);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (87, 38792774, 16, 82, 16);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (88, 36661963, 25, 66, 9);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (89, 27000628, 15, 90, 2);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (90, 32434697, 7, 68, 1);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (91, 48171227, 42, 81, 4);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (92, 23966638, 9, 2, 10);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (93, 31127802, 28, 66, 16);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (94, 18012629, 47, 96, 5);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (95, 21019774, 13, 76, 7);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (96, 43022719, 19, 36, 9);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (97, 19279960, 2, 83, 18);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (98, 18548795, 30, 38, 10);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (99, 40495574, 26, 13, 3);
-INSERT INTO order_details (id, price, quantity, order_id, product_id) VALUES (100, 16571363, 34, 74, 16);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (1, 25348395, 47, 2, 36, 14);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (2, 41410920, 3, 3, 1, 18);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (3, 22798890, 21, 1, 6, 4);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (4, 5992905, 27, 3, 10, 11);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (5, 34056264, 49, 1, 42, 16);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (6, 45723758, 45, 2, 30, 12);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (7, 11043870, 33, 4, 21, 8);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (8, 25001290, 8, 4, 19, 12);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (9, 47532518, 3, 3, 92, 5);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (10, 35421124, 1, 89, 12);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (11, 48602966, 36, 2, 42, 5);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (12, 39347184, 34, 3, 2, 5);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (13, 39046654, 28, 4, 66, 7);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (14, 9100771, 40, 1, 73, 9);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (15, 16088599, 23, 2, 56, 8);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (16, 17684375, 21, 3, 20, 2);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (17, 25745334, 10, 1, 88, 9);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (18, 12286289, 5, 4, 27, 16);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (19, 15415471, 29, 1, 32, 6);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (20, 9402708, 3, 1, 78, 15);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (21, 7928236, 22, 2, 87, 18);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (22, 24787552, 7, 3, 14, 6);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (23, 26232175, 36, 2, 72, 19);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (24, 43406485, 17, 3, 16, 1);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (25, 11545336, 6, 4, 3, 2);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (26, 39256974, 16, 1, 87, 2);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (27, 26323450, 23, 2, 14, 15);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (28, 13196660, 27, 3, 23, 16);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (29, 8514161, 13, 4, 11, 9);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (30, 34294399, 9, 1, 84, 3);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (31, 19982662, 48, 2, 13, 2);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (32, 18104943, 19, 3, 13, 19);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (33, 7485834, 23, 4, 47, 1);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (34, 16785669, 37, 1, 58, 5);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (35, 16752777, 5, 2, 26, 12);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (36, 28225339, 26, 1, 80, 13);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (37, 24747669, 46, 2, 23, 4);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (38, 34660888, 36, 3, 69, 9);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (39, 26857659, 1, 4, 56, 2);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (40, 32306827, 5, 4, 93, 2);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (41, 47864492, 46, 1, 75, 1);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (42, 33856184, 8, 2, 42, 13);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (43, 45208023, 26, 2, 5, 16);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (44, 20340408, 30, 1, 64, 4);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (45, 46736610, 47, 4, 88, 2);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (46, 22094064, 28, 1, 39, 9);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (47, 42551253, 43, 2, 97, 11);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (48, 47400209, 2, 3, 24, 6);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (49, 22874482, 10, 4, 75, 2);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (50, 26321475, 35, 2, 97, 10);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (51, 11505203, 36, 1, 43, 16);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (52, 15426416, 29, 3, 43, 18);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (53, 8256656, 43, 4, 40, 11);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (54, 40712760, 5, 1, 11, 4);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (55, 19513034, 16, 4, 83, 12);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (56, 48902762, 50, 1, 95, 5);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (57, 11412878, 26, 2, 87, 19);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (58, 19898755, 15, 1, 33, 15);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (59, 47823320, 38, 3, 39, 17);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (60, 49977622, 3, 3, 44, 5);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (61, 22843223, 24, 4, 99, 12);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (62, 11192531, 6, 4, 59, 11);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (63, 12917500, 43, 1, 20, 16);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (64, 43056491, 49, 2, 54, 19);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (65, 23132184, 10, 1, 71, 8);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (66, 29681727, 48, 3, 92, 12);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (67, 39012605, 12, 4, 30, 14);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (68, 30033335, 8, 1, 81, 11);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (69, 32129611, 2, 2, 45, 12);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (70, 41974458, 40, 3, 54, 3);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (71, 5428641, 18, 4, 6, 18);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (72, 49100204, 46, 1, 63, 1);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (73, 13357335, 1, 2, 69, 17);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (74, 35794223, 38, 3, 3, 16);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (75, 8623966, 15, 4, 64, 17);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (76, 26195302, 29, 1, 10, 6);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (77, 9937762, 11, 2, 68, 7);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (78, 37870537, 16, 3, 95, 15);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (79, 44606696, 7, 4, 90, 17);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (80, 5140739, 3, 1, 59, 17);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (81, 24101392, 20, 2, 10, 11);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (82, 13854940, 46, 1, 83, 6);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (83, 26905656, 25, 4, 51, 16);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (84, 16033864, 30, 3, 100, 7);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (85, 17883323, 29, 1, 16, 20);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (86, 20924061, 49, 2, 28, 8);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (87, 38792774, 16, 1, 82, 16);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (88, 36661963, 25, 3, 66, 9);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (89, 27000628, 15, 4, 90, 2);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (90, 32434697, 7, 1, 68, 1);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (91, 48171227, 42, 2, 81, 4);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (92, 23966638, 9, 3, 2, 10);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (93, 31127802, 28, 4, 66, 16);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (94, 18012629, 47, 2, 96, 5);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (95, 21019774, 13, 1, 76, 7);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (96, 43022719, 19, 1, 36, 9);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (97, 19279960, 2, 1, 83, 18);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (98, 18548795, 30, 1, 38, 10);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (99, 40495574, 26, 1, 13, 3);
+INSERT INTO order_details (id, price, quantity,status, order_id, product_id) VALUES (100, 16571363, 34, 1, 74, 16);
 SET IDENTITY_INSERT order_details OFF
 GO
 SET IDENTITY_INSERT reviews ON 
