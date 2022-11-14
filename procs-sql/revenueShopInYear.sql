@@ -1,8 +1,9 @@
 use eCommerceNghiENDT;
 
+# ---  ----
 DELIMITER //
-DROP FUNCTION IF EXISTS revenueShopByYear//
-CREATE FUNCTION revenueShopByYear(shop_id BIGINT, year SMALLINT)
+DROP FUNCTION IF EXISTS revenueShop//
+CREATE FUNCTION revenueShop(shop_id BIGINT, year SMALLINT)
     RETURNS BIGINT
     DETERMINISTIC
 BEGIN
@@ -19,23 +20,31 @@ BEGIN
     RETURN COALESCE(result, 0);
 END //
 
-
+# ---  ----
 DELIMITER //
 DROP PROCEDURE IF EXISTS revenueShopByYear//
-CREATE PROCEDURE revenueShopByYear(shop_id BIGINT, year SMALLINT)
+CREATE PROCEDURE revenueShopByYear(IN shop_id BIGINT,IN year SMALLINT)
 BEGIN
-    SELECT revenueShopByYear(shop_id, year);
+    SELECT id,
+           fullname                   as full_name,
+           year,
+           revenueShop(shop_id, year) AS amount
+    FROM users
+    WHERE id = shop_id;
 END //
 
+# ---  ----
 DELIMITER //
 DROP PROCEDURE IF EXISTS revenueAllShopsByYear//
 CREATE PROCEDURE revenueAllShopsByYear(year SMALLINT)
 BEGIN
-    SELECT fullname,
-           revenueShopByYear(id, year) AS revenue,
+    SELECT id,
+           fullname              as full_name,
+           revenueShop(id, year) AS amount,
            year
     FROM users
-    ORDER BY revenue DESC;
+    ORDER BY amount DESC;
 END //
 
 CALL revenueAllShopsByYear(2021);
+CALL revenueShopByYear(13, 2021);
