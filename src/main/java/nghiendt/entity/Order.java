@@ -42,9 +42,4 @@ public class Order {
     @OneToMany(mappedBy = "order")
     List<OrderDetail> orderDetails;
 
-    public List<OrderDetail> getOrderDetails() {
-
-        return orderDetails;
-    }
-
 }

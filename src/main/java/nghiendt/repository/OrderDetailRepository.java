@@ -11,4 +11,6 @@ import java.util.List;
 public interface OrderDetailRepository extends JpaRepository<OrderDetail, Integer> {
     @Query("SELECT od FROM OrderDetail od WHERE od.status = ?1 ")
     List<OrderDetail> findOrderByStatusApproval(int status);
+
+    List<OrderDetail> findDetailByOrderId(int id);
 }

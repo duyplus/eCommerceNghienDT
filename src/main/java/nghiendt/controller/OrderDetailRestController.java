@@ -62,4 +62,13 @@ public class OrderDetailRestController {
         }
         return new ResponseEntity<List<OrderDetail>>(listOrder, HttpStatus.OK);
     }
+
+    @GetMapping("/pro/{id}")
+    public ResponseEntity<List<OrderDetail>> getAllDeailOfOrder(@PathVariable int id) {
+        List<OrderDetail> listOrder = orderDetailRepository.findDetailByOrderId(id);
+        if (listOrder.isEmpty())  {
+            return new ResponseEntity<List<OrderDetail>>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<List<OrderDetail>>(listOrder, HttpStatus.OK);
+    }
 }
