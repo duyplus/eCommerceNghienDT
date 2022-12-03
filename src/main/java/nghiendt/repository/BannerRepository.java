@@ -1,9 +1,9 @@
 package nghiendt.repository;
 
-import nghiendt.entity.Role;
+import nghiendt.entity.Banner;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface RoleRepository extends JpaRepository<Role, String> {
+public interface BannerRepository extends JpaRepository<Banner, Integer> {
 }
