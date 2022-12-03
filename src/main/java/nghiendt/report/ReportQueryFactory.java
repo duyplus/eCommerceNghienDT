@@ -4,8 +4,9 @@ import lombok.RequiredArgsConstructor;
 import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.*;
-import java.util.*;
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+import java.util.Arrays;
 import java.util.stream.Collectors;
 
 @Component
@@ -25,9 +26,9 @@ public class ReportQueryFactory {
 
         private static String createNativeStoredProcedureQuery(String procName, String... paramNames) {
             return String.format("{CALL %s(%s)}",
-                                 procName,
-                                 Arrays.stream(paramNames).map(name -> ":" + name)
-                                       .collect(Collectors.joining(", ")));
+                    procName,
+                    Arrays.stream(paramNames).map(name -> ":" + name)
+                            .collect(Collectors.joining(", ")));
         }
     }
 
@@ -41,7 +42,7 @@ public class ReportQueryFactory {
         //convert Object[] to Map
         private MyQuery convertToMap() {
             query.unwrap(org.hibernate.query.Query.class)
-                 .setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
+                    .setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
             return this;
         }
 
@@ -63,7 +64,6 @@ public class ReportQueryFactory {
                 .setParameter("year", year)
                 .convertToMap()
                 .getQuery();
-
     }
 
     public Query revenueAllShopsByYear(int year) {

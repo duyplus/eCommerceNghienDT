@@ -20,11 +20,6 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "products")
-@NamedStoredProcedureQueries({
-        @NamedStoredProcedureQuery(name = "getTop5Product", procedureName = "getTop5Product"),
-        @NamedStoredProcedureQuery(name = "getTop5Customer", procedureName = "getTop5Customer"),
-        @NamedStoredProcedureQuery(name = "getDailyRevenue", procedureName = "getDailyRevenue")
-})
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

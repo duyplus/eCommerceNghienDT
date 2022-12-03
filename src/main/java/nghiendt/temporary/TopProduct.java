@@ -1,6 +1,6 @@
 package nghiendt.temporary;
 
-public interface Top5Product {
+public interface TopProduct {
     int getId();
 
     String getProduct_name();

@@ -1,6 +1,6 @@
 package nghiendt.temporary;
 
-public interface Top5Customer {
+public interface TopCustomer {
     int getId();
 
     String getFull_name();
