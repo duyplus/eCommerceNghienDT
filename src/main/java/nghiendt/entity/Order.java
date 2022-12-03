@@ -24,14 +24,12 @@ public class Order {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_at")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date createdat;
 
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "updated_at")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date updatedat;
 
     @ManyToOne

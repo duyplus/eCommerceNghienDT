@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 public interface OrderDetailRepository extends JpaRepository<OrderDetail, Integer> {
-    @Query("SELECT od FROM OrderDetail od WHERE od.status = ?1 ")
+    @Query("SELECT od FROM OrderDetail od WHERE od.status = ?1 ORDER BY od.order.updatedat DESC")
     List<OrderDetail> findOrderByStatusApproval(int status);
 
     List<OrderDetail> findDetailByOrderId(int id);
