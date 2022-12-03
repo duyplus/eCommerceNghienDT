@@ -1,6 +1,5 @@
 package nghiendt.security;
 
-import nghiendt.entity.User;
 import nghiendt.payload.JwtAuthentication;
 import nghiendt.payload.JwtRequestFilter;
 import nghiendt.repository.UserRepository;
@@ -16,7 +15,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -26,8 +24,7 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import javax.servlet.http.HttpSession;
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.Collections;
 
 @Configuration
 @EnableWebSecurity
@@ -63,22 +60,6 @@ public class WebSecurityConfig {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(username -> {
-            try {
-                User user = userRepository.findByUsername(username);
-                String password = passwordEncoder().encode(user.getPassword()); // Mã hóa mật khấu
-                String[] roles = user.getAuthorities().stream().map(er -> er.getRole().getId())
-                        .collect(Collectors.toList()).toArray(new String[0]);
-                Map<String, Object> authentication = new HashMap<>();
-                authentication.put("user", user);
-                byte[] token = (username + ":" + user.getPassword()).getBytes();
-                authentication.put("token", "Basic " + Base64.getEncoder().encodeToString(token));
-                session.setAttribute("authentication", authentication);
-                return org.springframework.security.core.userdetails.User.withUsername(username).password(password).roles(roles).build();
-            } catch (NoSuchElementException e) {
-                throw new UsernameNotFoundException(username + " not found!");
-            }
-        });
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
         auth.authenticationProvider(authenticationProvider());
     }
