@@ -69,10 +69,12 @@ CREATE TABLE settings (
 	zalo nvarchar(255) NULL,
 	CONSTRAINT PK_Settings PRIMARY KEY CLUSTERED (id)
 );
-CREATE TABLE roles (
-	id nvarchar(4) NOT NULL,
-	name nvarchar(50) NOT NULL,
-	CONSTRAINT PK_roles PRIMARY KEY CLUSTERED (id)
+CREATE TABLE banners (
+	id int IDENTITY(1,1) NOT NULL,
+	name nvarchar(255) NOT NULL,
+	content nvarchar(255) NOT NULL,
+	image nvarchar(255) NULL,
+	CONSTRAINT PK_banners PRIMARY KEY CLUSTERED (id)
 );
 CREATE TABLE users (
 	id int IDENTITY(1,1) NOT NULL,
@@ -88,12 +90,6 @@ CREATE TABLE users (
 	updated_at datetime NULL,
 	token varchar(50) NULL,
 	CONSTRAINT PK_users PRIMARY KEY CLUSTERED (id)
-);
-CREATE TABLE authorities (
-	id int IDENTITY(1,1) NOT NULL,
-	user_id int NOT NULL,
-	role_id nvarchar(4) NOT NULL,
-	CONSTRAINT PK_authorities PRIMARY KEY CLUSTERED (id)
 );
 GO
 SET IDENTITY_INSERT categories ON
@@ -147,26 +143,26 @@ INSERT users (id, username, password, phone, fullname, birthday, email, address,
 SET IDENTITY_INSERT users OFF
 GO
 SET IDENTITY_INSERT products ON
-INSERT products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (1, N'MSI Laptop', 2, 7, 0, 0, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', N'https://i.imgur.com/8hMfwI6.jpg', CAST(N'2022-10-23T18:17:22.000' AS DateTime), CAST(N'2023-02-12T08:15:45.000' AS DateTime), 14, 4, 7)
-INSERT products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (2, N'Lenovo Laptop', 5, 8, 0, 0, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', N'https://i.imgur.com/siejHeB.jpg', CAST(N'2022-09-15T21:09:23.000' AS DateTime), CAST(N'2022-12-23T07:25:23.000' AS DateTime), 11, 3, 6)
-INSERT products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (3, N'MSI Laptop', 1, 3, 5, 0, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', N'https://i.imgur.com/0suqsPZ.jpg', CAST(N'2023-03-27T18:20:54.000' AS DateTime), CAST(N'2022-02-13T22:21:07.000' AS DateTime), 14, 2, 14)
-INSERT products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (4, N'Laptop Aser', 6, 2, 10, 0, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', N'https://i.imgur.com/siejHeB.jpg', CAST(N'2023-03-11T11:43:54.000' AS DateTime), CAST(N'2022-10-10T20:29:33.000' AS DateTime), 18, 1, 11)
-INSERT products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (5, N'HP Laptop', 9, 2, 10, 0, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', N'https://i.imgur.com/2X0zVP4.jpg', CAST(N'2023-07-07T18:37:33.000' AS DateTime), CAST(N'2023-04-24T12:08:43.000' AS DateTime), 6, 3, 4)
-INSERT products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (6, N'Laptop Aser', 7, 9, 20, 0, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', N'https://i.imgur.com/8hMfwI6.jpg', CAST(N'2022-12-24T13:57:02.000' AS DateTime), CAST(N'2022-06-01T09:07:54.000' AS DateTime), 15, 2, 14)
-INSERT products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (7, N'Aser Laptop', 1, 5, 20, 0, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', N'https://i.imgur.com/2X0zVP4.jpg', CAST(N'2022-11-22T19:35:17.000' AS DateTime), CAST(N'2021-12-28T04:47:47.000' AS DateTime), 8, 3, 7)
-INSERT products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (8, N'Lenovo Laptop', 5, 3, 18, 1, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', N'https://i.imgur.com/8hMfwI6.jpg', CAST(N'2022-09-14T02:28:31.000' AS DateTime), CAST(N'2021-11-17T14:07:53.000' AS DateTime), 9, 3, 3)
-INSERT products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (9, N'Laptop Macbook', 7, 1, 15, 1, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', N'https://i.imgur.com/0suqsPZ.jpg', CAST(N'2022-06-10T19:22:30.000' AS DateTime), CAST(N'2022-10-25T00:17:36.000' AS DateTime), 13, 2, 7)
-INSERT products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (10, N'Laptop Lenovo', 7, 9, 15, 1, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', N'https://i.imgur.com/8hMfwI6.jpg', CAST(N'2022-06-15T04:36:41.000' AS DateTime), CAST(N'2023-08-16T15:04:54.000' AS DateTime), 11, 4, 7)
-INSERT products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (11, N'Điện thoại Iphone', 1, 8, 0, 0, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', N'https://i.imgur.com/6JvGFHT.jpg', CAST(N'2022-09-11T05:37:44.000' AS DateTime), CAST(N'2022-12-23T20:01:22.000' AS DateTime), 2, 2, 17)
-INSERT products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (12, N'Điện thoại Xiaomi', 6, 0, 10, 1, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', N'https://i.imgur.com/siejHeB.jpg', CAST(N'2022-07-04T00:09:36.000' AS DateTime), CAST(N'2022-04-03T18:13:15.000' AS DateTime), 3, 3, 9)
-INSERT products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (13, N'Điện thoại Huawei', 4, 3, 5, 1, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', N'https://i.imgur.com/6JvGFHT.jpg', CAST(N'2023-10-19T19:13:55.000' AS DateTime), CAST(N'2023-10-06T23:35:18.000' AS DateTime), 14, 2, 11)
-INSERT products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (14, N'Điện thoại Oppo', 9, 2, 5, 1, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', N'https://i.imgur.com/8hMfwI6.jpg', CAST(N'2022-04-30T21:24:49.000' AS DateTime), CAST(N'2023-05-05T13:06:35.000' AS DateTime), 17, 2, 10)
-INSERT products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (15, N'Điện thoại Oppo', 1, 1, 5, 1, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', N'https://i.imgur.com/0suqsPZ.jpg', CAST(N'2022-05-23T02:56:55.000' AS DateTime), CAST(N'2022-01-31T02:39:54.000' AS DateTime), 11, 2, 17)
-INSERT products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (16, N'Điện thoại Xiaomi', 8, 8, 0, 1, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', N'https://i.imgur.com/2X0zVP4.jpg', CAST(N'2023-07-04T09:42:16.000' AS DateTime), CAST(N'2022-04-28T13:51:26.000' AS DateTime), 2, 3, 17)
-INSERT products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (17, N'Điện thoại Vivo', 2, 10, 20, 1, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', N'https://i.imgur.com/8hMfwI6.jpg', CAST(N'2022-02-27T17:44:13.000' AS DateTime), CAST(N'2022-05-08T10:25:55.000' AS DateTime), 11, 2, 12)
-INSERT products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (18, N'Điện thoại Oppo', 8, 9, 20, 1, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', N'https://i.imgur.com/wMInVIP.jpg', CAST(N'2023-07-25T01:35:17.000' AS DateTime), CAST(N'2022-10-06T00:52:29.000' AS DateTime), 16, 1, 11)
-INSERT products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (19, N'Điện thoại Realme', 6, 1, 32, 1, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', N'https://i.imgur.com/8hMfwI6.jpg', CAST(N'2023-07-06T20:40:12.000' AS DateTime), CAST(N'2023-06-05T15:40:23.000' AS DateTime), 11, 2, 15)
-INSERT products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (20, N'Điện thoại Vivo', 5, 3, 32, 1, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', N'https://i.imgur.com/wMInVIP.jpg', CAST(N'2022-06-27T18:30:22.000' AS DateTime), CAST(N'2023-05-01T07:27:05.000' AS DateTime), 8, 4, 10)
+INSERT products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (1, N'MSI Laptop', 20000000, 57, 0, 0, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', N'https://i.imgur.com/8hMfwI6.jpg', CAST(N'2022-10-23T18:17:22.000' AS DateTime), CAST(N'2023-02-12T08:15:45.000' AS DateTime), 14, 4, 7)
+INSERT products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (2, N'Lenovo Laptop', 35000000, 44, 0, 0, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', N'https://i.imgur.com/siejHeB.jpg', CAST(N'2022-09-15T21:09:23.000' AS DateTime), CAST(N'2022-12-23T07:25:23.000' AS DateTime), 11, 3, 6)
+INSERT products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (3, N'MSI Laptop', 31000000, 82, 5, 0, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', N'https://i.imgur.com/0suqsPZ.jpg', CAST(N'2023-03-27T18:20:54.000' AS DateTime), CAST(N'2022-02-13T22:21:07.000' AS DateTime), 14, 2, 14)
+INSERT products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (4, N'Laptop Aser', 17000000, 86, 10, 0, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', N'https://i.imgur.com/siejHeB.jpg', CAST(N'2023-03-11T11:43:54.000' AS DateTime), CAST(N'2022-10-10T20:29:33.000' AS DateTime), 18, 1, 11)
+INSERT products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (5, N'HP Laptop', 15000000, 64, 10, 0, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', N'https://i.imgur.com/2X0zVP4.jpg', CAST(N'2023-07-07T18:37:33.000' AS DateTime), CAST(N'2023-04-24T12:08:43.000' AS DateTime), 6, 3, 4)
+INSERT products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (6, N'Laptop Aser', 24000000, 25, 20, 0, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', N'https://i.imgur.com/8hMfwI6.jpg', CAST(N'2022-12-24T13:57:02.000' AS DateTime), CAST(N'2022-06-01T09:07:54.000' AS DateTime), 15, 2, 14)
+INSERT products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (7, N'Aser Laptop', 16000000, 50, 20, 0, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', N'https://i.imgur.com/2X0zVP4.jpg', CAST(N'2022-11-22T19:35:17.000' AS DateTime), CAST(N'2021-12-28T04:47:47.000' AS DateTime), 8, 3, 7)
+INSERT products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (8, N'Lenovo Laptop', 25500000, 72, 18, 1, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', N'https://i.imgur.com/8hMfwI6.jpg', CAST(N'2022-09-14T02:28:31.000' AS DateTime), CAST(N'2021-11-17T14:07:53.000' AS DateTime), 9, 3, 3)
+INSERT products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (9, N'Laptop Macbook', 47000000, 34, 15, 1, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', N'https://i.imgur.com/0suqsPZ.jpg', CAST(N'2022-06-10T19:22:30.000' AS DateTime), CAST(N'2022-10-25T00:17:36.000' AS DateTime), 13, 2, 7)
+INSERT products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (10, N'Laptop Lenovo', 33400000, 27, 15, 1, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', N'https://i.imgur.com/8hMfwI6.jpg', CAST(N'2022-06-15T04:36:41.000' AS DateTime), CAST(N'2023-08-16T15:04:54.000' AS DateTime), 11, 4, 7)
+INSERT products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (11, N'Điện thoại Iphone', 11000000, 86, 0, 0, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', N'https://i.imgur.com/6JvGFHT.jpg', CAST(N'2022-09-11T05:37:44.000' AS DateTime), CAST(N'2022-12-23T20:01:22.000' AS DateTime), 2, 2, 17)
+INSERT products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (12, N'Điện thoại Xiaomi', 6000000, 35, 10, 1, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', N'https://i.imgur.com/siejHeB.jpg', CAST(N'2022-07-04T00:09:36.000' AS DateTime), CAST(N'2022-04-03T18:13:15.000' AS DateTime), 3, 3, 9)
+INSERT products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (13, N'Điện thoại Huawei', 4000000, 20, 5, 1, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', N'https://i.imgur.com/6JvGFHT.jpg', CAST(N'2023-10-19T19:13:55.000' AS DateTime), CAST(N'2023-10-06T23:35:18.000' AS DateTime), 14, 2, 11)
+INSERT products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (14, N'Điện thoại Oppo', 9000000, 14, 5, 1, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', N'https://i.imgur.com/8hMfwI6.jpg', CAST(N'2022-04-30T21:24:49.000' AS DateTime), CAST(N'2023-05-05T13:06:35.000' AS DateTime), 17, 2, 10)
+INSERT products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (15, N'Điện thoại Oppo', 7000000, 107, 5, 1, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', N'https://i.imgur.com/0suqsPZ.jpg', CAST(N'2022-05-23T02:56:55.000' AS DateTime), CAST(N'2022-01-31T02:39:54.000' AS DateTime), 11, 2, 17)
+INSERT products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (16, N'Điện thoại Xiaomi', 7200000, 52, 0, 1, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', N'https://i.imgur.com/2X0zVP4.jpg', CAST(N'2023-07-04T09:42:16.000' AS DateTime), CAST(N'2022-04-28T13:51:26.000' AS DateTime), 2, 3, 17)
+INSERT products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (17, N'Điện thoại Vivo', 4500000, 75, 20, 1, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', N'https://i.imgur.com/8hMfwI6.jpg', CAST(N'2022-02-27T17:44:13.000' AS DateTime), CAST(N'2022-05-08T10:25:55.000' AS DateTime), 11, 2, 12)
+INSERT products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (18, N'Điện thoại Oppo', 6100000, 42, 20, 1, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', N'https://i.imgur.com/wMInVIP.jpg', CAST(N'2023-07-25T01:35:17.000' AS DateTime), CAST(N'2022-10-06T00:52:29.000' AS DateTime), 16, 1, 11)
+INSERT products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (19, N'Điện thoại Realme', 3200000, 245, 32, 1, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', N'https://i.imgur.com/8hMfwI6.jpg', CAST(N'2023-07-06T20:40:12.000' AS DateTime), CAST(N'2023-06-05T15:40:23.000' AS DateTime), 11, 2, 15)
+INSERT products (id, name, price, quantity, discount, available, description, image, created_at, updated_at, user_id, category_id, company_id) VALUES (20, N'Điện thoại Vivo', 5800000, 23, 32, 1, N'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', N'https://i.imgur.com/wMInVIP.jpg', CAST(N'2022-06-27T18:30:22.000' AS DateTime), CAST(N'2023-05-01T07:27:05.000' AS DateTime), 8, 4, 10)
 SET IDENTITY_INSERT products OFF
 GO
 SET IDENTITY_INSERT orders ON
@@ -379,42 +375,15 @@ SET IDENTITY_INSERT reviews ON
 INSERT INTO reviews (id, content, mark, image, created_at, ordetail_id, enable) VALUES (1, N'Hàng sài rất ok', 10, N'anh1.png', CAST(N'2022-10-26T18:15:22.000' AS DateTime), 1, 1)
 SET IDENTITY_INSERT reviews OFF
 GO
-INSERT INTO roles (id, name) VALUES (N'CUST', N'Customers')
-INSERT INTO roles (id, name) VALUES (N'DIRE', N'Directors')
-INSERT INTO roles (id, name) VALUES (N'STAF', N'Staffs')
-GO
-SET IDENTITY_INSERT authorities ON 
-INSERT INTO authorities (id, user_id, role_id) VALUES (1, 1, N'DIRE')
-INSERT INTO authorities (id, user_id, role_id) VALUES (2, 2, N'STAF')
-INSERT INTO authorities (id, user_id, role_id) VALUES (3, 3, N'CUST')
-INSERT INTO authorities (id, user_id, role_id) VALUES (4, 4, N'CUST')
-INSERT INTO authorities (id, user_id, role_id) VALUES (5, 5, N'CUST')
-INSERT INTO authorities (id, user_id, role_id) VALUES (6, 6, N'CUST')
-INSERT INTO authorities (id, user_id, role_id) VALUES (7, 7, N'CUST')
-INSERT INTO authorities (id, user_id, role_id) VALUES (8, 8, N'CUST')
-INSERT INTO authorities (id, user_id, role_id) VALUES (9, 9, N'CUST')
-INSERT INTO authorities (id, user_id, role_id) VALUES (10, 10, N'CUST')
-INSERT INTO authorities (id, user_id, role_id) VALUES (11, 11, N'CUST')
-INSERT INTO authorities (id, user_id, role_id) VALUES (12, 12, N'CUST')
-INSERT INTO authorities (id, user_id, role_id) VALUES (13, 13, N'CUST')
-INSERT INTO authorities (id, user_id, role_id) VALUES (14, 14, N'CUST')
-INSERT INTO authorities (id, user_id, role_id) VALUES (15, 15, N'CUST')
-INSERT INTO authorities (id, user_id, role_id) VALUES (16, 16, N'CUST')
-INSERT INTO authorities (id, user_id, role_id) VALUES (17, 17, N'CUST')
-INSERT INTO authorities (id, user_id, role_id) VALUES (18, 18, N'CUST')
-INSERT INTO authorities (id, user_id, role_id) VALUES (19, 19, N'CUST')
-INSERT INTO authorities (id, user_id, role_id) VALUES (20, 20, N'CUST')
-SET IDENTITY_INSERT authorities OFF
-GO
 SET IDENTITY_INSERT settings ON 
 INSERT INTO settings (id, unit, address, hotline, email, facebook, instagram, zalo) VALUES (1, N'NghienDT', N'140A Huỳnh Văn Bánh, Phú Nhuận, HCM', N'01234567890', N'nghienecomm@gmail.com', N'https://www.facebook.com/nghiendt', N'https://www.instagram.com/nghiendt', N'https://zalo.me/0919993715')
 SET IDENTITY_INSERT settings OFF
 GO
-/* authorities */
-ALTER TABLE authorities ADD CONSTRAINT FK_authorities_roles FOREIGN KEY(role_id)
-REFERENCES roles (id) ON UPDATE CASCADE
-ALTER TABLE authorities ADD CONSTRAINT FK_authorities_users FOREIGN KEY(user_id)
-REFERENCES users (id) ON UPDATE CASCADE ON DELETE CASCADE
+SET IDENTITY_INSERT banners ON
+INSERT INTO banners (id, name, content, image) VALUES (1, N'New Range Of sumsang Camera', N'sumsang EOS600D/Kiss X5', N'https://i.imgur.com/JBH5ybZ.jpg')
+INSERT INTO banners (id, name, content, image) VALUES (2, N'Game, Consoles & much more', N'Sega Saturn Disc Drive Replacement', N'https://i.imgur.com/2YAi1iI.jpg')
+SET IDENTITY_INSERT banners OFF
+GO
 /* order_details */
 ALTER TABLE order_details ADD CONSTRAINT FK_order_details_orders FOREIGN KEY(order_id)
 REFERENCES orders (id) ON UPDATE NO ACTION
@@ -433,10 +402,13 @@ REFERENCES users (id) ON DELETE NO ACTION ON UPDATE CASCADE
 /* Reviews */
 ALTER TABLE Reviews ADD CONSTRAINT FK_Reviews_OrderDetails FOREIGN KEY(ordetail_id)
 REFERENCES order_details (id) ON DELETE NO ACTION
+--/* Category */
+--ALTER TABLE categories ADD CONSTRAINT FK_categories_companies FOREIGN KEY(company_id)
+--REFERENCES companies (id) ON DELETE NO ACTION ON UPDATE CASCADE
 GO
 
 -- Top 5 sản phẩm bán chạy nhất
-CREATE PROC getTop5Product
+CREATE PROC getTopProduct
 AS BEGIN
 	SELECT DISTINCT TOP 5 p.id as id, p.name as product_name, p.price as product_price, od.quantity as order_quantity,
 	p.available as product_available, p.image product_image, c.name as company_name, u.fullname as full_name
@@ -449,7 +421,7 @@ AS BEGIN
 END
 GO
 -- Top 5 khách hàng thân thiết
-CREATE PROC getTop5Customer
+CREATE PROC getTopCustomer
 AS BEGIN
 	SELECT DISTINCT TOP 5 u.id as id, u.fullname as full_name, u.phone as user_phone, u.address as user_address,
 	od.quantity as order_quantity, sum(od.price) as sum_order
@@ -471,6 +443,19 @@ AS BEGIN
 	WHERE CAST(o.created_at as DATE) = CAST(GETDATE() as DATE)
 	GROUP BY CAST(o.created_at as DATE)
 	ORDER BY today DESC
+END
+GO
+-- Top 14 sản phẩm nổi bật
+CREATE PROC getFeaturedProducts
+AS BEGIN
+	SELECT DISTINCT TOP 14 p.id as id, p.name as product_name, p.price as product_price, od.quantity as order_quantity,
+	p.available as product_available, p.image product_image, c.name as company_name, u.fullname as full_name
+	FROM order_details od
+		JOIN orders o ON o.id = od.order_id
+		JOIN users u ON u.id = o.user_id
+		JOIN products as p ON p.user_id = u.id
+		JOIN companies c ON c.id = p.company_id
+	ORDER BY order_quantity DESC
 END
 GO
 USE master
