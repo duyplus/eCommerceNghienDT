@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Nationalized;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -21,8 +20,7 @@ public class Company {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Size(max = 100)
-    @Nationalized
+    @Size(max = 255)
     @Column(name = "name")
     private String name;
 

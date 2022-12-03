@@ -10,17 +10,17 @@ import java.util.Map;
 
 @Repository
 @RequiredArgsConstructor
-public class ReportRepositoryImp implements ReportRepository {
+public class ReportRepositoryImpl implements ReportRepository {
     private final ReportQueryFactory reportFactory;
 
     @Override
     @SneakyThrows
     public Map revenueShopByYear(Long id, Integer year) {
         return (Map) reportFactory.revenueShopByYear(id, year)
-                                  .getResultStream()
-                                  .findFirst()
-                                  .orElseThrow(() -> new ResourceNotFoundException(
-                                          String.format("No report was found for shop_id: %s in year: %s", id, year)));
+                .getResultStream()
+                .findFirst()
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        String.format("No report was found for shop_id: %s in year: %s", id, year)));
     }
 
     @Override

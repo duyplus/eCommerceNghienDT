@@ -89,8 +89,9 @@ public class HomeRestController {
         throw exception;
     }
 
-    @PostMapping("auth/reset-password")
-    public ResponseEntity<Void> changePassword(@RequestBody User user) {
+    @PostMapping("auth/change-password")
+    public ResponseEntity<Void> changePassword(@RequestBody User user) throws Exception {
+        authenticate(user.getUsername(), user.getPassword());
         return authService.changePassword(user) ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
     }
 }

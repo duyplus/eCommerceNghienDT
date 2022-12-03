@@ -79,8 +79,4 @@ public class User {
     @OneToMany(mappedBy = "user")
     List<Order> orders;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-    List<Authority> authorities;
-
 }
