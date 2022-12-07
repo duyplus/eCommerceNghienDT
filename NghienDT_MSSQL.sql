@@ -71,7 +71,7 @@ CREATE TABLE settings (
 );
 CREATE TABLE banners (
 	id int IDENTITY(1,1) NOT NULL,
-	name nvarchar(255) NOT NULL,
+	title nvarchar(255) NOT NULL,
 	content nvarchar(255) NOT NULL,
 	image nvarchar(255) NULL,
 	CONSTRAINT PK_banners PRIMARY KEY CLUSTERED (id)
@@ -380,8 +380,8 @@ INSERT INTO settings (id, unit, address, hotline, email, facebook, instagram, za
 SET IDENTITY_INSERT settings OFF
 GO
 SET IDENTITY_INSERT banners ON
-INSERT INTO banners (id, name, content, image) VALUES (1, N'New Range Of sumsang Camera', N'sumsang EOS600D/Kiss X5', N'https://i.imgur.com/JBH5ybZ.jpg')
-INSERT INTO banners (id, name, content, image) VALUES (2, N'Game, Consoles & much more', N'Sega Saturn Disc Drive Replacement', N'https://i.imgur.com/2YAi1iI.jpg')
+INSERT INTO banners (id, title, content, image) VALUES (1, N'New Range Of sumsang Camera', N'sumsang EOS600D/Kiss X5', N'https://i.imgur.com/JBH5ybZ.jpg')
+INSERT INTO banners (id, title, content, image) VALUES (2, N'Game, Consoles & much more', N'Sega Saturn Disc Drive Replacement', N'https://i.imgur.com/2YAi1iI.jpg')
 SET IDENTITY_INSERT banners OFF
 GO
 /* order_details */
