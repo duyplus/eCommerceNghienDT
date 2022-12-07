@@ -21,8 +21,8 @@ public class Banner {
     private Integer id;
 
     @Size(max = 255)
-    @Column(name = "name")
-    private String name;
+    @Column(name = "title")
+    private String title;
 
     @Size(max = 255)
     @Column(name = "content")
