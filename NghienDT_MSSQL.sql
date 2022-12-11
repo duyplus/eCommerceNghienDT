@@ -402,13 +402,10 @@ REFERENCES users (id) ON DELETE NO ACTION ON UPDATE CASCADE
 /* Reviews */
 ALTER TABLE Reviews ADD CONSTRAINT FK_Reviews_OrderDetails FOREIGN KEY(ordetail_id)
 REFERENCES order_details (id) ON DELETE NO ACTION
---/* Category */
---ALTER TABLE categories ADD CONSTRAINT FK_categories_companies FOREIGN KEY(company_id)
---REFERENCES companies (id) ON DELETE NO ACTION ON UPDATE CASCADE
 GO
 
--- Top 5 sản phẩm bán chạy nhất
-CREATE PROC getTopProduct
+-- Top best selling products
+CREATE PROCEDURE getTopProduct
 AS BEGIN
 	SELECT DISTINCT TOP 5 p.id as id, p.name as product_name, p.price as product_price, od.quantity as order_quantity,
 	p.available as product_available, p.image product_image, c.name as company_name, u.fullname as full_name
@@ -418,10 +415,10 @@ AS BEGIN
 		JOIN products as p ON p.user_id = u.id
 		JOIN companies c ON c.id = p.company_id
 	ORDER BY order_quantity DESC
-END
+END;
 GO
--- Top 5 khách hàng thân thiết
-CREATE PROC getTopCustomer
+-- Top loyal customers
+CREATE PROCEDURE getTopCustomer
 AS BEGIN
 	SELECT DISTINCT TOP 5 u.id as id, u.fullname as full_name, u.phone as user_phone, u.address as user_address,
 	od.quantity as order_quantity, sum(od.price) as sum_order
@@ -430,10 +427,10 @@ AS BEGIN
 		JOIN users u ON u.id = o.user_id
 	GROUP BY u.id, u.fullname, u.phone, u.address, od.quantity
 	ORDER BY order_quantity DESC
-END
+END;
 GO
--- Doanh thu theo ngày
-CREATE PROC getDailyRevenue
+-- Revenue by day
+CREATE PROCEDURE getDailyRevenue
 AS BEGIN
 	SELECT sum(od.quantity) as order_quantity, CAST(o.created_at as DATE) as today,
 	SUM(od.price) as revenue_order, (SELECT SUM(price) FROM order_details) as sum_revenue
@@ -443,10 +440,10 @@ AS BEGIN
 	WHERE CAST(o.created_at as DATE) = CAST(GETDATE() as DATE)
 	GROUP BY CAST(o.created_at as DATE)
 	ORDER BY today DESC
-END
+END;
 GO
--- Top 14 sản phẩm nổi bật
-CREATE PROC getFeaturedProducts
+-- Top featured products
+CREATE PROCEDURE getFeaturedProducts
 AS BEGIN
 	SELECT DISTINCT TOP 14 p.id as id, p.name as product_name, p.price as product_price, od.quantity as order_quantity,
 	p.available as product_available, p.image product_image, c.name as company_name, u.fullname as full_name
@@ -456,7 +453,71 @@ AS BEGIN
 		JOIN products as p ON p.user_id = u.id
 		JOIN companies c ON c.id = p.company_id
 	ORDER BY order_quantity DESC
-END
+END;
+GO
+-- Number of products sold per year
+CREATE PROCEDURE productSalesByYear(@year SMALLINT)
+AS
+BEGIN
+SET NOCOUNT ON;
+    SELECT p.id, p.name, SUM(dt.quantity) as sales, @year as year
+    FROM products p
+		JOIN order_details dt ON p.id = dt.product_id
+		JOIN orders o ON dt.order_id = o.id
+    WHERE YEAR(o.created_at) = @year
+    GROUP BY p.id, p.name, YEAR(o.created_at)
+    ORDER BY sales DESC;
+END;
+GO
+-- Products sold by the store
+CREATE PROCEDURE productSalesByShop(@shop_id BIGINT)
+AS
+BEGIN
+SET NOCOUNT ON;
+    SELECT p.name, p.image, SUM(od.quantity) as sales
+    FROM products p
+		RIGHT JOIN users u ON u.id = p.user_id
+		JOIN order_details od ON p.id = od.product_id
+    WHERE u.id = @shop_id
+    GROUP BY p.name, p.image, u.fullname
+    ORDER BY sales DESC;
+END;
+GO
+-- Store revenue
+CREATE FUNCTION revenueShop(@shop_id BIGINT, @year SMALLINT)
+    RETURNS BIGINT
+BEGIN
+    DECLARE @result BIGINT;
+    SELECT @result = SUM(od.price * od.quantity)
+    FROM order_details od
+		JOIN products p ON p.id = od.product_id
+		JOIN orders o ON od.order_id = o.id
+		JOIN users u ON p.user_id = u.id
+    WHERE u.id = @shop_id
+		AND YEAR(o.created_at) = @year
+    GROUP BY YEAR(o.created_at)
+    RETURN COALESCE(@result, 0);
+END;
+GO
+-- Store revenue by year
+CREATE PROCEDURE revenueShopByYear(@shop_id BIGINT, @year SMALLINT)
+AS
+BEGIN
+SET NOCOUNT ON;
+    SELECT id, fullname as full_name, @year, dbo.revenueShop(@shop_id, @year) as amount
+    FROM users
+    WHERE id = @shop_id;
+END;
+GO
+-- Sales of all stores by year
+CREATE PROCEDURE revenueAllShopsByYear(@year SMALLINT)
+AS
+BEGIN
+SET NOCOUNT ON;
+    SELECT id, fullname as full_name, dbo.revenueShop(id, @year) as amount, @year
+    FROM users
+    ORDER BY amount DESC;
+END;
 GO
 USE master
 GO

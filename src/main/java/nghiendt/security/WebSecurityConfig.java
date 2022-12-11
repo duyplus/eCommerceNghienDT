@@ -19,19 +19,15 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import javax.servlet.http.HttpSession;
-import java.util.Collections;
 
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig {
 
-    private static final String[] AUTH_WHITELIST = {"/v3/api-docs/**", "/swagger-ui/**"};
+//    private static final String[] AUTH_WHITELIST = {"/v3/api-docs/**", "/swagger-ui/**"};
 
     @Autowired
     private UserRepository userRepository;
@@ -73,18 +69,18 @@ public class WebSecurityConfig {
     }
 
     //Cors filter to accept incoming requests
-    @Bean
-    CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration corsConfig = new CorsConfiguration();
-        corsConfig.applyPermitDefaultValues();
-        corsConfig.setAllowedMethods(Collections.singletonList("*"));
-        corsConfig.addAllowedOriginPattern("*");
-        corsConfig.addAllowedHeader("*");
-        corsConfig.setAllowCredentials(false);
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", corsConfig);
-        return source;
-    }
+//    @Bean
+//    CorsConfigurationSource corsConfigurationSource() {
+//        CorsConfiguration corsConfig = new CorsConfiguration();
+//        corsConfig.applyPermitDefaultValues();
+//        corsConfig.setAllowedMethods(Collections.singletonList("*"));
+//        corsConfig.addAllowedOriginPattern("*");
+//        corsConfig.addAllowedHeader("*");
+//        corsConfig.setAllowCredentials(false);
+//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//        source.registerCorsConfiguration("/**", corsConfig);
+//        return source;
+//    }
 
 //    @Bean
 //    public WebSecurityCustomizer webSecurityCustomizer() {
@@ -93,8 +89,8 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.cors().configurationSource(corsConfigurationSource()).and().csrf().disable();
-        http.authorizeRequests().antMatchers(AUTH_WHITELIST).permitAll();
+        http.cors().and().csrf().disable();
+//        http.authorizeRequests().antMatchers(AUTH_WHITELIST).permitAll();
         http.authorizeRequests()
                 .antMatchers("/**", "/auth/**", "/api/**", "/api/**/**").permitAll()
                 .anyRequest().authenticated();
