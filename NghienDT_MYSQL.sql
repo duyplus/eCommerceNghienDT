@@ -1,15 +1,18 @@
-﻿CREATE TABLE categories (
+﻿DROP TABLE IF EXISTS categories;
+CREATE TABLE categories (
 	id int AUTO_INCREMENT NOT NULL,
 	name nvarchar(255) NOT NULL,
 	image nvarchar(255) NULL,
 	CONSTRAINT PK_categories PRIMARY KEY (id)
 );
+DROP TABLE IF EXISTS companies;
 CREATE TABLE companies (
 	id int AUTO_INCREMENT NOT NULL,
 	name nvarchar(255) NOT NULL,
 	logo nvarchar(255) NULL,
 	CONSTRAINT PK_companies PRIMARY KEY (id)
 );
+DROP TABLE IF EXISTS order_details;
 CREATE TABLE order_details (
 	id int AUTO_INCREMENT NOT NULL,
 	price double NOT NULL,
@@ -19,6 +22,7 @@ CREATE TABLE order_details (
 	product_id int NOT NULL,
 	CONSTRAINT PK_order_details PRIMARY KEY (id)
 );
+DROP TABLE IF EXISTS orders;
 CREATE TABLE orders (
 	id int AUTO_INCREMENT NOT NULL,
 	created_at datetime(3) NOT NULL,
@@ -26,13 +30,14 @@ CREATE TABLE orders (
 	user_id int NOT NULL,
 	CONSTRAINT PK_orders PRIMARY KEY (id)
 );
+DROP TABLE IF EXISTS products;
 CREATE TABLE products (
 	id int AUTO_INCREMENT NOT NULL,
 	name nvarchar(255) NOT NULL,
 	price double NOT NULL,
 	quantity int NOT NULL,
 	discount int NULL,
-	available tinyint NOT NULL,
+	available boolean NOT NULL,
 	description longtext NOT NULL,
 	image nvarchar(255) NOT NULL,
 	created_at datetime(3) NULL,
@@ -42,16 +47,18 @@ CREATE TABLE products (
 	company_id int NOT NULL,
 	CONSTRAINT PK_products PRIMARY KEY (id)
 );
+DROP TABLE IF EXISTS reviews;
 CREATE TABLE reviews (
 	id int AUTO_INCREMENT NOT NULL,
 	content longtext NULL,
 	mark int NULL,
 	image nvarchar(255) NULL,
 	created_at datetime(3) NULL,
-	enable tinyint NULL,
+	enable boolean NULL,
 	ordetail_id int NOT NULL,
 	CONSTRAINT PK_Reviews PRIMARY KEY (id)
 );
+DROP TABLE IF EXISTS settings;
 CREATE TABLE settings (
 	id int AUTO_INCREMENT NOT NULL,
 	unit nvarchar(255) NULL,
@@ -63,6 +70,7 @@ CREATE TABLE settings (
 	zalo nvarchar(255) NULL,
 	CONSTRAINT PK_Settings PRIMARY KEY (id)
 );
+DROP TABLE IF EXISTS banners;
 CREATE TABLE banners (
 	id int AUTO_INCREMENT NOT NULL,
 	title nvarchar(255) NOT NULL,
@@ -70,6 +78,7 @@ CREATE TABLE banners (
 	image nvarchar(255) NULL,
 	CONSTRAINT PK_banners PRIMARY KEY (id)
 );
+DROP TABLE IF EXISTS users;
 CREATE TABLE users (
 	id int AUTO_INCREMENT NOT NULL,
 	username varchar(50) NOT NULL,
@@ -398,7 +407,7 @@ REFERENCES order_details (id) ON DELETE NO ACTION;
 
 # Top best selling products
 DELIMITER //
-DROP FUNCTION IF EXISTS getTopProduct//
+DROP PROCEDURE IF EXISTS getTopProduct//
 CREATE PROCEDURE getTopProduct()
  BEGIN
 	SELECT DISTINCT p.id as id, p.name as product_name, p.price as product_price, od.quantity as order_quantity,
@@ -416,7 +425,7 @@ DELIMITER ;
 
 # Top loyal customers
 DELIMITER //
-DROP FUNCTION IF EXISTS getTopCustomer//
+DROP PROCEDURE IF EXISTS getTopCustomer//
 CREATE PROCEDURE getTopCustomer()
  BEGIN
 	SELECT DISTINCT u.id as id, u.fullname as full_name, u.phone as user_phone, u.address as user_address,
@@ -433,7 +442,7 @@ DELIMITER ;
 
 # Revenue by day
 DELIMITER //
-DROP FUNCTION IF EXISTS getDailyRevenue//
+DROP PROCEDURE IF EXISTS getDailyRevenue//
 CREATE PROCEDURE getDailyRevenue()
  BEGIN
 	SELECT sum(od.quantity) as order_quantity, CAST(o.created_at as DATE) as today,
@@ -450,7 +459,7 @@ DELIMITER ;
 
 # Top featured products
 DELIMITER //
-DROP FUNCTION IF EXISTS getFeaturedProducts//
+DROP PROCEDURE IF EXISTS getFeaturedProducts//
 CREATE PROCEDURE getFeaturedProducts()
  BEGIN
 	SELECT DISTINCT p.id as id, p.name as product_name, p.price as product_price, od.quantity as order_quantity,
