@@ -396,6 +396,7 @@ REFERENCES users (id) ON DELETE NO ACTION ON UPDATE CASCADE;
 ALTER TABLE reviews ADD CONSTRAINT FK_reviews_orderDetails FOREIGN KEY(ordetail_id)
 REFERENCES order_details (id) ON DELETE NO ACTION;
 
+# Top best selling products
 DELIMITER //
 DROP FUNCTION IF EXISTS getTopProduct//
 CREATE PROCEDURE getTopProduct()
@@ -413,6 +414,7 @@ END;
 //
 DELIMITER ;
 
+# Top loyal customers
 DELIMITER //
 DROP FUNCTION IF EXISTS getTopCustomer//
 CREATE PROCEDURE getTopCustomer()
@@ -429,6 +431,7 @@ END;
 //
 DELIMITER ;
 
+# Revenue by day
 DELIMITER //
 DROP FUNCTION IF EXISTS getDailyRevenue//
 CREATE PROCEDURE getDailyRevenue()
@@ -445,6 +448,7 @@ END;
 //
 DELIMITER ;
 
+# Top featured products
 DELIMITER //
 DROP FUNCTION IF EXISTS getFeaturedProducts//
 CREATE PROCEDURE getFeaturedProducts()
@@ -462,7 +466,7 @@ END;
 //
 DELIMITER ;
 
-# NumberOfProductSoldPerYear
+# Number of products sold per year
 DELIMITER  //
 DROP PROCEDURE IF EXISTS productSalesByYear//
 CREATE PROCEDURE productSalesByYear(IN year SMALLINT)
@@ -478,7 +482,7 @@ END;
 //
 DELIMITER ;
 
-# productSoldByShop
+# Products sold by the store
 DELIMITER  //
 DROP PROCEDURE IF EXISTS productSalesByShop//
 CREATE PROCEDURE productSalesByShop(IN shop_id BIGINT)
@@ -494,6 +498,7 @@ END;
 //
 DELIMITER ;
 
+# Store revenue
 DELIMITER //
 DROP FUNCTION IF EXISTS revenueShop//
 CREATE FUNCTION revenueShop(shop_id BIGINT, year SMALLINT)
@@ -515,6 +520,7 @@ END;
 //
 DELIMITER ;
 
+# Store revenue by year
 DELIMITER //
 DROP PROCEDURE IF EXISTS revenueShopByYear//
 CREATE PROCEDURE revenueShopByYear(IN shop_id BIGINT,IN year SMALLINT)
@@ -526,6 +532,7 @@ END;
 //
 DELIMITER ;
 
+# Sales of all stores by year
 DELIMITER //
 DROP PROCEDURE IF EXISTS revenueAllShopsByYear//
 CREATE PROCEDURE revenueAllShopsByYear(year SMALLINT)
