@@ -1,10 +1,12 @@
-## Dự án tốt nghiệp - eCommerceNghienDT
+## Dự án tốt nghiệp - Sàn thương mại điện tử NghienDT
 
-Xây dựng ứng dụng web nhằm mục đích bán hàng online
+Xây dựng ứng dụng web với mục đích tạo ra cho bạn một kênh mua bán hàng trực tuyến, kết nối người mua với người bán lại với nhau bằng những giao dịch cực kỳ đơn giản, tiện lợi, nhanh chóng, an toàn, mang đến hiệu quả bất ngờ.
+
+© 2022 NghienTeam.
 
 ### Frontend
 
-Link: https://github.com/duyplus/NghienDT
+> Link: **_https://github.com/duyplus/NghienDT_**
 
 ### Sàn thương mại điện tử
 
