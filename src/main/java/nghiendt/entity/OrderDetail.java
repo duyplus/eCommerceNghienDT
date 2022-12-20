@@ -25,6 +25,9 @@ public class OrderDetail {
     @Column(name = "quantity")
     private Integer quantity;
 
+    @Column(name = "reviewed")
+    private Boolean reviewed;
+
     @Column(name = "status", columnDefinition = "tinyint")
     private int status;
     @ManyToOne
