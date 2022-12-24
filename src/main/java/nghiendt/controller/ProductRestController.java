@@ -1,6 +1,8 @@
 package nghiendt.controller;
 
+import nghiendt.entity.OrderDetail;
 import nghiendt.entity.Product;
+import nghiendt.entity.User;
 import nghiendt.exception.ResourceNotFoundException;
 import nghiendt.repository.ProductRepository;
 import nghiendt.service.ProductService;
@@ -38,6 +40,15 @@ public class ProductRestController {
         Product product = productRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Product not exist with id: " + id));
         return ResponseEntity.ok(product);
+    }
+
+    @GetMapping("/search/{name}")
+    public ResponseEntity<List<Product>> getProductsByName(@PathVariable String name) {
+        List<Product> product = productRepository.searchByNameLike(name);
+        if (product.isEmpty()) {
+            return new ResponseEntity<List<Product>>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<List<Product>>(product, HttpStatus.OK);
     }
 
     @PostMapping

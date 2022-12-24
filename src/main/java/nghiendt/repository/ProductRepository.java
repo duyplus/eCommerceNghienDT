@@ -45,4 +45,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     @Modifying
     @Query(value = "exec getFeaturedProducts", nativeQuery = true)
     List<TopProduct> getFeaturedProducts();
+
+    @Query("SELECT p FROM Product p WHERE p.name LIKE '%'+?1+'%'")
+    List<Product> searchByNameLike(String name);
 }
