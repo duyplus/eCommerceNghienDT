@@ -14,38 +14,39 @@ import java.util.List;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 
-//    @Modifying
-//    @Query(value = "CALL getTopProduct", nativeQuery = true)
-//    List<TopProduct> getTopProduct();
-//
-//    @Modifying
-//    @Query(value = "CALL getTopCustomer", nativeQuery = true)
-//    List<TopCustomer> getTopCustomer();
-//
-//    @Modifying
-//    @Query(value = "CALL getDailyRevenue", nativeQuery = true)
-//    List<DailyRevenue> getDailyRevenue();
-//
-//    @Modifying
-//    @Query(value = "CALL getFeaturedProducts", nativeQuery = true)
-//    List<TopProduct> getFeaturedProducts();
-
     @Modifying
-    @Query(value = "exec getTopProduct", nativeQuery = true)
+    @Query(value = "CALL getTopProduct", nativeQuery = true)
     List<TopProduct> getTopProduct();
 
     @Modifying
-    @Query(value = "exec getTopCustomer", nativeQuery = true)
+    @Query(value = "CALL getTopCustomer", nativeQuery = true)
     List<TopCustomer> getTopCustomer();
 
     @Modifying
-    @Query(value = "exec getDailyRevenue", nativeQuery = true)
+    @Query(value = "CALL getDailyRevenue", nativeQuery = true)
     List<DailyRevenue> getDailyRevenue();
 
     @Modifying
-    @Query(value = "exec getFeaturedProducts", nativeQuery = true)
+    @Query(value = "CALL getFeaturedProducts", nativeQuery = true)
     List<TopProduct> getFeaturedProducts();
 
-    @Query("SELECT p FROM Product p WHERE p.name LIKE '%'+?1+'%'")
+//    @Modifying
+//    @Query(value = "exec getTopProduct", nativeQuery = true)
+//    List<TopProduct> getTopProduct();
+//
+//    @Modifying
+//    @Query(value = "exec getTopCustomer", nativeQuery = true)
+//    List<TopCustomer> getTopCustomer();
+//
+//    @Modifying
+//    @Query(value = "exec getDailyRevenue", nativeQuery = true)
+//    List<DailyRevenue> getDailyRevenue();
+//
+//    @Modifying
+//    @Query(value = "exec getFeaturedProducts", nativeQuery = true)
+//    List<TopProduct> getFeaturedProducts();
+
+    @Modifying
+    @Query("SELECT p FROM Product p WHERE p.name LIKE %:name%")
     List<Product> searchByNameLike(String name);
 }
