@@ -1,6 +1,7 @@
 ## Dự án tốt nghiệp - Sàn thương mại điện tử NghienDT
 
-Xây dựng ứng dụng web với mục đích tạo ra cho bạn một kênh mua bán hàng trực tuyến, kết nối người mua với người bán lại với nhau bằng những giao dịch cực kỳ đơn giản, tiện lợi, nhanh chóng, an toàn, mang đến hiệu quả bất ngờ.
+Xây dựng ứng dụng web với mục đích tạo ra cho bạn một kênh mua bán hàng trực tuyến, kết nối người mua với người bán lại
+với nhau bằng những giao dịch cực kỳ đơn giản, tiện lợi, nhanh chóng, an toàn, mang đến hiệu quả bất ngờ.
 
 © 2022 NghienTeam.
 
@@ -11,11 +12,14 @@ Xây dựng ứng dụng web với mục đích tạo ra cho bạn một kênh m
 ### Sàn thương mại điện tử
 
 - Các chức năng chính:
-    + Đăng nhập bằng mạng xã hội, xác thực danh tính
+    + Đăng ký, đăng nhập tài khoản
+    + Quên mật khẩu, đổi mật khẩu, thông tin người dùng
+    + Người dùng có thể đăng bán hoặc mua sản phẩm
     + Quản lý sản phẩm, người dùng, đáng giá, danh mục, hãng
     + Xem danh sách sản phẩm, tìm kiếm, lọc sản phẩm
     + Giỏ hàng, huỷ và duyệt đơn hàng, hóa đơn chi tiết, mã giảm giá, thanh toán
-    + Thống kê sản phẩm, doanh thu, đơn hàng...
+    + Doanh thu đơn hàng theo ngày
+    + Thống kê sản phẩm theo danh mục, hãng, thời gian
 - Công nghệ sử dụng:
     + Java Core, Spring Boot, Spring Security
     + AngularJS, Bootstrap, HTML, CSS, Javascript, SQL,...
@@ -23,23 +27,24 @@ Xây dựng ứng dụng web với mục đích tạo ra cho bạn một kênh m
     + IntelliJ IDEA
     + Visual Studio Code
     + Microsoft SQL Server
+    + MySQL Workbench
 - Công cụ hỗ trợ:
     + Postman
-    + Swagger - http://localhost:8080/swagger-ui/index.html
+    + Swagger
     + Lombok
     + JPA Buddy
 
 ## CRUD Rest APIs
 
-##### USER
+##### USER, CATEGORY, COMPANY, PRODUCT, ORDER, REVIEW,... = (name)
 
-| Methods | Urls | Status Code | Actions |
-| ------------ | ------------ | ------------ | ------------ |
-| GET | /api/user | 200 (OK) | Retrieve all user |
-| POST | /api/user | 201 (Created) | Create a new user |
-| GET | /api/user/:id | 200 (OK) | Retrieve a user by :id |
-| PUT | /api/user/:id | 200 (OK) | Update a user by :id |
-| DELETE | /api/user/:id | 204 (No Content) | Delete a user by :id ||
+| Methods | Urls            | Status Code      | Actions                  |
+|---------|-----------------|------------------|--------------------------|
+| GET     | /api/(name)     | 200 (OK)         | Retrieve all (name)      |
+| POST    | /api/(name)     | 201 (Created)    | Create a new (name)      |
+| GET     | /api/(name)/:id | 200 (OK)         | Retrieve a (name) by :id |
+| PUT     | /api/(name)/:id | 200 (OK)         | Update a (name) by :id   |
+| DELETE  | /api/(name)/:id | 204 (No Content) | Delete a (name) by :id   ||
 
 ### Git clone
 
